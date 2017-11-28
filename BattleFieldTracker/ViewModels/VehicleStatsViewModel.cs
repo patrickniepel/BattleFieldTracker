@@ -3,7 +3,7 @@ using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.ViewModels
 {
-    class VehicleStatsViewModel
+    class VehicleStatsViewModel : BaseViewModel
     {
         public void DownloadVehicleStats(string playerName)
         {

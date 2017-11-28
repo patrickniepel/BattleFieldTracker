@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using BattleFieldTracker.DownloadModels;
 
@@ -9,7 +10,6 @@ namespace BattleFieldTracker.Download
         public DownloadPlayerStats()
         {
             ContentAddress = "Stats/CareerForOwnedGames?platform=3&displayName=";
-
         }
 
         public RootObjectPlayerStats GetDownloadData(string playerName)
@@ -31,6 +31,7 @@ namespace BattleFieldTracker.Download
                 {
 
                     string responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    Console.Out.WriteLine("HHalaalal" + responseData);
                     Response = responseData;
                 }
             }

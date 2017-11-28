@@ -1,15 +1,37 @@
 ﻿
 namespace BattleFieldTracker.ViewModels
 {
-    class ViewModelContainer
+    class ViewModelContainer : BaseViewModel
     {
-        public PlayerStatsViewModel PlayerStatsViewModel;
-        private WeaponStatsViewModel WeaponStatsViewModel;
-        private VehicleStatsViewModel VehicleStatsViewModel;
+        private PlayerStatsViewModel _playerStatsViewModel;
+        private WeaponStatsViewModel _weaponStatsViewModel;
+        private VehicleStatsViewModel _vehicleStatsViewModel;
 
-        public string PlayerName { get; set; }
+        private string _playerName;
 
-        private string Name => PlayerName;
+        public PlayerStatsViewModel PlayerStatsViewModel
+        {
+            get => _playerStatsViewModel;
+            set => Set(ref _playerStatsViewModel, value);
+        }
+
+        public WeaponStatsViewModel WeaponStatsViewModel
+        {
+            get => _weaponStatsViewModel;
+            set => Set(ref _weaponStatsViewModel, value);
+        }
+
+        public VehicleStatsViewModel VehicleStatsViewModel
+        {
+            get => _vehicleStatsViewModel;
+            set => Set(ref _vehicleStatsViewModel, value);
+        }
+
+        public string PlayerName
+        {
+            get => _playerName;
+            set => Set(ref _playerName, value);
+        }
 
         public ViewModelContainer()
         {
@@ -20,7 +42,7 @@ namespace BattleFieldTracker.ViewModels
 
         public void StartDownload()
         {
-            PlayerStatsViewModel.DownloadPlayerStats(Name);
+            _playerStatsViewModel.DownloadPlayerStats(PlayerName);
             //PlayerWeaponsViewModel.DownloadWeaponStats(Name);
             //PlayerVehiclesViewModel.DownloadVehicleStats(Name);
         }

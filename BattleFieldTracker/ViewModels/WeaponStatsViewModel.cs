@@ -8,7 +8,7 @@ using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.ViewModels
 {
-    class WeaponStatsViewModel
+    class WeaponStatsViewModel : BaseViewModel
     {
         public void DownloadWeaponStats(string playerName)
         {
