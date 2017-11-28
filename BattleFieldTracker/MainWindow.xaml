@@ -1,0 +1,65 @@
+﻿<Window x:Class="BattleFieldTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Battlefield 1 Tracker" Height="375" Width="525">
+  
+    <Grid x:Name="TopGrid" Margin="5,5,5,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="TopGridColumn1" Width="*" />
+            <ColumnDefinition x:Name="TopGridColumn2" Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <StackPanel x:Name="ProfileStackPanel" Orientation="Vertical">
+                <Label
+                    x:Name="PlayerNameLabel"
+                    Content="{Binding PlayerStatsViewModel.DisplayName}"
+                    FontFamily="Calibri"
+                    FontSize="11"
+                    FontWeight="Bold" />
+                <Image
+                    x:Name="RankImage"
+                    Height="75"
+                    Margin="10,10,10,10" />
+                <Label
+                    x:Name="RankLabel"
+                    HorizontalContentAlignment="Center"
+                    Content="Rank 5" />
+                <Label x:Name="CurrentXpRankLabel" Content="Current: 100" />
+                <Label x:Name="TotalXpRankLabel" Content="Total: 500" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10*" />
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="SearchGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        x:Name="SearchField"
+                        Grid.Column="0"
+                        Margin="5,5,5,5" 
+                        Text="{Binding PlayerName, Mode=TwoWay}"/>
+                    <Button
+                        x:Name="SearchButton"
+                        Grid.Column="1"
+                        Margin="5,5,5,5"
+                        VerticalContentAlignment="Center"
+                        Click="SearchButton_OnClick"
+                        Content="Search" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

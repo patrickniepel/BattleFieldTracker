@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleFieldTracker", "BattleFieldTracker\BattleFieldTracker.csproj", "{84BA7B1C-3BD9-40AF-B8C9-541348BA400C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84BA7B1C-3BD9-40AF-B8C9-541348BA400C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84BA7B1C-3BD9-40AF-B8C9-541348BA400C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84BA7B1C-3BD9-40AF-B8C9-541348BA400C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84BA7B1C-3BD9-40AF-B8C9-541348BA400C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E517C1A6-108A-4ECC-B202-2C659BFF1B83}
+	EndGlobalSection
+EndGlobal
