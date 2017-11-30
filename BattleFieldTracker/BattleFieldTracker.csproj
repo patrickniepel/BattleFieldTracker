@@ -58,8 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModelValidation.cs" />
     <Compile Include="ViewModels\PlayerStatsViewModel.cs" />
     <Compile Include="ViewModels\VehicleStatsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelContainer.cs" />

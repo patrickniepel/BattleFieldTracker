@@ -1,7 +1,10 @@
 ﻿
+using System.Runtime.CompilerServices;
+using BattleFieldTracker.Commands;
+
 namespace BattleFieldTracker.ViewModels
 {
-    class ViewModelContainer : BaseViewModel
+    class ViewModelContainer : BaseViewModelValidation
     {
         private PlayerStatsViewModel _playerStatsViewModel;
         private WeaponStatsViewModel _weaponStatsViewModel;
@@ -30,14 +33,23 @@ namespace BattleFieldTracker.ViewModels
         public string PlayerName
         {
             get => _playerName;
-            set => Set(ref _playerName, value);
+            set => Set(IsPlayerNameValid, ref _playerName, value);
         }
+
+        public DelegateCommand SearchCommand { get; set; }
 
         public ViewModelContainer()
         {
             PlayerStatsViewModel = new PlayerStatsViewModel();
             WeaponStatsViewModel = new WeaponStatsViewModel();
             VehicleStatsViewModel = new VehicleStatsViewModel();
+            
+            SearchCommand = new DelegateCommand(SearchCommandExecute);
+        }
+
+        private void SearchCommandExecute(object obj)
+        {
+            StartDownload();
         }
 
         public void StartDownload()
@@ -45,6 +57,12 @@ namespace BattleFieldTracker.ViewModels
             _playerStatsViewModel.DownloadPlayerStats(PlayerName);
             //PlayerWeaponsViewModel.DownloadWeaponStats(Name);
             //PlayerVehiclesViewModel.DownloadVehicleStats(Name);
+        }
+
+        private bool IsPlayerNameValid(string playerName, [CallerMemberName] string propertyName = null)
+        {
+            string error = "Es muss ein gültiger Name eingegeben werden.";
+            return SetError(() => !string.IsNullOrWhiteSpace(playerName), propertyName, error);
         }
     }
 }

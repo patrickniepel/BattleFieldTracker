@@ -8,18 +8,11 @@ namespace BattleFieldTracker
     /// </summary>
     public partial class MainWindow 
     {
-        private readonly ViewModelContainer _viewModelContainer;
 
         public MainWindow()
         {
             InitializeComponent();
-            _viewModelContainer = new ViewModelContainer();
-            DataContext = _viewModelContainer;
-        }
-
-        private void SearchButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            _viewModelContainer.StartDownload();
+            DataContext = new ViewModelContainer();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Runtime.CompilerServices;
+using System.Windows.Documents;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
 
@@ -21,6 +23,7 @@ namespace BattleFieldTracker.ViewModels
         private int _spm;
         private int _kpm;
         private double _timePlayed;
+        private List<Highlight> _highlights;
 
         public string DisplayName
         {
@@ -100,6 +103,12 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _timePlayed, value);
         }
 
+        public List<Highlight> Highlights
+        {
+            get => _highlights;
+            set => Set(ref _highlights, value);
+        }
+
         public void DownloadPlayerStats(string playerName)
         {
             var download = new DownloadPlayerStats();
@@ -124,6 +133,8 @@ namespace BattleFieldTracker.ViewModels
             Spm = (int)stats.spm;
             Kpm = (int)stats.kpm;
             TimePlayed = stats.timePlayed;
+
+            Highlights = stats.highlights;
         }
 
         private string GetCorrectImageUrl(string url)

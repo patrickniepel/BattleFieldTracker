@@ -105,7 +105,7 @@ namespace BattleFieldTracker.DownloadModels
     public class Highlight
     {
         public object value { get; set; }
-        public string highlightName { get; set; }
+        public string HighlightName { get; set; }
         public string highlightType { get; set; }
         public string itemId { get; set; }
         public string name { get; set; }
