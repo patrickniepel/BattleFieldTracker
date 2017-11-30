@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Battlefield 1 Tracker" Height="375" Width="525">
-  
+        Title="Battlefield 1 Tracker" Height="750" Width="1050" Background="{DynamicResource WindowBackgroundImage}">
+
     <Grid x:Name="TopGrid" Margin="5,5,5,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="TopGridColumn1" Width="*" />
@@ -18,18 +18,36 @@
                     x:Name="PlayerNameLabel"
                     Content="{Binding PlayerStatsViewModel.DisplayName }"
                     FontFamily="Calibri"
-                    FontSize="11"
-                    FontWeight="Bold" />
+                    FontSize="18"
+                    FontWeight="Bold" HorizontalAlignment="Center" />
                 <Image
                     x:Name="RankImage"
                     Height="75"
-                    Margin="10,10,10,10" />
-                <Label
-                    x:Name="RankLabel"
-                    HorizontalContentAlignment="Center"
-                    Content="Rank 5" />
-                <Label x:Name="CurrentXpRankLabel" Content="Current: 100" />
-                <Label x:Name="TotalXpRankLabel" Content="Total: 500" />
+                    Margin="10,10,10,10"
+                    Source="{Binding PlayerStatsViewModel.RankImage}"/>
+
+                <Label x:Name="RankName" Content="{Binding PlayerStatsViewModel.RankName}" FontSize="16" FontWeight="Bold" FontFamily="Calibri" HorizontalAlignment="Center"/>
+
+                <Grid Margin="0 10 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Current XP:" FontSize="16" FontWeight="Bold" FontFamily="Calibri" BorderBrush="Black" OpacityMask="White" Foreground="Black"/>
+                    <Label Grid.Column="1"  x:Name="CurrentXpRankLabel" Content="{Binding PlayerStatsViewModel.CurrentXp}" FontFamily="Calibri" FontSize="16" Foreground="Black" BorderBrush="Black" />
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Total XP:" FontSize="16" FontWeight="Bold" FontFamily="Calibri" BorderBrush="Black" Foreground="Black"/>
+                    <Label Grid.Column="1" x:Name="TotalXpRankLabel" Content="{Binding PlayerStatsViewModel.TotalXp}" FontFamily="Calibri" FontSize="16" BorderBrush="Black" Foreground="Black" />
+                </Grid>
+
             </StackPanel>
         </Grid>
 
@@ -50,22 +68,29 @@
                         x:Name="SearchField"
                         Grid.Column="0"
                         Margin="5,5,5,5" 
-                        Text="{Binding PlayerName, Mode=TwoWay}"/>
+                        Text="{Binding PlayerName, Mode=TwoWay}" FontFamily="Calibri" FontSize="22" VerticalAlignment="Center" Foreground="Black" Background="Transparent" BorderBrush="Black"/>
                     <Button
                         x:Name="SearchButton"
                         Grid.Column="1"
                         Margin="5,5,5,5"
                         VerticalContentAlignment="Center"
                         Click="SearchButton_OnClick"
-                        Content="Search" />
+                        Content="Search" FontFamily="Calibri" FontWeight="Bold" FontSize="20" Background="Transparent" BorderBrush="Black" Foreground="Black" />
                 </Grid>
 
-                <TabControl Grid.Row="1">
-                    <TabItem Header="Weapons">
-                        <Grid Background="#FFE5E5E5"/>
+                <TabControl Grid.Row="1" Margin="0 10 0 0" FontFamily="Calibri" FontWeight="Bold" FontSize="20" BorderBrush="Black" Background="Transparent" Foreground="Black">
+                    <TabItem Header="General" Foreground="Black" BorderBrush="Black" Background="#FF9E9E9E">
+                        <Grid Background="Transparent"/>
                     </TabItem>
-                    <TabItem Header="Vehicles">
-                        <Grid Background="#FFE5E5E5"/>
+                    <TabItem Header="Weapons" FontFamily="Calibri" FontWeight="Bold" FontSize="20" BorderBrush="Black" Foreground="Black" Background="#FF9B9B9B">
+                        <Grid Background="#00E5E5E5">
+                            <Grid.OpacityMask>
+                                <ImageBrush/>
+                            </Grid.OpacityMask>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Vehicles" Foreground="Black" BorderBrush="Black" Background="#FF9E9E9E">
+                        <Grid Background="Transparent"/>
                     </TabItem>
                 </TabControl>
             </Grid>

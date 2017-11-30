@@ -31,7 +31,6 @@ namespace BattleFieldTracker.Download
                 {
 
                     string responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    Console.Out.WriteLine("HHalaalal" + responseData);
                     Response = responseData;
                 }
             }

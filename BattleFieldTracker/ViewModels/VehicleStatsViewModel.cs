@@ -10,5 +10,10 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadVehicleStats();
             RootObjectVehicleStats root = download.GetDownloadData(playerName);
         }
+
+        private void ApplyData(RootObjectVehicleStats root)
+        {
+
+        }
     }
 }

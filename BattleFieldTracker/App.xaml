@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:BattleFieldTracker"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ImageBrush x:Key="WindowBackgroundImage" ImageSource="Images/bf12.jpg" Stretch="UniformToFill"/>
+        <Style TargetType="{x:Type local:MainWindow}">
+            <Setter Property="Background" Value="{StaticResource WindowBackgroundImage}"/>
+        </Style>
     </Application.Resources>
 </Application>

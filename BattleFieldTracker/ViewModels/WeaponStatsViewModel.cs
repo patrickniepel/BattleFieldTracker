@@ -15,5 +15,11 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadWeaponStats();
             RootObjectWeaponStats root = download.GetDownloadData(playerName);
         }
+
+        private void ApplyData(RootObjectWeaponStats root)
+        {
+          
+            
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using System.Runtime.CompilerServices;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
@@ -111,8 +112,9 @@ namespace BattleFieldTracker.ViewModels
             var stats = root.result.gameStats.tunguska;
 
             DisplayName = root.profile.displayName;
-            RankImage = stats.rank.imageUrl;
+            RankImage = root.bbPrefix + GetCorrectImageUrl(stats.rank.imageUrl);
             Rank = stats.rank.number;
+            RankName = stats.rank.name;
             CurrentXp = stats.rankProgress.current;
             TotalXp = stats.rankProgress.total;
             Kills = stats.kills;
@@ -122,6 +124,17 @@ namespace BattleFieldTracker.ViewModels
             Spm = (int)stats.spm;
             Kpm = (int)stats.kpm;
             TimePlayed = stats.timePlayed;
+        }
+
+        private string GetCorrectImageUrl(string url)
+        {
+            var correctUrl = "";
+
+            //urls begin with '[BB_Prefix]'
+
+            correctUrl = url.Substring(11);
+
+            return correctUrl;
         }
     }
 }
