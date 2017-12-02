@@ -23,7 +23,12 @@ namespace BattleFieldTracker.ViewModels
         private int _spm;
         private int _kpm;
         private double _timePlayed;
-        private List<Highlight> _highlights;
+        private string _topPrimary;
+        private string _topSecondary;
+        private string _topVehicle;
+        private string _topClass;
+
+        //private List<Highlight> _highlights;
 
         public string DisplayName
         {
@@ -103,11 +108,35 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _timePlayed, value);
         }
 
-        public List<Highlight> Highlights
+        public string TopClass
         {
-            get => _highlights;
-            set => Set(ref _highlights, value);
+            get => _topClass;
+            set => Set(ref _topClass, value);
         }
+
+        public string TopVehicle
+        {
+            get => _topVehicle;
+            set => Set(ref _topVehicle, value);
+        }
+
+        public string TopPrimary
+        {
+            get => _topPrimary;
+            set => Set(ref _topPrimary, value);
+        }
+
+        public string TopSecondary
+        {
+            get => _topSecondary;
+            set => Set(ref _topSecondary, value);
+        }
+
+        //        public List<Highlight> Highlights
+        //        {
+        //            get => _highlights;
+        //            set => Set(ref _highlights, value);
+        //        }
 
         public void DownloadPlayerStats(string playerName)
         {
@@ -132,9 +161,15 @@ namespace BattleFieldTracker.ViewModels
             Losses = stats.losses;
             Spm = (int)stats.spm;
             Kpm = (int)stats.kpm;
-            TimePlayed = stats.timePlayed;
+            TimePlayed = stats.timePlayed / 3600; //Hours
 
-            Highlights = stats.highlights;
+            var highlights = stats.highlightsByType;
+            TopClass = highlights.kit[0].kitId;
+            TopVehicle = highlights.vehicle[0].name;
+            TopPrimary = highlights.primary[0].name;
+            TopSecondary = highlights.sidearm[0].name;
+
+
         }
 
         private string GetCorrectImageUrl(string url)

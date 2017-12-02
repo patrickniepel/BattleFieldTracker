@@ -55,7 +55,7 @@ namespace BattleFieldTracker.ViewModels
         public void StartDownload()
         {
             _playerStatsViewModel.DownloadPlayerStats(PlayerName);
-            //PlayerWeaponsViewModel.DownloadWeaponStats(Name);
+            _weaponStatsViewModel.DownloadWeaponStats(PlayerName);
             //PlayerVehiclesViewModel.DownloadVehicleStats(Name);
         }
 

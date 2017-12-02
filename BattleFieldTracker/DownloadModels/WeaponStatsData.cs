@@ -9,8 +9,8 @@ namespace BattleFieldTracker.DownloadModels
     public class ProgressionWeaponStats
     {
         public bool Unlocked { get; set; }
-        public int ValueAcquired { get; set; }
-        public int ValueNeeded { get; set; }
+        public float ValueAcquired { get; set; }
+        public float ValueNeeded { get; set; }
     }
 
     public class ValuesWeaponStats
@@ -55,24 +55,24 @@ namespace BattleFieldTracker.DownloadModels
         public double StatDamage { get; set; }
         public double StatAccuracy { get; set; }
         public double StatMobility { get; set; }
-        public int StatRange { get; set; }
+        public float StatRange { get; set; }
         public double StatHandling { get; set; }
-        public int StatReload { get; set; }
+        public float StatReload { get; set; }
         public double StatControl { get; set; }
-        public int StatFireRate { get; set; }
-        public int StatAttackSpeed { get; set; }
+        public float StatFireRate { get; set; }
+        public float StatAttackSpeed { get; set; }
         public bool CanBreakWood { get; set; }
         public bool CanCutBarbedWire { get; set; }
         public bool CanDamageLightVehicle { get; set; }
-        public int NumberOfMagazines { get; set; }
+        public float NumberOfMagazines { get; set; }
         public List<object> DamageDropPoints { get; set; }
     }
 
     public class Progression2WeaponStats
     {
         public bool Unlocked { get; set; }
-        public int ValueAcquired { get; set; }
-        public int ValueNeeded { get; set; }
+        public float ValueAcquired { get; set; }
+        public float ValueNeeded { get; set; }
     }
 
     public class StarWeaponStats
@@ -80,7 +80,7 @@ namespace BattleFieldTracker.DownloadModels
         public object Images { get; set; }
         public string ImageUrl { get; set; }
         public Progression2WeaponStats Progression { get; set; }
-        public int TimesAquired { get; set; }
+        public float TimesAquired { get; set; }
     }
 
     public class WeaponWeaponStats
@@ -119,7 +119,7 @@ namespace BattleFieldTracker.DownloadModels
     {
         public bool Successful { get; set; }
         public List<ResultWeaponStats> Result { get; set; }
-        public Profile Profile { get; set; }
+        public ProfileWeaponStats Profile { get; set; }
         public string BbPrefix { get; set; }
     }
 }
