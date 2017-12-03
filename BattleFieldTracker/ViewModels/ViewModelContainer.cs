@@ -1,16 +1,19 @@
 ﻿
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using BattleFieldTracker.Commands;
+using BattleFieldTracker.Download;
 
 namespace BattleFieldTracker.ViewModels
 {
-    class ViewModelContainer : BaseViewModelValidation
+    public class ViewModelContainer : BaseViewModelValidation
     {
         private PlayerStatsViewModel _playerStatsViewModel;
         private WeaponStatsViewModel _weaponStatsViewModel;
         private VehicleStatsViewModel _vehicleStatsViewModel;
 
         private string _playerName;
+        private bool _isDownloading;
 
         public PlayerStatsViewModel PlayerStatsViewModel
         {
@@ -33,7 +36,17 @@ namespace BattleFieldTracker.ViewModels
         public string PlayerName
         {
             get => _playerName;
-            set => Set(IsPlayerNameValid, ref _playerName, value);
+            set
+            {
+                Set(IsPlayerNameValid, ref _playerName, value);
+                SearchCommand.RaiseCanExecuteChanged();
+            } 
+        }
+
+        public bool IsDownloading
+        {
+            get => _isDownloading;
+            set => Set(ref _isDownloading, value);
         }
 
         public DelegateCommand SearchCommand { get; set; }
@@ -45,18 +58,22 @@ namespace BattleFieldTracker.ViewModels
             VehicleStatsViewModel = new VehicleStatsViewModel();
             
             SearchCommand = new DelegateCommand(SearchCommandExecute);
+            IsDownloading = true;
         }
 
         private void SearchCommandExecute(object obj)
         {
+            
             StartDownload();
+            IsDownloading = false;
         }
 
-        public void StartDownload()
+        private async Task StartDownload()
         {
+            
             _playerStatsViewModel.DownloadPlayerStats(PlayerName);
             _weaponStatsViewModel.DownloadWeaponStats(PlayerName);
-            //PlayerVehiclesViewModel.DownloadVehicleStats(Name);
+            _vehicleStatsViewModel.DownloadVehicleStats(PlayerName);
         }
 
         private bool IsPlayerNameValid(string playerName, [CallerMemberName] string propertyName = null)

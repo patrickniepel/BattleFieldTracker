@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace BattleFieldTracker.ViewModels
 {
-    class BaseViewModelValidation : BaseViewModel, INotifyDataErrorInfo
+    public class BaseViewModelValidation : BaseViewModel, INotifyDataErrorInfo
     {
         private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
 

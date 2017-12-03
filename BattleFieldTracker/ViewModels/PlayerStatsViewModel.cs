@@ -8,7 +8,7 @@ using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.ViewModels
 {
-    class PlayerStatsViewModel : BaseViewModel
+    public class PlayerStatsViewModel : BaseViewModel
     {
         private string _displayName;
         private string _rankImage;

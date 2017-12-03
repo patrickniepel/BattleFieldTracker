@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BattleFieldTracker.DownloadModels
 {
     public class ProgressionVehicleStats
     {
         public bool Unlocked { get; set; }
-        public int ValueAcquired { get; set; }
-        public int ValueNeeded { get; set; }
+        public float ValueAcquired { get; set; }
+        public float ValueNeeded { get; set; }
     }
 
     public class ValuesVehicleStats
     {
         public double Seconds { get; set; }
-        public int Kills { get; set; }
-        public int Destroyed { get; set; }
+        public float Kills { get; set; }
+        public float Destroyed { get; set; }
     }
 
     public class StatsVehicleStats
@@ -36,16 +32,16 @@ namespace BattleFieldTracker.DownloadModels
         public ProgressionVehicleStats Progression { get; set; }
         public StatsVehicleStats Stats { get; set; }
         public List<object> Accessories { get; set; }
-        public object Category { get; set; }
+        public string Category { get; set; }
         public string Description { get; set; }
         public string Guid { get; set; }
-        public object Hires { get; set; }
+        public string Hires { get; set; }
         public ImagesVehicleStats Images { get; set; }
         public string ImageUrl { get; set; }
-        public object Info { get; set; }
+        public string Info { get; set; }
         public string Name { get; set; }
-        public object Price { get; set; }
-        public object Star { get; set; }
+        public string Price { get; set; }
+        public string Star { get; set; }
         public object Criterias { get; set; }
     }
 

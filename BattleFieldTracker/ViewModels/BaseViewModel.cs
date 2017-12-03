@@ -5,7 +5,7 @@ using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.ViewModels
 {
-    abstract class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

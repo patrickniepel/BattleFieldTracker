@@ -59,6 +59,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Converter\VisibilityConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModelValidation.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="Download\DownloadPlayerStats.cs" />
     <Compile Include="Download\DownloadVehicleStats.cs" />
     <Compile Include="Download\DownloadWeaponStats.cs" />
-    <Compile Include="JsonConverter\ConverterJson.cs" />
+    <Compile Include="Converter\ConverterJson.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

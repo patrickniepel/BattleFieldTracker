@@ -4,7 +4,7 @@ using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.Download
 {
-    class DownloadVehicleStats : BaseDownload
+    public class DownloadVehicleStats : BaseDownload
     {
         public DownloadVehicleStats()
         {

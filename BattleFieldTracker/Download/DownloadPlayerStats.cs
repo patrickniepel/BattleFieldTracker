@@ -5,7 +5,7 @@ using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.Download
 {
-    class DownloadPlayerStats : BaseDownload
+    public class DownloadPlayerStats : BaseDownload
     {
         public DownloadPlayerStats()
         {

@@ -4,7 +4,7 @@ using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.ViewModels
 {
-    class WeaponStatsViewModel : BaseViewModel
+    public class WeaponStatsViewModel : BaseViewModel
     {
         private List<ResultWeaponStats> _weapons;
 

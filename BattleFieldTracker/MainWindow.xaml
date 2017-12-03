@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:BattleFieldTracker.ViewModels"
         xmlns:weapons="clr-namespace:BattleFieldTracker.DownloadModels"
+        xmlns:vehicles="clr-namespace:BattleFieldTracker.DownloadModels"
+        xmlns:visibilityConverter="clr-namespace:BattleFieldTracker.Converter"
         mc:Ignorable="d"
         Title="Battlefield 1 Tracker" Height="750" Width="1050" Background="#FFF1F1F1">
 
@@ -30,6 +32,8 @@
             <Setter Property="Padding" Value="4" />
             <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ErrorTemplate}" />
         </Style>
+
+        <visibilityConverter:VisibilityConverter x:Key="VisibilityConverter" />
     </Window.Resources>
 
     <Grid x:Name="TopGrid" Margin="5,5,5,5">
@@ -81,6 +85,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="10*" />
                 </Grid.RowDefinitions>
 
@@ -109,7 +114,9 @@
                         Content="Search" FontFamily="Calibri" FontWeight="Bold" FontSize="20" Background="Transparent" BorderBrush="Black" Foreground="Black" />
                 </Grid>
 
-                <TabControl Grid.Row="1" Margin="0 10 0 0" FontFamily="Calibri" FontWeight="Bold" FontSize="20" BorderBrush="Black" Background="Transparent" Foreground="Black">
+                <ProgressBar Grid.Row="1" Height="10"  IsIndeterminate="True" Visibility="{Binding IsDownloading, Converter={StaticResource VisibilityConverter} }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+                <TabControl Grid.Row="2" Margin="0 10 0 0" FontFamily="Calibri" FontWeight="Bold" FontSize="20" BorderBrush="Black" Background="Transparent" Foreground="Black">
                     <TabItem Header="General" Foreground="Black" BorderBrush="Black" Background="#FF9E9E9E">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -228,7 +235,27 @@
                         </ListBox>
                     </TabItem>
                     <TabItem Header="Vehicles" Foreground="Black" BorderBrush="Black" Background="#FF9E9E9E">
-                        <Grid Background="Transparent"/>
+                        <ListBox
+                            MinWidth="240"
+                            BorderThickness="0,0,0,0"
+                            DockPanel.Dock="Left"
+                            Focusable="True"
+                            ItemsSource="{Binding VehicleStatsViewModel.Vehicles}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="vehicles:ResultVehicleStats">
+                                    <DockPanel>
+                                        <StackPanel Margin="5 5 5 5" Orientation="Horizontal">
+                                            <TextBlock FontSize="16" Text="{Binding Name}" />
+                                        </StackPanel>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </TabItem>
                 </TabControl>
             </Grid>

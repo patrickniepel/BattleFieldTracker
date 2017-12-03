@@ -1,9 +1,9 @@
 ﻿using BattleFieldTracker.DownloadModels;
 using Newtonsoft.Json;
 
-namespace BattleFieldTracker.JsonConverter
+namespace BattleFieldTracker.Converter
 {
-    class ConverterJson
+    public class ConverterJson
     {
         public RootObjectPlayerStats ConvertPlayerStatsToJson(string playerStats)
         {

@@ -1,9 +1,10 @@
 ﻿using System;
-using BattleFieldTracker.JsonConverter;
+using BattleFieldTracker.Converter;
+
 
 namespace BattleFieldTracker.Download
 {
-    abstract class BaseDownload
+    public abstract class BaseDownload
     {
         protected readonly Uri BaseAddress = new Uri("https://battlefieldtracker.com/bf1/api/");
         protected readonly string HeaderName = "trn-api-key";
