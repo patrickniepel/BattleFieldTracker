@@ -2,11 +2,19 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BattleFieldTracker"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ImageBrush x:Key="WindowBackgroundImage" ImageSource="Images/bf12.jpg" Stretch="UniformToFill"/>
         <Style TargetType="{x:Type local:MainWindow}">
             <Setter Property="Background" Value="{StaticResource WindowBackgroundImage}"/>
         </Style>
+
+        <system:Double x:Key="FontSizeLarge">18</system:Double>
+        <system:Double x:Key="FontSizeMega">25</system:Double>
+        <system:Double x:Key="FontSizeNormal">12</system:Double>
+        <SolidColorBrush x:Key="BackgroundColor" Color="Gray" Opacity="0.9" />
+        <SolidColorBrush x:Key="FontColor" Color="White" />
+
     </Application.Resources>
 </Application>
