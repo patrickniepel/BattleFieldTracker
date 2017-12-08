@@ -58,22 +58,20 @@ namespace BattleFieldTracker.ViewModels
             VehicleStatsViewModel = new VehicleStatsViewModel();
             
             SearchCommand = new DelegateCommand(SearchCommandExecute);
-            IsDownloading = true;
         }
 
         private void SearchCommandExecute(object obj)
         {
-            
+            IsDownloading = true;
             StartDownload();
-            IsDownloading = false;
+            
         }
 
         private async Task StartDownload()
         {
-            
-            _playerStatsViewModel.DownloadPlayerStats(PlayerName);
-            _weaponStatsViewModel.DownloadWeaponStats(PlayerName);
-            _vehicleStatsViewModel.DownloadVehicleStats(PlayerName);
+            await Task.Run(() => _playerStatsViewModel.DownloadPlayerStats(PlayerName));
+            await Task.Run(() => _weaponStatsViewModel.DownloadWeaponStats(PlayerName));
+            await Task.Run(() => _vehicleStatsViewModel.DownloadVehicleStats(PlayerName));
         }
 
         private bool IsPlayerNameValid(string playerName, [CallerMemberName] string propertyName = null)

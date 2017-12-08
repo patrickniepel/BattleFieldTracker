@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Runtime.CompilerServices;
-using System.Windows.Documents;
+﻿
+using System.Threading.Tasks;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
 
@@ -27,6 +24,8 @@ namespace BattleFieldTracker.ViewModels
         private string _topSecondary;
         private string _topVehicle;
         private string _topClass;
+
+        private bool _downloadFinished;
 
         //private List<Highlight> _highlights;
 
@@ -132,6 +131,12 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _topSecondary, value);
         }
 
+        public bool DownloadFinished
+        {
+            get => _downloadFinished;
+            set => Set(ref _downloadFinished, value);
+        }
+
         //        public List<Highlight> Highlights
         //        {
         //            get => _highlights;
@@ -143,6 +148,7 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadPlayerStats();
             RootObjectPlayerStats root = download.GetDownloadData(playerName);
             ApplyData(root);
+            DownloadFinished = true;
         }
 
         private void ApplyData(RootObjectPlayerStats root)
