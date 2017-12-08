@@ -5,6 +5,7 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
         <ImageBrush x:Key="WindowBackgroundImage" ImageSource="Images/bf12.jpg" Stretch="UniformToFill"/>
         <Style TargetType="{x:Type local:MainWindow}">
             <Setter Property="Background" Value="{StaticResource WindowBackgroundImage}"/>
@@ -15,6 +16,19 @@
         <system:Double x:Key="FontSizeNormal">12</system:Double>
         <SolidColorBrush x:Key="BackgroundColor" Color="Gray" Opacity="0.9" />
         <SolidColorBrush x:Key="FontColor" Color="White" />
+
+        <ResourceDictionary x:Key="Metro">
+            <ResourceDictionary.MergedDictionaries>
+                <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <!-- Accent and AppTheme setting -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
 
     </Application.Resources>
 </Application>

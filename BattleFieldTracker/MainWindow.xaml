@@ -1,4 +1,5 @@
-﻿<Window x:Class="BattleFieldTracker.MainWindow"
+﻿<controls:MetroWindow x:Class="BattleFieldTracker.MainWindow"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -19,7 +20,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <!--  ReSharper disable once Xaml.BindingWithContextNotResolved  -->
-                            <TextBlock Foreground="Red" Text="{Binding ErrorContent}" />
+                            <TextBlock Foreground="Red" Text="{Binding ErrorContent}"  Background="White"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -98,7 +99,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        
+
         <Grid Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -124,7 +125,7 @@
                         Background="{StaticResource BackgroundColor}" 
                         BorderBrush="White" 
                         SelectionBrush="{StaticResource FontColor}"/>
-                    
+
                     <Button
                         Grid.Column="1"
                         Margin="5,5,5,5"
@@ -231,28 +232,47 @@
                     </TabItem>
 
                     <TabItem Header="Weapons" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding WeaponStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
+                     
 
-                        <ListBox
+                            <ListBox
                                 MinWidth="240"
+                                ScrollViewer.CanContentScroll="True"
+                                ScrollViewer.VerticalScrollBarVisibility="Visible"
                                 BorderThickness="0,0,0,0"
-                                DockPanel.Dock="Left"
                                 Focusable="True"
+                                Background="{StaticResource BackgroundColor}"
                                 ItemsSource="{Binding WeaponStatsViewModel.Weapons}">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate DataType="weapons:ResultWeaponStats">
-                                    <DockPanel>
-                                        <StackPanel Margin="5 5 5 5" Orientation="Horizontal">
-                                            <TextBlock Background="{StaticResource BackgroundColor}" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" />
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="weapons:ResultWeaponStats">
+                                        <StackPanel Margin="5 5 5 5" Orientation="Vertical">
+                                            <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
+
+                                            <ListBox ItemsSource="{Binding Weapons}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                                <ListBox.ItemContainerStyle>
+                                                    <Style TargetType="ListBoxItem">
+                                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                    </Style>
+                                                </ListBox.ItemContainerStyle>
+
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" />
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+
+                                            </ListBox>
                                         </StackPanel>
-                                    </DockPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                      
+                       
                     </TabItem>
                     <TabItem Header="Vehicles" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding VehicleStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
                         <ListBox
@@ -281,4 +301,4 @@
             </Grid>
         </Grid>
     </Grid>
-</Window>
+</controls:MetroWindow>
