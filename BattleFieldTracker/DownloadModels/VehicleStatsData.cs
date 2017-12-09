@@ -37,12 +37,36 @@ namespace BattleFieldTracker.DownloadModels
         public string Guid { get; set; }
         public string Hires { get; set; }
         public ImagesVehicleStats Images { get; set; }
-        public string ImageUrl { get; set; }
         public string Info { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
         public string Star { get; set; }
         public object Criterias { get; set; }
+        public string CorrectImageUrl { get; set; }
+
+        private const string BbPrefix = "https://eaassets-a.akamaihd.net/battlelog/battlebinary";
+
+        private string _imageUrl;
+        public string ImageUrl
+        {
+            get => _imageUrl;
+            set
+            {
+                _imageUrl = value;
+                SetCorrectImageUrl();
+            }
+        }
+
+        private void SetCorrectImageUrl()
+        {
+            var correctUrl = "";
+
+            //urls begin with '[BB_Prefix]'
+
+            correctUrl = BbPrefix + _imageUrl.Substring(11);
+
+            CorrectImageUrl = correctUrl;
+        }
     }
 
     public class ResultVehicleStats

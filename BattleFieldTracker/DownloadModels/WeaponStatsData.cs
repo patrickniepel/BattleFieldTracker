@@ -15,18 +15,18 @@ namespace BattleFieldTracker.DownloadModels
 
     public class ValuesWeaponStats
     {
-        public int Kills { get; set; }
-        public int Headshots { get; set; }
+        public float Kills { get; set; }
+        public float Headshots { get; set; }
         public double Accuracy { get; set; }
         public double Seconds { get; set; }
-        public int Hits { get; set; }
-        public int Shots { get; set; }
-        public int? Destroyed { get; set; }
+        public float Hits { get; set; }
+        public float Shots { get; set; }
+        public float Destroyed { get; set; }
     }
 
     public class StatsWeaponStats
     {
-        public Values Values { get; set; }
+        public ValuesWeaponStats Values { get; set; }
     }
 
     public class HiresWeaponStats
@@ -86,19 +86,55 @@ namespace BattleFieldTracker.DownloadModels
     public class WeaponWeaponStats
     {
         public ProgressionWeaponStats Progression { get; set; }
-        public Stats Stats { get; set; }
+        public StatsWeaponStats Stats { get; set; }
         public List<object> Accessories { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
         public string Guid { get; set; }
         public HiresWeaponStats Hires { get; set; }
         public ImagesWeaponStats Images { get; set; }
-        public string ImageUrl { get; set; }
         public InfoWeaponStats Info { get; set; }
         public string Name { get; set; }
-        public string Price { get; set; }
+
+        private string _price;
+        public string Price
+        {
+            get => _price;
+            set
+            {
+                if (value.Equals("-1"))
+                {
+                    _price = "Not Unlocked";
+                }
+            }
+        }
         public StarWeaponStats Star { get; set; }
         public object Criterias { get; set; }
+        public string CorrectImageUrl { get; set; }
+
+        private const string BbPrefix = "https://eaassets-a.akamaihd.net/battlelog/battlebinary";
+
+        private string _imageUrl;
+        public string ImageUrl
+        {
+            get => _imageUrl;
+            set
+            {
+                _imageUrl = value;
+                SetCorrectImageUrl();
+            }
+        }
+
+        private void SetCorrectImageUrl()
+        {
+            var correctUrl = "";
+
+            //urls begin with '[BB_Prefix]'
+
+            correctUrl = BbPrefix + _imageUrl.Substring(11);
+
+            CorrectImageUrl = correctUrl;
+        }
     }
 
     public class ResultWeaponStats
