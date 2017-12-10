@@ -559,48 +559,48 @@ namespace BattleFieldTracker.DownloadModels
         public RankProgress rankProgress { get; set; }
     }
 
-    //    public class TagType2
-    //    {
-    //        public float value { get; set; }
-    //        public string name { get; set; }
-    //        public string originalName { get; set; }
-    //    }
-    //
-    //    public class Images2
-    //    {
-    //        public string Png160xANY { get; set; }
-    //        public string Small { get; set; }
-    //    }
-    //
-    //    public class EquippedDogtag2
-    //    {
-    //        public string name { get; set; }
-    //        public string description { get; set; }
-    //        public int index { get; set; }
-    //        public string imageUrl { get; set; }
-    //        public string unlockId { get; set; }
-    //        public string category { get; set; }
-    //        public object progression { get; set; }
-    //        public bool equipped { get; set; }
-    //        public TagType2 tagType { get; set; }
-    //        public Images2 images { get; set; }
-    //        public object expansions { get; set; }
-    //        public int timesTaken { get; set; }
-    //    }
-    //
-    //    public class Rank2
-    //    {
-    //        public string imageUrl { get; set; }
-    //        public string name { get; set; }
-    //        public float number { get; set; }
-    //    }
-    //
-    //    public class RankProgress2
-    //    {
-    //        public float current { get; set; }
-    //        public float total { get; set; }
-    //    }
-    //
+        public class TagType2
+        {
+            public float value { get; set; }
+            public string name { get; set; }
+            public string originalName { get; set; }
+        }
+    
+        public class Images2
+        {
+            public string Png160xANY { get; set; }
+            public string Small { get; set; }
+        }
+    
+        public class EquippedDogtag2
+        {
+            public string name { get; set; }
+            public string description { get; set; }
+            public int index { get; set; }
+            public string imageUrl { get; set; }
+            public string unlockId { get; set; }
+            public string category { get; set; }
+            public object progression { get; set; }
+            public bool equipped { get; set; }
+            public TagType2 tagType { get; set; }
+            public Images2 images { get; set; }
+            public object expansions { get; set; }
+            public int timesTaken { get; set; }
+        }
+    
+        public class Rank2
+        {
+            public string imageUrl { get; set; }
+            public string name { get; set; }
+            public float number { get; set; }
+        }
+    
+        public class RankProgress2
+        {
+            public float current { get; set; }
+            public float total { get; set; }
+        }
+    
     //    public class Bf1cte
     //    {
     //        public List<object> completion { get; set; }
@@ -620,6 +620,7 @@ namespace BattleFieldTracker.DownloadModels
     //        public RankProgress2 rankProgress { get; set; }
     //    }
 
+    [UsedImplicitly]
     public class GameStats
     {
         public Tunguska tunguska { get; set; }
@@ -680,5 +681,7 @@ namespace BattleFieldTracker.DownloadModels
         public Result result { get; set; }
         public Profile profile { get; set; }
         public string bbPrefix { get; set; }
+
+        public string Message { get; set; }
     }
 }

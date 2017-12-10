@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
 {
+    [UsedImplicitly]
     public class ProgressionVehicleStats
     {
         public bool Unlocked { get; set; }
@@ -9,6 +11,7 @@ namespace BattleFieldTracker.DownloadModels
         public float ValueNeeded { get; set; }
     }
 
+    [UsedImplicitly]
     public class ValuesVehicleStats
     {
         public double Seconds { get; set; }
@@ -16,11 +19,13 @@ namespace BattleFieldTracker.DownloadModels
         public float Destroyed { get; set; }
     }
 
+    [UsedImplicitly]
     public class StatsVehicleStats
     {
         public ValuesVehicleStats Values { get; set; }
     }
 
+    [UsedImplicitly]
     public class ImagesVehicleStats
     {
         public string Png256XAny { get; set; }
@@ -69,27 +74,29 @@ namespace BattleFieldTracker.DownloadModels
         }
     }
 
+    [UsedImplicitly]
     public class ResultVehicleStats
     {
-        public List<object> Accessories { get; set; }
+        //public List<object> Accessories { get; set; }
         public string Name { get; set; }
-        public int SortOrder { get; set; }
+        //public int SortOrder { get; set; }
         public List<VehicleVehicleStats> Vehicles { get; set; }
     }
 
-    public class ProfileVehicleStats
-    {
-        public string TrackerUrl { get; set; }
-        public string DisplayName { get; set; }
-        public int PersonaId { get; set; }
-        public int Platform { get; set; }
-    }
+//    public class ProfileVehicleStats
+//    {
+//        public string TrackerUrl { get; set; }
+//        public string DisplayName { get; set; }
+//        public int PersonaId { get; set; }
+//        public int Platform { get; set; }
+//    }
 
+    [UsedImplicitly]
     public class RootObjectVehicleStats
     {
-        public bool Successful { get; set; }
+        //public bool Successful { get; set; }
         public List<ResultVehicleStats> Result { get; set; }
-        public ProfileVehicleStats Profile { get; set; }
-        public string BbPrefix { get; set; }
+        //public ProfileVehicleStats Profile { get; set; }
+        //public string BbPrefix { get; set; }
     }
 }

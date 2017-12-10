@@ -1,5 +1,6 @@
 ﻿
 using System.Threading.Tasks;
+using System.Windows;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
 
@@ -153,8 +154,13 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectPlayerStats root)
         {
+            if (root.Message.Length != 0)
+            {
+                MessageBox.Show(root.Message);
+                return;
+            }
             var stats = root.result.gameStats.tunguska;
-
+            
             DisplayName = root.profile.displayName;
             RankImage = root.bbPrefix + GetCorrectImageUrl(stats.rank.imageUrl);
             Rank = stats.rank.number;
@@ -174,8 +180,6 @@ namespace BattleFieldTracker.ViewModels
             TopVehicle = highlights.vehicle[0].name;
             TopPrimary = highlights.primary[0].name;
             TopSecondary = highlights.sidearm[0].name;
-
-
         }
 
         private string GetCorrectImageUrl(string url)

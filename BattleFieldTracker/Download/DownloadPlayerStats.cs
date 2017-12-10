@@ -14,9 +14,19 @@ namespace BattleFieldTracker.Download
 
         public RootObjectPlayerStats GetDownloadData(string playerName)
         {
+
             DownloadData(playerName).Wait();
             var root = Converter.ConvertPlayerStatsToJson(Response);
 
+            if (Response.Equals("Bad Request") || Response.Equals("Internal Server Error"))
+            {
+                root.Message = "Ein Fehler ist aufgetreten!";
+            }
+            if (!root.successful)
+            {
+                root.Message = "Spieler kann nicht gefunden werden!";
+            }
+            
             return root;
         }
 
