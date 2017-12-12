@@ -31,6 +31,10 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectWeaponStats root)
         {
+            if (root == null)
+            {
+                return;
+            }
             var weapons = root.Result;
             Weapons = weapons;
         }

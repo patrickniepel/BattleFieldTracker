@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BattleFieldTracker.Annotations;
 using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.Download
@@ -14,19 +16,16 @@ namespace BattleFieldTracker.Download
 
         public RootObjectPlayerStats GetDownloadData(string playerName)
         {
-
             DownloadData(playerName).Wait();
-            var root = Converter.ConvertPlayerStatsToJson(Response);
+            DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
 
-            if (Response.Equals("Bad Request") || Response.Equals("Internal Server Error"))
+            if (Validation.SharedInstance.IsError)
             {
-                root.Message = "Ein Fehler ist aufgetreten!";
-            }
-            if (!root.successful)
-            {
-                root.Message = "Spieler kann nicht gefunden werden!";
+                return null;
             }
             
+            var root = Converter.ConvertPlayerStatsToJson(Response);
+
             return root;
         }
 
@@ -39,9 +38,10 @@ namespace BattleFieldTracker.Download
 
                 using (var response = await httpClient.GetAsync(ContentAddress + playerName).ConfigureAwait(false))
                 {
-
-                    string responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    Response = responseData;
+                        Validation.SharedInstance.ValidateDownload(response);
+                    
+                        string responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        Response = responseData;
                 }
             }
         }

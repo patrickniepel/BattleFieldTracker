@@ -12,6 +12,6 @@ namespace BattleFieldTracker.Download
 
         protected string ContentAddress { get; set; }
         protected string Response { get; set; }
-        protected ConverterJson Converter = new ConverterJson();
+        protected readonly ConverterJson Converter = new ConverterJson();
     }
 }

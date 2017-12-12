@@ -31,6 +31,11 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectVehicleStats root)
         {
+            if (root == null)
+            {
+                return;
+            }
+
             var vehicles = root.Result;
             Vehicles = vehicles;
         }

@@ -14,7 +14,7 @@ namespace BattleFieldTracker.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is bool b)
-                return b ? Visibility.Visible : Visibility.Collapsed;
+                return b ? Visibility.Visible : Visibility.Hidden;
             return value;
         }
 

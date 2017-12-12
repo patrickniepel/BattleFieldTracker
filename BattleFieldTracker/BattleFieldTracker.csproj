@@ -67,6 +67,8 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Converter\ProgressBarVisibilityConverter.cs" />
     <Compile Include="Converter\VisibilityConverter.cs" />
+    <Compile Include="Download\DownloadCounter.cs" />
+    <Compile Include="Download\Validation.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModelValidation.cs" />

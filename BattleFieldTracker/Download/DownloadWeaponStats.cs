@@ -14,6 +14,13 @@ namespace BattleFieldTracker.Download
         public RootObjectWeaponStats GetDownloadData(string playerName)
         {
             DownloadData(playerName).Wait();
+            DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
+
+            if (Validation.SharedInstance.IsError)
+            {
+                return null;
+            }
+
             var root = Converter.ConvertWeaponStatsToJson(Response);
 
             return root;

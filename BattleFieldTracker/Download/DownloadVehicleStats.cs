@@ -15,6 +15,13 @@ namespace BattleFieldTracker.Download
         public RootObjectVehicleStats GetDownloadData(string playerName)
         {
             DownloadData(playerName).Wait();
+            DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
+
+            if (Validation.SharedInstance.IsError)
+            {
+                return null;
+            }
+
             var root = Converter.ConvertVehicleStatsToJson(Response);
 
             return root;

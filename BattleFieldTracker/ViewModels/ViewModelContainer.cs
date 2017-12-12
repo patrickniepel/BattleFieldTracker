@@ -58,6 +58,8 @@ namespace BattleFieldTracker.ViewModels
             VehicleStatsViewModel = new VehicleStatsViewModel();
             
             SearchCommand = new DelegateCommand(SearchCommandExecute);
+
+            DownloadCounter.SharedInstance.DownloadFinished += HideProgressBar;
         }
 
         private void SearchCommandExecute(object obj)
@@ -78,6 +80,11 @@ namespace BattleFieldTracker.ViewModels
         {
             string error = "Es muss ein gültiger Name eingegeben werden.";
             return SetError(() => !string.IsNullOrWhiteSpace(playerName), propertyName, error);
+        }
+
+        private void HideProgressBar()
+        {
+            IsDownloading = false;
         }
     }
 }

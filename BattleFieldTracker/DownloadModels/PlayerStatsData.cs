@@ -681,7 +681,5 @@ namespace BattleFieldTracker.DownloadModels
         public Result result { get; set; }
         public Profile profile { get; set; }
         public string bbPrefix { get; set; }
-
-        public string Message { get; set; }
     }
 }

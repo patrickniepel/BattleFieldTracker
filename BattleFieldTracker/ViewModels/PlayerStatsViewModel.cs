@@ -154,11 +154,12 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectPlayerStats root)
         {
-            if (root.Message.Length != 0)
+            if (root == null)
             {
-                MessageBox.Show(root.Message);
+                MessageBox.Show(Validation.SharedInstance.ErrorMessage);
                 return;
             }
+
             var stats = root.result.gameStats.tunguska;
             
             DisplayName = root.profile.displayName;
