@@ -47,10 +47,10 @@ namespace BattleFieldTracker.DownloadModels
         public string Price { get; set; }
         public string Star { get; set; }
         public object Criterias { get; set; }
-        public string CorrectImageUrl { get; set; }
+        
 
         private const string BbPrefix = "https://eaassets-a.akamaihd.net/battlelog/battlebinary";
-
+        public string CorrectImageUrl { get; set; }
         private string _imageUrl;
         public string ImageUrl
         {

@@ -67,11 +67,17 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Converter\ProgressBarVisibilityConverter.cs" />
     <Compile Include="Converter\VisibilityConverter.cs" />
+    <Compile Include="DownloadModels\DogTatStatsData.cs" />
+    <Compile Include="DownloadModels\MedalStatsData.cs" />
     <Compile Include="Download\DownloadCounter.cs" />
+    <Compile Include="Download\DownloadDogTagStats.cs" />
+    <Compile Include="Download\DownloadMedalStats.cs" />
     <Compile Include="Download\Validation.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModelValidation.cs" />
+    <Compile Include="ViewModels\DogTagStatsViewModel.cs" />
+    <Compile Include="ViewModels\MedalStatsViewModel.cs" />
     <Compile Include="ViewModels\PlayerStatsViewModel.cs" />
     <Compile Include="ViewModels\VehicleStatsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelContainer.cs" />

@@ -6,9 +6,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:weapons="clr-namespace:BattleFieldTracker.DownloadModels"
         xmlns:vehicles="clr-namespace:BattleFieldTracker.DownloadModels"
+        xmlns:dogTags="clr-namespace:BattleFieldTracker.DownloadModels"
+        xmlns:medals="clr-namespace:BattleFieldTracker.DownloadModels"
         xmlns:visibilityConverters="clr-namespace:BattleFieldTracker.Converter"
         mc:Ignorable="d"
-        Title="Battlefield 1 Tracker" Height="750" Width="1050" Background="{DynamicResource WindowBackgroundImage}">
+        Title="Battlefield 1 Tracker" Height="750" Width="1500" Background="{DynamicResource WindowBackgroundImage}">
 
     <Window.Resources>
         <!--  Template für die Anzeige des Fehlers als roter Text unter dem jeweiligen Control  -->
@@ -61,9 +63,11 @@
                     Foreground="{StaticResource FontColor}"
                     FontSize="{StaticResource FontSizeLarge}"
                     FontWeight="Bold"
-                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"/>
                 <Image
-                    Height="75"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
                     Margin="10,10,10,10"
                     Grid.Row="1"
                     Source="{Binding PlayerStatsViewModel.RankImage}"/>
@@ -325,6 +329,105 @@
                                                         <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Kills}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                                                         <TextBlock Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Seconds}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                                                         <TextBlock Grid.Column="4" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Destroyed}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </TabItem>
+                    <TabItem Header="Dogtags" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding DogTagStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
+                        <ListBox
+                            MinWidth="240"
+                            BorderThickness="0,0,0,0"
+                            DockPanel.Dock="Left"
+                            Focusable="True"
+                            Background="{StaticResource BackgroundColor}"
+                            ItemsSource="{Binding DogTagStatsViewModel.DogTags}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="dogTags:ResultDogTagStats">
+                                    <StackPanel Margin="5 5 5 5" Orientation="Vertical">
+                                        <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
+
+                                        <ListBox Margin="5 5 5 5" ItemsSource="{Binding Dogtags}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="ListBoxItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                        <Image Grid.Column="1" Source="{Binding CorrectImageUrl}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                                                        <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding TimesTaken}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                        <TextBlock Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Equipped}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                        <TextBlock Grid.Column="4" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Progression.Unlocked}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </TabItem>
+
+                    <TabItem Header="Medals" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding MedalStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
+                        <ListBox
+                            MinWidth="240"
+                            BorderThickness="0,0,0,0"
+                            DockPanel.Dock="Left"
+                            Focusable="True"
+                            Background="{StaticResource BackgroundColor}"
+                            ItemsSource="{Binding MedalStatsViewModel.Medals}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="medals:ResultMedalStats">
+                                    <StackPanel Margin="5 5 5 5" Orientation="Vertical">
+                                        <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
+
+                                        <ListBox Margin="5 5 5 5" ItemsSource="{Binding Awards}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="ListBoxItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                        <Image Grid.Column="1" Source="{Binding CorrectImageUrl}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                                                        <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Description}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                        <TextBlock Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Progression.Unlocked}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                                                     </Grid>
                                                 </DataTemplate>
                                             </ListBox.ItemTemplate>

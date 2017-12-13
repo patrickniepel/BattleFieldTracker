@@ -6,7 +6,7 @@ namespace BattleFieldTracker.Download
     {
         public static readonly DownloadCounter SharedInstance = new DownloadCounter();
 
-        private const int TotalDownloads = 3;
+        private const int TotalDownloads = 5;
 
         private int _numberOfStatsToDownload;
 

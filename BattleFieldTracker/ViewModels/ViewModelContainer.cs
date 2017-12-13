@@ -1,5 +1,4 @@
-﻿
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BattleFieldTracker.Commands;
 using BattleFieldTracker.Download;
@@ -11,6 +10,8 @@ namespace BattleFieldTracker.ViewModels
         private PlayerStatsViewModel _playerStatsViewModel;
         private WeaponStatsViewModel _weaponStatsViewModel;
         private VehicleStatsViewModel _vehicleStatsViewModel;
+        private DogTagStatsViewModel _dogTagStatsViewModel;
+        private MedalStatsViewModel _medalStatsViewModel;
 
         private string _playerName;
         private bool _isDownloading;
@@ -31,6 +32,18 @@ namespace BattleFieldTracker.ViewModels
         {
             get => _vehicleStatsViewModel;
             set => Set(ref _vehicleStatsViewModel, value);
+        }
+        
+        public DogTagStatsViewModel DogTagStatsViewModel
+        {
+            get => _dogTagStatsViewModel;
+            set => Set(ref _dogTagStatsViewModel, value);
+        }
+
+        public MedalStatsViewModel MedalStatsViewModel
+        {
+            get => _medalStatsViewModel;
+            set => Set(ref _medalStatsViewModel, value);
         }
 
         public string PlayerName
@@ -56,6 +69,8 @@ namespace BattleFieldTracker.ViewModels
             PlayerStatsViewModel = new PlayerStatsViewModel();
             WeaponStatsViewModel = new WeaponStatsViewModel();
             VehicleStatsViewModel = new VehicleStatsViewModel();
+            DogTagStatsViewModel = new DogTagStatsViewModel();
+            MedalStatsViewModel = new MedalStatsViewModel();
             
             SearchCommand = new DelegateCommand(SearchCommandExecute);
 
@@ -66,7 +81,6 @@ namespace BattleFieldTracker.ViewModels
         {
             IsDownloading = true;
             StartDownload();
-            
         }
 
         private async Task StartDownload()
@@ -74,6 +88,8 @@ namespace BattleFieldTracker.ViewModels
             await Task.Run(() => _playerStatsViewModel.DownloadPlayerStats(PlayerName));
             await Task.Run(() => _weaponStatsViewModel.DownloadWeaponStats(PlayerName));
             await Task.Run(() => _vehicleStatsViewModel.DownloadVehicleStats(PlayerName));
+            await Task.Run(() => _dogTagStatsViewModel.DownloadDogTagStats(PlayerName));
+            await Task.Run(() => _medalStatsViewModel.DownloadMedalStats(PlayerName));
         }
 
         private bool IsPlayerNameValid(string playerName, [CallerMemberName] string propertyName = null)

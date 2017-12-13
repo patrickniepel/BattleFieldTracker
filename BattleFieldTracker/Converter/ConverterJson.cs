@@ -23,9 +23,16 @@ namespace BattleFieldTracker.Converter
             return root;
         }
 
-        public string ConvertDogTagsToJson(string dogtagStats)
+        public RootObjectDogTagStats ConvertDogTagStatsToJson(string dogtagStats)
         {
-            return dogtagStats;
+            var root = JsonConvert.DeserializeObject<RootObjectDogTagStats>(dogtagStats);
+            return root;
+        }
+
+        public RootObjectMedalStats ConvertMedalStatsToJson(string medalStats)
+        {
+            var root = JsonConvert.DeserializeObject<RootObjectMedalStats>(medalStats);
+            return root;
         }
     }
 }

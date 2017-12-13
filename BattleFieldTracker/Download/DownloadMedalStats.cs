@@ -1,17 +1,22 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.Download
 {
-    public class DownloadVehicleStats : BaseDownload
+    public class DownloadMedalStats : BaseDownload
     {
-        public DownloadVehicleStats()
+        public DownloadMedalStats()
         {
-            ContentAddress = "Progression/GetVehicles?platform=3&displayName=";
+            ContentAddress = "Progression/GetMedals?platform=3&displayName=";
+
         }
 
-        public RootObjectVehicleStats GetDownloadData(string playerName)
+        public RootObjectMedalStats GetDownloadData(string playerName)
         {
             DownloadData(playerName).Wait();
             DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
@@ -21,7 +26,7 @@ namespace BattleFieldTracker.Download
                 return null;
             }
 
-            var root = Converter.ConvertVehicleStatsToJson(Response);
+            var root = Converter.ConvertMedalStatsToJson(Response);
 
             return root;
         }
