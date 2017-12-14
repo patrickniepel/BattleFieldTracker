@@ -12,6 +12,7 @@ namespace BattleFieldTracker.ViewModels
         private VehicleStatsViewModel _vehicleStatsViewModel;
         private DogTagStatsViewModel _dogTagStatsViewModel;
         private MedalStatsViewModel _medalStatsViewModel;
+        private DetailStatsViewModel _detailStatsViewModel;
 
         private string _playerName;
         private bool _isDownloading;
@@ -46,6 +47,12 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _medalStatsViewModel, value);
         }
 
+        public DetailStatsViewModel DetailStatsViewModel
+        {
+            get => _detailStatsViewModel;
+            set => Set(ref _detailStatsViewModel, value);
+        }
+
         public string PlayerName
         {
             get => _playerName;
@@ -71,6 +78,7 @@ namespace BattleFieldTracker.ViewModels
             VehicleStatsViewModel = new VehicleStatsViewModel();
             DogTagStatsViewModel = new DogTagStatsViewModel();
             MedalStatsViewModel = new MedalStatsViewModel();
+            DetailStatsViewModel = new DetailStatsViewModel();
             
             SearchCommand = new DelegateCommand(SearchCommandExecute);
 
@@ -86,6 +94,7 @@ namespace BattleFieldTracker.ViewModels
         private async Task StartDownload()
         {
             await Task.Run(() => _playerStatsViewModel.DownloadPlayerStats(PlayerName));
+            await Task.Run(() => _detailStatsViewModel.DownloadDetailStats(PlayerName));
             await Task.Run(() => _weaponStatsViewModel.DownloadWeaponStats(PlayerName));
             await Task.Run(() => _vehicleStatsViewModel.DownloadVehicleStats(PlayerName));
             await Task.Run(() => _dogTagStatsViewModel.DownloadDogTagStats(PlayerName));

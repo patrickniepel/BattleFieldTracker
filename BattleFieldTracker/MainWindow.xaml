@@ -235,6 +235,10 @@
                         </Grid>
                     </TabItem>
 
+                    <TabItem Header="Details" Foreground="Black" Background="{StaticResource BackgroundColor}" >
+                        <TextBlock TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.Heals}"></TextBlock>
+                    </TabItem>
+
                     <TabItem Header="Weapons" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding WeaponStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
 
                         <ListBox

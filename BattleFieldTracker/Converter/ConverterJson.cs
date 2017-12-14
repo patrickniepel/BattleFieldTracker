@@ -34,5 +34,11 @@ namespace BattleFieldTracker.Converter
             var root = JsonConvert.DeserializeObject<RootObjectMedalStats>(medalStats);
             return root;
         }
+
+        public RootObjectDetailStats ConvertDetailStatsToJson(string detailStats)
+        {
+            var root = JsonConvert.DeserializeObject<RootObjectDetailStats>(detailStats);
+            return root;
+        }
     }
 }
