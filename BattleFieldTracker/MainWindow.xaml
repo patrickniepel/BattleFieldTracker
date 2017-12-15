@@ -62,7 +62,7 @@
                     FontFamily="Calibri"
                     Grid.Row="0"
                     Foreground="{StaticResource FontColor}"
-                    FontSize="{StaticResource FontSizeLarge}"
+                    FontSize="{StaticResource FontSizeMega}"
                     FontWeight="Bold"
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center"/>
@@ -76,7 +76,7 @@
                 <Label 
                     Content="{Binding PlayerStatsViewModel.RankName}" 
                     Grid.Row="2" 
-                    FontSize="{StaticResource FontSizeLarge}" 
+                    FontSize="{StaticResource FontSizeMega}" 
                     Foreground="{StaticResource FontColor}"
                     FontWeight="Bold" 
                     FontFamily="Calibri" 
@@ -90,7 +90,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Current XP:" FontSize="{StaticResource FontSizeLarge}" FontWeight="Bold" FontFamily="Calibri" BorderBrush="Black" OpacityMask="White" Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
-                    <Label Grid.Column="1" Content="{Binding PlayerStatsViewModel.CurrentXp}" FontFamily="Calibri" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Label Grid.Column="1" Content="{Binding PlayerStatsViewModel.CurrentXp}" FontFamily="Calibri" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Grid>
 
                 <Grid Grid.Row="4">
@@ -100,7 +100,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Total XP:" FontSize="{StaticResource FontSizeLarge}" FontWeight="Bold" FontFamily="Calibri" BorderBrush="Black" Foreground="{StaticResource FontColor}" VerticalAlignment="Center"/>
-                    <Label Grid.Column="1" Content="{Binding PlayerStatsViewModel.TotalXp}" FontFamily="Calibri" FontSize="{StaticResource FontSizeLarge}" BorderBrush="{StaticResource FontColor}" Foreground="{StaticResource FontColor}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Label Grid.Column="1" Content="{Binding PlayerStatsViewModel.TotalXp}" FontFamily="Calibri" FontSize="{StaticResource FontSizeMega}" BorderBrush="{StaticResource FontColor}" Foreground="{StaticResource FontColor}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Grid>
             </Grid>
         </Grid>
@@ -136,7 +136,7 @@
                         Margin="5,5,5,5"
                         VerticalContentAlignment="Center"
                         Command="{Binding SearchCommand}"
-                        Content="Search" FontFamily="Calibri" FontWeight="Bold" FontSize="20" Background="{StaticResource BackgroundColor}" BorderBrush="White" Foreground="{StaticResource FontColor}" />
+                        Content="Search" FontFamily="Calibri" FontWeight="Bold" FontSize="{StaticResource FontSizeMega}" Background="{StaticResource BackgroundColor}" BorderBrush="White" Foreground="{StaticResource FontColor}" />
                 </Grid>
 
                 <ProgressBar Margin="5 0 5 0" Grid.Row="1" Height="10"  IsIndeterminate="True" Visibility="{Binding IsDownloading, Converter={StaticResource ProgressBarVisibilityConverter} }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{StaticResource FontColor}" Background="{StaticResource BackgroundColor}"/>
@@ -237,12 +237,82 @@
                     </TabItem>
 
                     <TabItem Header="Details" Foreground="Black" Background="{StaticResource BackgroundColor}" >
-                        <TextBlock TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.Heals}"></TextBlock>
+                        
+                        <Grid>
+                           <Grid.ColumnDefinitions>
+                               <ColumnDefinition Width="*"></ColumnDefinition>
+                               <ColumnDefinition Width="*"></ColumnDefinition>
+                               <ColumnDefinition Width="*"></ColumnDefinition>
+                               <ColumnDefinition Width="*"></ColumnDefinition>
+                               <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Accuracy Ratio"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="0" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Avenger Kills"></TextBlock>
+                            <TextBlock Grid.Column="2" Grid.Row="0" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Award Score"></TextBlock>
+                            <TextBlock Grid.Column="3" Grid.Row="0" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Dogtags Taken"></TextBlock>
+                            <TextBlock Grid.Column="4" Grid.Row="0" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Headshots"></TextBlock>
+
+                            <TextBlock Grid.Column="0" Grid.Row="1" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.AccuracyRatio}"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="1" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.AvengerKills}"></TextBlock>
+                            <TextBlock Grid.Column="2" Grid.Row="1" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.AwardScore}"></TextBlock>
+                            <TextBlock Grid.Column="3" Grid.Row="1" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.DogtagsTaken}"></TextBlock>
+                            <TextBlock Grid.Column="4" Grid.Row="1" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.Headshots}"></TextBlock>
+
+                            <TextBlock Grid.Column="0" Grid.Row="2" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="FlagsCaptured"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="2" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="FlagsDefended"></TextBlock>
+                            <TextBlock Grid.Column="2" Grid.Row="2" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Heals"></TextBlock>
+                            <TextBlock Grid.Column="3" Grid.Row="2" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Highest Killstreak"></TextBlock>
+                            <TextBlock Grid.Column="4" Grid.Row="2" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="KDR"></TextBlock>
+
+                            <TextBlock Grid.Column="0" Grid.Row="3" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.FlagsCaptured}"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="3" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.FlagsDefended}"></TextBlock>
+                            <TextBlock Grid.Column="2" Grid.Row="3" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.Heals}"></TextBlock>
+                            <TextBlock Grid.Column="3" Grid.Row="3" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.HighestKillStreak}"></TextBlock>
+                            <TextBlock Grid.Column="4" Grid.Row="3" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.Kdr}"></TextBlock>
+
+                            <TextBlock Grid.Column="0" Grid.Row="4" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Kill Assists"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="4" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Longest Headshot"></TextBlock>
+                            <TextBlock Grid.Column="2" Grid.Row="4" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Nemesis Kills"></TextBlock>
+                            <TextBlock Grid.Column="3" Grid.Row="4" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Nemesis Kill Streak"></TextBlock>
+                            <TextBlock Grid.Column="4" Grid.Row="4" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Repairs"></TextBlock>
+
+                            <TextBlock Grid.Column="0" Grid.Row="5" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.KillAssists}"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="5" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.LongestHeadshot}"></TextBlock>
+                            <TextBlock Grid.Column="2" Grid.Row="5" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.NemesisKills}"></TextBlock>
+                            <TextBlock Grid.Column="3" Grid.Row="5" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.NemesisKillStreak}"></TextBlock>
+                            <TextBlock Grid.Column="4" Grid.Row="5" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.Repairs}"></TextBlock>
+
+                            <TextBlock Grid.Column="0" Grid.Row="6" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Revives"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="6" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Rounds Played"></TextBlock>
+                            <TextBlock Grid.Column="2" Grid.Row="6" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Savior Kills"></TextBlock>
+                            <TextBlock Grid.Column="3" Grid.Row="6" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Squad Score"></TextBlock>
+                            <TextBlock Grid.Column="4" Grid.Row="6" TextAlignment="Center" FontSize="{StaticResource FontSizeLarge}" Foreground="{StaticResource FontColor}" Text="Suppression Assists"></TextBlock>
+
+                            <TextBlock Grid.Column="0" Grid.Row="7" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.Revives}"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="7" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.RoundsPlayed}"></TextBlock>
+                            <TextBlock Grid.Column="2" Grid.Row="7" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.SaviorKills}"></TextBlock>
+                            <TextBlock Grid.Column="3" Grid.Row="7" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.SquadScore}"></TextBlock>
+                            <TextBlock Grid.Column="4" Grid.Row="7" TextAlignment="Center" FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="{Binding DetailStatsViewModel.SuppressionAssists}"></TextBlock>
+
+                        </Grid>
+
                     </TabItem>
 
                     <TabItem Header="Weapons" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding WeaponStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
-
-                        <ListBox
+                        <ScrollViewer>
+                            <ListBox
                                 MinWidth="240"
                                 ScrollViewer.CanContentScroll="True"
                                 ScrollViewer.VerticalScrollBarVisibility="Visible"
@@ -250,42 +320,45 @@
                                 Focusable="True"
                                 Background="{StaticResource BackgroundColor}"
                                 ItemsSource="{Binding WeaponStatsViewModel.Weapons}">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate DataType="weapons:ResultWeaponStats">
-                                    <StackPanel Margin="5 5 5 5" Orientation="Vertical">
-                                        <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="weapons:ResultWeaponStats">
+                                        <StackPanel Margin="5 5 5 5" Orientation="Vertical">
+                                            <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
 
-                                        <ItemsControl ItemsSource="{Binding Weapons}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                            <ItemsControl ItemsSource="{Binding Weapons}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
 
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                        </Grid.ColumnDefinitions>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Margin="0 0 0 10">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
 
-                                                        <TextBlock Grid.Column="0" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                        <Image Grid.Column="1" Source="{Binding CorrectImageUrl}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-                                                        <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Kills}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                        <TextBlock Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Seconds}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                        <TextBlock Grid.Column="4" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Price}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                                                            <TextBlock Grid.Column="0" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                            <Image Width="125" MaxHeight="100" Grid.Column="1" Source="{Binding CorrectImageUrl}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                                                            <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Kills}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                                                            <TextBlock Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Seconds}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                                                            <TextBlock Grid.Column="4" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Price}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                        </ScrollViewer>
+                        
 
                     </TabItem>
                     <TabItem Header="Vehicles" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding VehicleStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
@@ -356,14 +429,14 @@
                                     <StackPanel Margin="5 5 5 5" Orientation="Vertical">
                                         <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
 
-                                        <ListBox Margin="5 5 5 5" ItemsSource="{Binding Dogtags}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
-                                            <ListBox.ItemContainerStyle>
+                                        <ItemsControl Margin="5 5 5 5" ItemsSource="{Binding Dogtags}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                            <!--ListBox.ItemContainerStyle>
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                                 </Style>
-                                            </ListBox.ItemContainerStyle>
+                                            </-->
 
-                                            <ListBox.ItemTemplate>
+                                            <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -381,8 +454,8 @@
                                                         <TextBlock Grid.Column="4" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Progression.Unlocked}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                                                     </Grid>
                                                 </DataTemplate>
-                                            </ListBox.ItemTemplate>
-                                        </ListBox>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -407,14 +480,14 @@
                                     <StackPanel Margin="5 5 5 5" Orientation="Vertical">
                                         <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
 
-                                        <ListBox Margin="5 5 5 5" ItemsSource="{Binding Awards}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
-                                            <ListBox.ItemContainerStyle>
+                                        <ItemsControl Margin="5 5 5 5" ItemsSource="{Binding Awards}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                            <!--ListBox.ItemContainerStyle>
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                                 </Style>
-                                            </ListBox.ItemContainerStyle>
+                                            </-->
 
-                                            <ListBox.ItemTemplate>
+                                            <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -430,8 +503,8 @@
                                                         <TextBlock Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Progression.Unlocked}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                                                     </Grid>
                                                 </DataTemplate>
-                                            </ListBox.ItemTemplate>
-                                        </ListBox>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

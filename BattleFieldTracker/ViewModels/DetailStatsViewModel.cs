@@ -37,7 +37,7 @@ namespace BattleFieldTracker.ViewModels
         private float _roundsPlayed;
         private float _saviorKills;
         private double _squadScore;
-        private float _suppressionAssits;
+        private float _suppressionAssists;
 
         #endregion
 
@@ -183,8 +183,8 @@ namespace BattleFieldTracker.ViewModels
 
         public float SuppressionAssists
         {
-            get => _suppressionAssits;
-            set => Set(ref _suppressionAssits, value);
+            get => _suppressionAssists;
+            set => Set(ref _suppressionAssists, value);
         }
 
         #endregion
