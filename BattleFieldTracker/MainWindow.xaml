@@ -8,6 +8,7 @@
         xmlns:vehicles="clr-namespace:BattleFieldTracker.DownloadModels"
         xmlns:dogTags="clr-namespace:BattleFieldTracker.DownloadModels"
         xmlns:medals="clr-namespace:BattleFieldTracker.DownloadModels"
+        xmlns:details="clr-namespace:BattleFieldTracker.DownloadModels"
         xmlns:visibilityConverters="clr-namespace:BattleFieldTracker.Converter"
         mc:Ignorable="d"
         Title="Battlefield 1 Tracker" Height="750" Width="1500" Background="{DynamicResource WindowBackgroundImage}">

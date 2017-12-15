@@ -40,7 +40,7 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
 
-            var medals = root.Result;
+            List<ResultMedalStats> medals = root.Result;
             Medals = medals;
         }
     }

@@ -36,7 +36,7 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
 
-            var vehicles = root.Result;
+            List<ResultVehicleStats> vehicles = root.Result;
             Vehicles = vehicles;
         }
     }

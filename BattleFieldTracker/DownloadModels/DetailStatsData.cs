@@ -15,73 +15,73 @@ namespace BattleFieldTracker.DownloadModels
         public float kills { get; set; }
         public float wins { get; set; }
         public float deaths { get; set; }
-        public double spm { get; set; }
-        public double skill { get; set; }
-        public object soldierImageUrl { get; set; }
-        public double kpm { get; set; }
-        public float losses { get; set; }
-        public double timePlayed { get; set; }
-        public object rank { get; set; }
-        public object rankProgress { get; set; }
+        public double Spm { get; set; }
+        public double Skill { get; set; }
+        public object SoldierImageUrl { get; set; }
+        public double Kpm { get; set; }
+        public float Losses { get; set; }
+        public double TimePlayed { get; set; }
+        public object Rank { get; set; }
+        public object RankProgress { get; set; }
     }
 
     public class GameModeStatDetailStats
     {
-        public string name { get; set; }
-        public string prettyName { get; set; }
-        public double score { get; set; }
-        public float losses { get; set; }
-        public float wins { get; set; }
-        public double winLossRatio { get; set; }
+        public string Name { get; set; }
+        public string PrettyName { get; set; }
+        public double Score { get; set; }
+        public float Losses { get; set; }
+        public float Wins { get; set; }
+        public double WinLossRatio { get; set; }
     }
 
     public class KitStatDetailStats
     {
-        public float kills { get; set; }
-        public string name { get; set; }
-        public string prettyName { get; set; }
-        public double score { get; set; }
-        public double secondsAs { get; set; }
+        public float Kills { get; set; }
+        public string Name { get; set; }
+        public string PrettyName { get; set; }
+        public double Score { get; set; }
+        public double SecondsAs { get; set; }
     }
 
     public class VehicleStatDetailStats
     {
-        public float killsAs { get; set; }
-        public string name { get; set; }
-        public string prettyName { get; set; }
-        public double timeSpent { get; set; }
-        public float vehiclesDestroyed { get; set; }
+        public float KillsAs { get; set; }
+        public string Name { get; set; }
+        public string PrettyName { get; set; }
+        public double TimeSpent { get; set; }
+        public float VehiclesDestroyed { get; set; }
     }
 
     public class ResultDetailStats
     {
-        public double accuracyRatio { get; set; }
-        public float avengerKills { get; set; }
-        public double awardScore { get; set; }
-        public BasicStatsDetailStats basicStats { get; set; }
-        public double bonusScore { get; set; }
-        public int dogtagsTaken { get; set; }
-        public string favoriteClass { get; set; }
-        public int flagsCaptured { get; set; }
-        public int flagsDefended { get; set; }
-        public List<GameModeStatDetailStats> gameModeStats { get; set; }
-        public int headShots { get; set; }
+        public double AccuracyRatio { get; set; }
+        public float AvengerKills { get; set; }
+        public double AwardScore { get; set; }
+        public BasicStatsDetailStats BasicStats { get; set; }
+        public double BonusScore { get; set; }
+        public int DogtagsTaken { get; set; }
+        public string FavoriteClass { get; set; }
+        public int FlagsCaptured { get; set; }
+        public int FlagsDefended { get; set; }
+        public List<GameModeStatDetailStats> GameModeStats { get; set; }
+        public int HeadShots { get; set; }
         public float Heals { get; set; }
-        public int highestKillStreak { get; set; }
-        public double kdr { get; set; }
-        public float killAssists { get; set; }
-        public List<KitStatDetailStats> kitStats { get; set; }
-        public double longestHeadShot { get; set; }
-        public float nemesisKills { get; set; }
-        public float nemesisKillStreak { get; set; }
-        public float repairs { get; set; }
-        public float revives { get; set; }
-        public object roundHistory { get; set; }
-        public float roundsPlayed { get; set; }
-        public float saviorKills { get; set; }
-        public double squadScore { get; set; }
-        public float suppressionAssist { get; set; }
-        public List<VehicleStatDetailStats> vehicleStats { get; set; }
+        public int HighestKillStreak { get; set; }
+        public double Kdr { get; set; }
+        public float KillAssists { get; set; }
+        public List<KitStatDetailStats> KitStats { get; set; }
+        public double LongestHeadShot { get; set; }
+        public float NemesisKills { get; set; }
+        public float NemesisKillStreak { get; set; }
+        public float Repairs { get; set; }
+        public float Revives { get; set; }
+        public object RoundHistory { get; set; }
+        public float RoundsPlayed { get; set; }
+        public float SaviorKills { get; set; }
+        public double SquadScore { get; set; }
+        public float SuppressionAssist { get; set; }
+        public List<VehicleStatDetailStats> VehicleStats { get; set; }
     }
 
     public class ProfileDetailStats

@@ -1,6 +1,4 @@
-﻿
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
 
@@ -8,6 +6,8 @@ namespace BattleFieldTracker.ViewModels
 {
     public class PlayerStatsViewModel : BaseViewModel
     {
+        #region Private Members
+
         private string _displayName;
         private string _rankImage;
         private string _rankName;
@@ -28,7 +28,11 @@ namespace BattleFieldTracker.ViewModels
 
         private bool _downloadFinished;
 
+        #endregion
+
         //private List<Highlight> _highlights;
+
+        #region Public Members
 
         public string DisplayName
         {
@@ -137,6 +141,8 @@ namespace BattleFieldTracker.ViewModels
             get => _downloadFinished;
             set => Set(ref _downloadFinished, value);
         }
+
+        #endregion
 
         //        public List<Highlight> Highlights
         //        {

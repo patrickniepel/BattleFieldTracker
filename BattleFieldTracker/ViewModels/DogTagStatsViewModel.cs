@@ -36,7 +36,7 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
 
-            var dogTags = root.Result;
+            List<ResultDogTagStats> dogTags = root.Result;
             DogTags = dogTags;
         }
     }

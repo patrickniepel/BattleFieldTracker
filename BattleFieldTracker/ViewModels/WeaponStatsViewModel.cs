@@ -35,7 +35,7 @@ namespace BattleFieldTracker.ViewModels
             {
                 return;
             }
-            var weapons = root.Result;
+            List<ResultWeaponStats> weapons = root.Result;
             Weapons = weapons;
         }
     }
