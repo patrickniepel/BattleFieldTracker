@@ -88,7 +88,9 @@ namespace BattleFieldTracker.ViewModels
         private void SearchCommandExecute(object obj)
         {
             IsDownloading = true;
+#pragma warning disable CS4014 // Da dieser Aufruf nicht abgewartet wird, wird die Ausführung der aktuellen Methode fortgesetzt, bevor der Aufruf abgeschlossen ist
             StartDownload();
+#pragma warning restore CS4014 // Da dieser Aufruf nicht abgewartet wird, wird die Ausführung der aktuellen Methode fortgesetzt, bevor der Aufruf abgeschlossen ist
         }
 
         private async Task StartDownload()

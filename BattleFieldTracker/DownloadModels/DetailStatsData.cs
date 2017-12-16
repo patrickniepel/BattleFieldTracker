@@ -3,28 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
 {
-    public class BasicStatsDetailStats
-    {
-        public List<object> completion { get; set; }
-        public object equippedDogtags { get; set; }
-        public object highlights { get; set; }
-        public object highlightsByType { get; set; }
-        public float kills { get; set; }
-        public float wins { get; set; }
-        public float deaths { get; set; }
-        public double Spm { get; set; }
-        public double Skill { get; set; }
-        public object SoldierImageUrl { get; set; }
-        public double Kpm { get; set; }
-        public float Losses { get; set; }
-        public double TimePlayed { get; set; }
-        public object Rank { get; set; }
-        public object RankProgress { get; set; }
-    }
-
     public class GameModeStatDetailStats
     {
         public string Name { get; set; }
@@ -55,48 +37,34 @@ namespace BattleFieldTracker.DownloadModels
 
     public class ResultDetailStats
     {
-        public double AccuracyRatio { get; set; }
-        public float AvengerKills { get; set; }
-        public double AwardScore { get; set; }
-        public BasicStatsDetailStats BasicStats { get; set; }
-        public double BonusScore { get; set; }
-        public int DogtagsTaken { get; set; }
-        public string FavoriteClass { get; set; }
-        public int FlagsCaptured { get; set; }
-        public int FlagsDefended { get; set; }
-        public List<GameModeStatDetailStats> GameModeStats { get; set; }
-        public int HeadShots { get; set; }
-        public float Heals { get; set; }
-        public int HighestKillStreak { get; set; }
-        public double Kdr { get; set; }
-        public float KillAssists { get; set; }
-        public List<KitStatDetailStats> KitStats { get; set; }
-        public double LongestHeadShot { get; set; }
-        public float NemesisKills { get; set; }
-        public float NemesisKillStreak { get; set; }
-        public float Repairs { get; set; }
-        public float Revives { get; set; }
-        public object RoundHistory { get; set; }
-        public float RoundsPlayed { get; set; }
-        public float SaviorKills { get; set; }
-        public double SquadScore { get; set; }
-        public float SuppressionAssist { get; set; }
-        public List<VehicleStatDetailStats> VehicleStats { get; set; }
-    }
-
-    public class ProfileDetailStats
-    {
-        public string TrackerUrl { get; set; }
-        public string DisplayName { get; set; }
-        public int PersonaId { get; set; }
-        public int Platform { get; set; }
+        public double AccuracyRatio { get; [UsedImplicitly] set; }
+        public float AvengerKills { get; [UsedImplicitly] set; }
+        public double AwardScore { get; [UsedImplicitly] set; }
+        public int DogtagsTaken { get; [UsedImplicitly] set; }
+        public int FlagsCaptured { get; [UsedImplicitly] set; }
+        public int FlagsDefended { get; [UsedImplicitly] set; }
+        public List<GameModeStatDetailStats> GameModeStats { get; [UsedImplicitly] set; }
+        public int HeadShots { get; [UsedImplicitly] set; }
+        public float Heals { get; [UsedImplicitly] set; }
+        public int HighestKillStreak { get; [UsedImplicitly] set; }
+        public double Kdr { get; [UsedImplicitly] set; }
+        public float KillAssists { get; [UsedImplicitly] set; }
+        public List<KitStatDetailStats> KitStats { get; [UsedImplicitly] set; }
+        public double LongestHeadShot { get; [UsedImplicitly] set; }
+        public float NemesisKills { get; [UsedImplicitly] set; }
+        public float NemesisKillStreak { get; [UsedImplicitly] set; }
+        public float Repairs { get; [UsedImplicitly] set; }
+        public float Revives { get; [UsedImplicitly] set; }
+        public float RoundsPlayed { get; [UsedImplicitly] set; }
+        public float SaviorKills { get; [UsedImplicitly] set; }
+        public double SquadScore { get; [UsedImplicitly] set; }
+        public float SuppressionAssist { get; [UsedImplicitly] set; }
+        public List<VehicleStatDetailStats> VehicleStats { get; [UsedImplicitly] set; }
     }
 
     public class RootObjectDetailStats
     {
         public bool Successful { get; set; }
-        public ResultDetailStats Result { get; set; }
-        public ProfileDetailStats Profile { get; set; }
-        public string BbPrefix { get; set; }
+        public ResultDetailStats Result { get; [UsedImplicitly] set; }
     }
 }

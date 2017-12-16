@@ -79,24 +79,13 @@ namespace BattleFieldTracker.DownloadModels
     {
         //public List<object> Accessories { get; set; }
         public string Name { get; set; }
-        //public int SortOrder { get; set; }
         public List<VehicleVehicleStats> Vehicles { get; set; }
     }
-
-//    public class ProfileVehicleStats
-//    {
-//        public string TrackerUrl { get; set; }
-//        public string DisplayName { get; set; }
-//        public int PersonaId { get; set; }
-//        public int Platform { get; set; }
-//    }
 
     [UsedImplicitly]
     public class RootObjectVehicleStats
     {
-        //public bool Successful { get; set; }
-        public List<ResultVehicleStats> Result { get; set; }
-        //public ProfileVehicleStats Profile { get; set; }
-        //public string BbPrefix { get; set; }
+        public bool Successful { get; set; }
+        public List<ResultVehicleStats> Result { get; [UsedImplicitly] set; }
     }
 }
