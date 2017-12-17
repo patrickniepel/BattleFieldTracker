@@ -15,8 +15,9 @@
 
             <system:Double x:Key="FontSizeLarge">18</system:Double>
             <system:Double x:Key="FontSizeMega">25</system:Double>
+            <system:Double x:Key="FontSizeUltra">30</system:Double>
             <system:Double x:Key="FontSizeNormal">12</system:Double>
-            <SolidColorBrush x:Key="BackgroundColor" Color="Gray" Opacity="0.9" />
+            <SolidColorBrush x:Key="BackgroundColor" Color="DimGray" Opacity="0.9" />
             <SolidColorBrush x:Key="FontColor" Color="White" />
             
             <ResourceDictionary.MergedDictionaries>
