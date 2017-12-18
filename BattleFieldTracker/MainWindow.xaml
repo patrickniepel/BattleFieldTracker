@@ -204,7 +204,7 @@
 
                                 <Border Grid.Column="6" BorderBrush="White" BorderThickness="3" Margin="20" CornerRadius="10 10 10 10" Padding="5 10 5 5">
                                     <StackPanel>
-                                        <TextBlock FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="Time Played" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock FontSize="{StaticResource FontSizeMega}" Foreground="{StaticResource FontColor}" Text="Time" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                         <TextBlock Margin="0 30 0 0" FontSize="{StaticResource FontSizeUltra}" Foreground="{StaticResource FontColor}" Text="{Binding PlayerStatsViewModel.TimePlayed}" TextAlignment="Center" FontWeight="Bold"></TextBlock>
                                     </StackPanel>
                                 </Border>
@@ -562,74 +562,79 @@
 
                     </TabItem>
                     <TabItem Header="Vehicles" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding VehicleStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
-                        <ItemsControl
+                        
+                        <ScrollViewer>
+
+                            <ItemsControl
                             MinWidth="240"
-                            BorderThickness="0,0,0,0"
+                            BorderThickness="1 1 1 1" 
+                            BorderBrush="White"
                             DockPanel.Dock="Left"
                             Focusable="True"
                             Background="{StaticResource BackgroundColor}"
                             ItemsSource="{Binding VehicleStatsViewModel.Vehicles}">
-                            <!--ListBox.ItemContainerStyle>
+                                <!--ListBox.ItemContainerStyle>
                                 <Style TargetType="ListBoxItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                 </Style>
                             </-->
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate DataType="vehicles:ResultVehicleStats">
-                                    <StackPanel Margin="5 5 5 5" Orientation="Vertical">
-                                        <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="vehicles:ResultVehicleStats">
+                                        <StackPanel Margin="5 5 5 5" Orientation="Vertical">
+                                            <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
 
-                                        <ItemsControl Margin="5 5 5 5" ItemsSource="{Binding Vehicles}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
-                                            <!--ListBox.ItemContainerStyle>
+                                            <ItemsControl Margin="5 5 5 5" ItemsSource="{Binding Vehicles}" BorderThickness="1 1 1 1" BorderBrush="White" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                                <!--ListBox.ItemContainerStyle>
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                                 </Style>
                                             </-->
 
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                        </Grid.ColumnDefinitions>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
 
-                                                        <TextBlock Grid.Column="0" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                        <Image MaxWidth="250" MaxHeight="200" Grid.Column="1" Source="{Binding CorrectImageUrl}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-                                                        <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Kills}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
-                                                        <TextBlock Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Seconds}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
-                                                        <TextBlock Grid.Column="4" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Destroyed}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                                                            <TextBlock Grid.Column="0" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                            <Image MaxWidth="250" MaxHeight="200" Grid.Column="1" Source="{Binding CorrectImageUrl}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                                                            <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Kills}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                                                            <TextBlock Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Seconds}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                                                            <TextBlock Grid.Column="4" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Stats.Values.Destroyed}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </ScrollViewer>
+                        
                     </TabItem>
                     <TabItem Header="Dogtags" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding DogTagStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
-                        <ListBox
+                        <ScrollViewer>
+                            
+                            <ItemsControl
                             MinWidth="240"
-                            BorderThickness="0,0,0,0"
+                            BorderThickness="1 1 1 1" 
+                            BorderBrush="White"
                             DockPanel.Dock="Left"
                             Focusable="True"
                             Background="{StaticResource BackgroundColor}"
                             ItemsSource="{Binding DogTagStatsViewModel.DogTags}">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                            <ListBox.ItemTemplate>
+                            <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="dogTags:ResultDogTagStats">
                                     <StackPanel Margin="5 5 5 5" Orientation="Vertical">
                                         <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
 
-                                        <ItemsControl Margin="5 5 5 5" ItemsSource="{Binding Dogtags}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                            <ItemsControl Margin="5 5 5 5" ItemsSource="{Binding Dogtags}" BorderThickness="1 1 1 1" BorderBrush="White" Focusable="True" Background="{StaticResource BackgroundColor}">
                                             <!--ListBox.ItemContainerStyle>
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -658,56 +663,61 @@
                                         </ItemsControl>
                                     </StackPanel>
                                 </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                            
+                        </ScrollViewer>
+                        
                     </TabItem>
 
                     <TabItem Header="Medals" Foreground="Black" Background="{StaticResource BackgroundColor}" Visibility="{Binding MedalStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
-                        <ListBox
+                        
+                        <ScrollViewer>
+
+                            <ItemsControl
                             MinWidth="240"
-                            BorderThickness="0,0,0,0"
+                            BorderThickness="1 1 1 1" 
+                            BorderBrush="White"
                             Focusable="True"
                             Background="{StaticResource BackgroundColor}"
                             ItemsSource="{Binding MedalStatsViewModel.Medals}">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate DataType="medals:ResultMedalStats">
-                                    <StackPanel Margin="5 5 5 5" Orientation="Vertical">
-                                        <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="medals:ResultMedalStats">
+                                        <StackPanel Margin="5 5 5 5" Orientation="Vertical">
+                                            <TextBlock Margin="0 5 0 5" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeMega}" Text="{Binding Name}" />
 
-                                        <ItemsControl Margin="5 5 5 5" ItemsSource="{Binding Awards}" BorderThickness="0 0 0 0" Focusable="True" Background="{StaticResource BackgroundColor}">
-                                            <!--ListBox.ItemContainerStyle>
+                                            <ItemsControl Margin="5 5 5 5" ItemsSource="{Binding Awards}" BorderThickness="1 1 1 1" BorderBrush="White" Focusable="True" Background="{StaticResource BackgroundColor}">
+                                                <!--ListBox.ItemContainerStyle>
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                                 </Style>
                                             </-->
 
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid Margin="0 0 0 50">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                        </Grid.ColumnDefinitions>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Margin="0 0 0 50">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
 
-                                                        <TextBlock Grid.Column="0" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                        <Image MaxWidth="100" MaxHeight="125"  Grid.Column="1" Source="{Binding CorrectImageUrl}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-                                                        <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Description}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                        <TextBlock Margin="0 0 30 0" Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Progression.Unlocked}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                                                            <TextBlock Grid.Column="0" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                            <Image MaxWidth="100" MaxHeight="125"  Grid.Column="1" Source="{Binding CorrectImageUrl}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                                                            <TextBlock Grid.Column="2" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Description}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                            <TextBlock Margin="0 0 30 0" Grid.Column="3" Foreground="{StaticResource FontColor}" FontSize="{StaticResource FontSizeLarge}" Text="{Binding Progression.Unlocked}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </ScrollViewer>
+
                     </TabItem>
                 </TabControl>
             </Grid>

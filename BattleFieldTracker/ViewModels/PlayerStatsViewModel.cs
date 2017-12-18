@@ -166,27 +166,27 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
 
-            var stats = root.result.gameStats.tunguska;
+            var stats = root.Result.GameStats.Tunguska;
             
-            DisplayName = root.profile.displayName;
-            RankImage = root.bbPrefix + GetCorrectImageUrl(stats.rank.imageUrl);
-            Rank = stats.rank.number;
-            RankName = stats.rank.name;
-            CurrentXp = stats.rankProgress.current;
-            TotalXp = stats.rankProgress.total;
-            Kills = stats.kills;
-            Deaths = stats.deaths;
-            Wins = stats.wins;
-            Losses = stats.losses;
-            Spm = (int)stats.spm;
-            Kpm = (int)stats.kpm;
-            TimePlayed = stats.timePlayed / 3600; //Hours
+            DisplayName = root.Profile.DisplayName;
+            RankImage = root.BbPrefix + GetCorrectImageUrl(stats.Rank.ImageUrl);
+            Rank = stats.Rank.Number;
+            RankName = stats.Rank.Name;
+            CurrentXp = stats.RankProgress.Current;
+            TotalXp = stats.RankProgress.Total;
+            Kills = stats.Kills;
+            Deaths = stats.Deaths;
+            Wins = stats.Wins;
+            Losses = stats.Losses;
+            Spm = (int)stats.Spm;
+            Kpm = (int)stats.Kpm;
+            TimePlayed = stats.TimePlayed / 3600; //Hours
 
-            var highlights = stats.highlightsByType;
-            TopClass = highlights.kit[0].kitId;
-            TopVehicle = highlights.vehicle[0].name;
-            TopPrimary = highlights.primary[0].name;
-            TopSecondary = highlights.sidearm[0].name;
+            var highlights = stats.HighlightsByType;
+            TopClass = highlights.Kit[0].KitId;
+            TopVehicle = highlights.Vehicle[0].Name;
+            TopPrimary = highlights.Primary[0].Name;
+            TopSecondary = highlights.Sidearm[0].Name;
         }
 
         private string GetCorrectImageUrl(string url)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
@@ -10,7 +6,6 @@ namespace BattleFieldTracker.DownloadModels
     public class GameModeStatDetailStats
     {
         public string Name { get; set; }
-        public string PrettyName { get; set; }
         public double Score { get; set; }
         public float Losses { get; set; }
         public float Wins { get; set; }
@@ -21,7 +16,6 @@ namespace BattleFieldTracker.DownloadModels
     {
         public float Kills { get; set; }
         public string Name { get; set; }
-        public string PrettyName { get; set; }
         public double Score { get; set; }
         public double SecondsAs { get; set; }
     }
@@ -30,7 +24,6 @@ namespace BattleFieldTracker.DownloadModels
     {
         public float KillsAs { get; set; }
         public string Name { get; set; }
-        public string PrettyName { get; set; }
         public double TimeSpent { get; set; }
         public float VehiclesDestroyed { get; set; }
     }
@@ -64,7 +57,7 @@ namespace BattleFieldTracker.DownloadModels
 
     public class RootObjectDetailStats
     {
-        public bool Successful { get; set; }
+        //public bool Successful { get; set; }
         public ResultDetailStats Result { get; [UsedImplicitly] set; }
     }
 }
