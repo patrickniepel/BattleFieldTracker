@@ -17,8 +17,10 @@
             <system:Double x:Key="FontSizeMega">25</system:Double>
             <system:Double x:Key="FontSizeUltra">30</system:Double>
             <system:Double x:Key="FontSizeNormal">12</system:Double>
-            <SolidColorBrush x:Key="BackgroundColor" Color="DimGray" Opacity="0.9" />
+            <SolidColorBrush x:Key="BackgroundColor" Color="DimGray" Opacity="1" />
+            <SolidColorBrush x:Key="BackgroundColorHeader" Color="#444444" Opacity="1" />
             <SolidColorBrush x:Key="FontColor" Color="White" />
+            <SolidColorBrush x:Key="FontColorTitle" Color="Orange" />
             
             <ResourceDictionary.MergedDictionaries>
                 <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->

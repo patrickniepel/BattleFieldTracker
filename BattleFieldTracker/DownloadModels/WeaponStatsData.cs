@@ -91,7 +91,7 @@ namespace BattleFieldTracker.DownloadModels
             {
                 if (value.Equals("-1"))
                 {
-                    _price = "Not Unlocked";
+                    _price = "Not Unlockable";
                 }
             }
         }

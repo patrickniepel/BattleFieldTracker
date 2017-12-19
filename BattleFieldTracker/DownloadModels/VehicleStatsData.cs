@@ -14,21 +14,21 @@ namespace BattleFieldTracker.DownloadModels
     [UsedImplicitly]
     public class ValuesVehicleStats
     {
-//        public double Seconds { get; set; }
-//        public float Kills { get; set; }
-//        public float Destroyed { get; set; }
+        public double Seconds { get; set; }
+        public float Kills { get; set; }
+        public float Destroyed { get; set; }
     }
 
     [UsedImplicitly]
     public class StatsVehicleStats
     {
-        //public ValuesVehicleStats Values { get; set; }
+        public ValuesVehicleStats Values { get; set; }
     }
 
     public class VehicleVehicleStats
     {
 //        public ProgressionVehicleStats Progression { get; set; }
-//        public StatsVehicleStats Stats { get; set; }
+        public StatsVehicleStats Stats { get; set; }
 //        public List<object> Accessories { get; set; }
 //        public string Category { get; set; }
 //        public string Description { get; set; }
