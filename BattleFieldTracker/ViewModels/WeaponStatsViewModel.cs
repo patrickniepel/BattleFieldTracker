@@ -12,33 +12,27 @@ namespace BattleFieldTracker.ViewModels
     public class WeaponStatsViewModel : BaseViewModel
     {
         private List<ResultWeaponStats> _allWeapons;
-        //private ObservableCollection<ResultWeaponStats> _weapons;
-        //private string _filterText;
+        private ObservableCollection<ResultWeaponStats> _weapons;
+        private string _filterText;
         private bool _downloadFinished;
 
-        //public DelegateCommand ClearFilterCommand { get; set; }
+        public DelegateCommand ClearFilterCommand { [UsedImplicitly] get; [UsedImplicitly] set; }
 
-        public List<ResultWeaponStats> AllWeapons
+        public ObservableCollection<ResultWeaponStats> Weapons
         {
-            [UsedImplicitly] get => _allWeapons;
-            set => Set(ref _allWeapons, value);
+            [UsedImplicitly] get => _weapons;
+            set => Set(ref _weapons, value);
         }
 
-//        public ObservableCollection<ResultWeaponStats> Weapons
-//        {
-//            [UsedImplicitly] get => _weapons;
-//            set => Set(ref _weapons, value);
-//        }
-//
-//        public string FilterText
-//        {
-//            get => _filterText;
-//            set
-//            {
-//                Set(ref _filterText, value);
-//                Filter();
-//            }
-//        }
+        public string FilterText
+        {
+            get => _filterText;
+            set
+            {
+                Set(ref _filterText, value);
+                Filter();
+            }
+        }
 
         public bool DownloadFinished
         {
@@ -48,7 +42,7 @@ namespace BattleFieldTracker.ViewModels
 
         public WeaponStatsViewModel()
         {
-            //ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);
+            ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);
         }
 
         public void DownloadWeaponStats(string playerName)
@@ -66,26 +60,22 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
             List<ResultWeaponStats> weapons = root.Result;
-            AllWeapons = weapons;
+            _allWeapons = weapons;
+            Weapons = new ObservableCollection<ResultWeaponStats>(_allWeapons);
         }
-//
-//        private void Filter()
-//        {
-//            Weapons = string.IsNullOrWhiteSpace(FilterText)
-//                ? new ObservableCollection<ResultWeaponStats>(_allWeapons)
-//                : new ObservableCollection<ResultWeaponStats>(_allWeapons.Where(c =>
-//                    c.Name?.IndexOf(FilterText, StringComparison.CurrentCultureIgnoreCase) >= 0));
-//
-//        }
-//
-//        private void ClearFilterCommandExecute(object obj)
-//        {
-//            FilterText = "";
-//        }
-//
-//        public int CompareTo(ResultWeaponStats other)
-//        {
-//            return 
-//        }
+
+        private void Filter()
+        {
+            Weapons = string.IsNullOrWhiteSpace(FilterText)
+                ? new ObservableCollection<ResultWeaponStats>(_allWeapons)
+                : new ObservableCollection<ResultWeaponStats>(_allWeapons.Where(r =>
+                    r.Name?.IndexOf(FilterText, StringComparison.CurrentCultureIgnoreCase) >= 0 ));
+
+        }
+
+        private void ClearFilterCommandExecute(object obj)
+        {
+            FilterText = "";
+        }
     }
 }

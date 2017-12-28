@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
@@ -72,7 +69,7 @@ namespace BattleFieldTracker.DownloadModels
 //        public float TimesAquired { get; set; }
     }
 
-    public class WeaponWeaponStats
+    public class WeaponWeaponStats : IComparable<WeaponWeaponStats>
     {
 //        public ProgressionWeaponStats Progression { get; set; }
         public StatsWeaponStats Stats { get; set; }
@@ -123,13 +120,24 @@ namespace BattleFieldTracker.DownloadModels
 
             CorrectImageUrl = correctUrl;
         }
+
+        public int CompareTo(WeaponWeaponStats other)
+        {
+            return String.Compare(Name, other.Name, StringComparison.Ordinal);
+        }
     }
 
     [UsedImplicitly]
-    public class ResultWeaponStats
+    public class ResultWeaponStats : IComparable<ResultWeaponStats>
     {
         public string Name { get; set; }
         public List<WeaponWeaponStats> Weapons { get; set; }
+
+
+        public int CompareTo(ResultWeaponStats other)
+        {
+            return String.Compare(Name, other.Name, StringComparison.Ordinal);
+        }
     }
 
     [UsedImplicitly]
