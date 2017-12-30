@@ -104,6 +104,7 @@
                     <Label
                         Grid.Column="0"
                         Margin="10,0,0,0"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         BorderBrush="Black"
                         Content="Current XP:"
@@ -114,8 +115,10 @@
                         OpacityMask="White" />
                     <Label
                         Grid.Column="1"
-                        HorizontalAlignment="Center"
+                        Padding="0,0,20,0"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
+                        HorizontalContentAlignment="Right"
                         BorderBrush="Black"
                         Content="{Binding PlayerStatsViewModel.CurrentXp}"
                         FontFamily="Calibri"
@@ -142,8 +145,10 @@
                         Foreground="{StaticResource FontColorTitle}" />
                     <Label
                         Grid.Column="1"
-                        HorizontalAlignment="Center"
+                        Padding="0,0,20,0"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
+                        HorizontalContentAlignment="Right"
                         BorderBrush="{StaticResource FontColor}"
                         Content="{Binding PlayerStatsViewModel.TotalXp}"
                         FontFamily="Calibri"
@@ -1350,7 +1355,7 @@
                                     <DockPanel>
                                         <Grid Margin="1,1,1,1" DockPanel.Dock="Right">
                                             <TextBox
-                                                Name="FilterTextBox"
+                                                Name="FilterTextBoxWeapons"
                                                 MinWidth="200"
                                                 Padding="4,4,24,4"
                                                 VerticalAlignment="Center"
@@ -1360,8 +1365,8 @@
                                                 Text="{Binding WeaponStatsViewModel.FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 ToolTip="Searches For Weapon Names And Categories" />
                                             <Button
-                                                Width="{Binding ElementName=FilterTextBox, Path=ActualHeight}"
-                                                Height="{Binding ElementName=FilterTextBox, Path=ActualHeight}"
+                                                Width="{Binding ElementName=FilterTextBoxWeapons, Path=ActualHeight}"
+                                                Height="{Binding ElementName=FilterTextBoxWeapons, Path=ActualHeight}"
                                                 MinWidth="0"
                                                 Padding="0"
                                                 HorizontalAlignment="Right"
@@ -1383,7 +1388,7 @@
                                             DockPanel.Dock="Right"
                                             FontSize="{StaticResource FontSizeNormal}"
                                             Foreground="{StaticResource FontColor}"
-                                            Target="{Binding ElementName=FilterTextBox}" />
+                                            Target="{Binding ElementName=FilterTextBoxWeapons}" />
                                     </DockPanel>
                                 </Border>
 
@@ -1535,6 +1540,47 @@
                             VerticalScrollBarVisibility="Visible">
 
                             <StackPanel CanVerticallyScroll="True" Orientation="Vertical">
+
+                                <Border Margin="5,5,5,5" Background="{StaticResource BackgroundColor}">
+                                    <DockPanel>
+                                        <Grid Margin="1,1,1,1" DockPanel.Dock="Right">
+                                            <TextBox
+                                                Name="FilterTextBoxVehicles"
+                                                MinWidth="200"
+                                                Padding="4,4,24,4"
+                                                VerticalAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                DockPanel.Dock="Right"
+                                                FontSize="{StaticResource FontSizeNormal}"
+                                                Text="{Binding VehicleStatsViewModel.FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                ToolTip="Searches For Weapon Names And Categories" />
+                                            <Button
+                                                Width="{Binding ElementName=FilterTextBoxVehicles, Path=ActualHeight}"
+                                                Height="{Binding ElementName=FilterTextBoxVehicles, Path=ActualHeight}"
+                                                MinWidth="0"
+                                                Padding="0"
+                                                HorizontalAlignment="Right"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Command="{Binding VehicleStatsViewModel.ClearFilterCommand}"
+                                                Focusable="False">
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontSize="14"
+                                                    Text="X" />
+                                            </Button>
+                                        </Grid>
+                                        <Label
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Content="Search"
+                                            DockPanel.Dock="Right"
+                                            FontSize="{StaticResource FontSizeNormal}"
+                                            Foreground="{StaticResource FontColor}"
+                                            Target="{Binding ElementName=FilterTextBoxVehicles}" />
+                                    </DockPanel>
+                                </Border>
 
                                 <Grid Margin="5,0,5,0">
                                     <Grid.ColumnDefinitions>
@@ -1692,9 +1738,50 @@
 
                             <StackPanel CanVerticallyScroll="True" Orientation="Vertical">
 
+                                <Border Margin="5,5,5,5" Background="{StaticResource BackgroundColor}">
+                                    <DockPanel>
+                                        <Grid Margin="1,1,1,1" DockPanel.Dock="Right">
+                                            <TextBox
+                                                Name="FilterTextBoxDogTags"
+                                                MinWidth="200"
+                                                Padding="4,4,24,4"
+                                                VerticalAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                DockPanel.Dock="Right"
+                                                FontSize="{StaticResource FontSizeNormal}"
+                                                Text="{Binding DogTagStatsViewModel.FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                ToolTip="Searches For Weapon Names And Categories" />
+                                            <Button
+                                                Width="{Binding ElementName=FilterTextBoxDogTags, Path=ActualHeight}"
+                                                Height="{Binding ElementName=FilterTextBoxDogTags, Path=ActualHeight}"
+                                                MinWidth="0"
+                                                Padding="0"
+                                                HorizontalAlignment="Right"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Command="{Binding DogTagStatsViewModel.ClearFilterCommand}"
+                                                Focusable="False">
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontSize="14"
+                                                    Text="X" />
+                                            </Button>
+                                        </Grid>
+                                        <Label
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Content="Search"
+                                            DockPanel.Dock="Right"
+                                            FontSize="{StaticResource FontSizeNormal}"
+                                            Foreground="{StaticResource FontColor}"
+                                            Target="{Binding ElementName=FilterTextBoxDogTags}" />
+                                    </DockPanel>
+                                </Border>
+
                                 <Grid Margin="5,0,5,0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
@@ -1840,81 +1927,176 @@
                         Header="Medals"
                         Visibility="{Binding MedalStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
 
-                        <ScrollViewer>
+                        <ScrollViewer
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Visible">
 
-                            <ItemsControl
-                                MinWidth="240"
-                                Background="{StaticResource BackgroundColor}"
-                                BorderBrush="White"
-                                BorderThickness="0"
-                                Focusable="True"
-                                ItemsSource="{Binding MedalStatsViewModel.Medals}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="medals:ResultMedalStats">
-                                        <StackPanel Margin="5,5,5,5" Orientation="Vertical">
-                                            <TextBlock
-                                                Margin="0,5,0,5"
-                                                Padding="5,0,0,0"
-                                                Background="{StaticResource BackgroundColorHeader}"
-                                                FontSize="{StaticResource FontSizeMega}"
-                                                Foreground="{StaticResource FontColor}"
-                                                Text="{Binding Name}" />
+                            <StackPanel CanVerticallyScroll="True" Orientation="Vertical">
 
-                                            <ItemsControl
-                                                Margin="5,5,5,5"
-                                                Background="{StaticResource BackgroundColor}"
-                                                BorderBrush="White"
+                                <Border Margin="5,5,5,5" Background="{StaticResource BackgroundColor}">
+                                    <DockPanel>
+                                        <Grid Margin="1,1,1,1" DockPanel.Dock="Right">
+                                            <TextBox
+                                                Name="FilterTextBoxMedals"
+                                                MinWidth="200"
+                                                Padding="4,4,24,4"
+                                                VerticalAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                DockPanel.Dock="Right"
+                                                FontSize="{StaticResource FontSizeNormal}"
+                                                Text="{Binding MedalStatsViewModel.FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                ToolTip="Searches For Weapon Names And Categories" />
+                                            <Button
+                                                Width="{Binding ElementName=FilterTextBoxMedals, Path=ActualHeight}"
+                                                Height="{Binding ElementName=FilterTextBoxMedals, Path=ActualHeight}"
+                                                MinWidth="0"
+                                                Padding="0"
+                                                HorizontalAlignment="Right"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
                                                 BorderThickness="0"
-                                                Focusable="True"
-                                                ItemsSource="{Binding Awards}">
-                                                <!--ListBox.ItemContainerStyle>
-                                                <Style TargetType="ListBoxItem">
-                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                                </Style>
-                                            </-->
+                                                Command="{Binding MedalStatsViewModel.ClearFilterCommand}"
+                                                Focusable="False">
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontSize="14"
+                                                    Text="X" />
+                                            </Button>
+                                        </Grid>
+                                        <Label
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Content="Search"
+                                            DockPanel.Dock="Right"
+                                            FontSize="{StaticResource FontSizeNormal}"
+                                            Foreground="{StaticResource FontColor}"
+                                            Target="{Binding ElementName=FilterTextBoxMedals}" />
+                                    </DockPanel>
+                                </Border>
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Grid Margin="10,10,10,50">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                            </Grid.ColumnDefinitions>
+                                <Grid Margin="5,0,5,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                                            <Label
-                                                                Grid.Column="0"
-                                                                HorizontalAlignment="Stretch"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Name}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColorTitle}" />
-                                                            <Image
-                                                                Grid.Column="1"
-                                                                MaxWidth="100"
-                                                                MaxHeight="125"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Center"
-                                                                Source="{Binding CorrectImageUrl}" />
-                                                            <Label
-                                                                Grid.Column="3"
-                                                                Margin="0,0,30,0"
-                                                                HorizontalAlignment="Right"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Progression.Unlocked}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColor}" />
-                                                        </Grid>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Padding="5,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Name"
+                                        TextAlignment="Left" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Preview"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Task Description"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="3"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Unlocked"
+                                        TextAlignment="Center" />
+                                </Grid>
+
+                                <ItemsControl
+                                    MinWidth="240"
+                                    Background="{StaticResource BackgroundColor}"
+                                    BorderBrush="White"
+                                    BorderThickness="0"
+                                    Focusable="True"
+                                    ItemsSource="{Binding MedalStatsViewModel.Medals}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate DataType="medals:ResultMedalStats">
+                                            <StackPanel Margin="5,0,5,5" Orientation="Vertical">
+                                                <TextBlock
+                                                    Margin="0,0,0,5"
+                                                    Padding="5,0,0,0"
+                                                    Background="{StaticResource BackgroundColorHeader}"
+                                                    FontSize="{StaticResource FontSizeMega}"
+                                                    Foreground="{StaticResource FontColor}"
+                                                    Text="{Binding Name}" />
+
+                                                <ItemsControl
+                                                    Margin="5,5,5,5"
+                                                    Background="{StaticResource BackgroundColor}"
+                                                    BorderBrush="White"
+                                                    BorderThickness="0"
+                                                    Focusable="True"
+                                                    ItemsSource="{Binding Awards}">
+
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Margin="10,10,10,10">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <Label
+                                                                    Grid.Column="0"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Name}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColorTitle}" />
+                                                                <Image
+                                                                    Grid.Column="1"
+                                                                    MaxWidth="100"
+                                                                    MaxHeight="125"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Stretch"
+                                                                    Source="{Binding CorrectImageUrl}" />
+                                                                <Label
+                                                                    Grid.Column="2"
+                                                                    Margin="0,0,0,0"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Description}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColor}" />
+                                                                <Label
+                                                                    Grid.Column="3"
+                                                                    Margin="0,0,0,0"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Progression.Unlocked}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColor}" />
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                            </StackPanel>
 
                         </ScrollViewer>
 

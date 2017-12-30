@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
@@ -25,7 +26,7 @@ namespace BattleFieldTracker.DownloadModels
         public ValuesVehicleStats Values { get; set; }
     }
 
-    public class VehicleVehicleStats
+    public class VehicleVehicleStats : IComparable<VehicleVehicleStats>
     {
 //        public ProgressionVehicleStats Progression { get; set; }
         public StatsVehicleStats Stats { get; set; }
@@ -65,14 +66,23 @@ namespace BattleFieldTracker.DownloadModels
 
             CorrectImageUrl = correctUrl;
         }
+
+        public int CompareTo(VehicleVehicleStats other)
+        {
+            return String.Compare(Name, other.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
     }
 
     [UsedImplicitly]
-    public class ResultVehicleStats
+    public class ResultVehicleStats : IComparable<ResultVehicleStats>
     {
         //public List<object> Accessories { get; set; }
         public string Name { get; set; }
         public List<VehicleVehicleStats> Vehicles { get; set; }
+        public int CompareTo(ResultVehicleStats other)
+        {
+            return String.Compare(Name, other.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
     }
 
     [UsedImplicitly]

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
@@ -11,7 +12,7 @@ namespace BattleFieldTracker.DownloadModels
         public double ValueNeeded { get; set; }
     }
 
-    public class DogtagDogTagStats
+    public class DogtagDogTagStats : IComparable<DogtagDogTagStats>
     {
         //public string Category { get; set; }
         //public string Description { get; set; }
@@ -44,13 +45,23 @@ namespace BattleFieldTracker.DownloadModels
 
             CorrectImageUrl = correctUrl;
         }
+
+        public int CompareTo(DogtagDogTagStats other)
+        {
+            return String.Compare(Name, other.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
     }
 
     [UsedImplicitly]
-    public class ResultDogTagStats
+    public class ResultDogTagStats : IComparable<ResultDogTagStats>
     {
         public List<DogtagDogTagStats> Dogtags { get; set; }
         public string Name { get; set; }
+
+        public int CompareTo(ResultDogTagStats other)
+        {
+            return String.Compare(Name, other.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
     }
 
     [UsedImplicitly]

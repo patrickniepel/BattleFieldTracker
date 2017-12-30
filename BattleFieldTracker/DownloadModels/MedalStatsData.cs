@@ -50,12 +50,12 @@ namespace BattleFieldTracker.DownloadModels
 //        public object Stages { get; set; }
     }
 
-    public class AwardMedalStats
+    public class AwardMedalStats : IComparable<AwardMedalStats>
     {
         //public string Code { get; set; }
         //public object CodexEntry { get; set; }
         //public List<CriteriaMedalStats> Criterias { get; set; }
-        //public List<object> Dependencies { get; set; }
+        public string Description { get; set; }
         public string Name { get; set; }
         public ProgressionMedalStats Progression { get; set; }
         //public List<StageMedalStats> Stages { get; set; }
@@ -84,13 +84,22 @@ namespace BattleFieldTracker.DownloadModels
 
             CorrectImageUrl = correctUrl;
         }
+
+        public int CompareTo(AwardMedalStats other)
+        {
+            return String.Compare(Name, other.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
     }
 
     [UsedImplicitly]
-    public class ResultMedalStats
+    public class ResultMedalStats : IComparable<ResultMedalStats>
     {
         public List<AwardMedalStats> Awards { get; set; }
         public string Name { get; set; }
+        public int CompareTo(ResultMedalStats other)
+        {
+            return String.Compare(Name, other.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
     }
 
     [UsedImplicitly]
