@@ -84,13 +84,7 @@ namespace BattleFieldTracker.DownloadModels
         public string Price
         {
             get => _price;
-            set
-            {
-                if (value.Equals("-1"))
-                {
-                    _price = "Not Unlockable";
-                }
-            }
+            set => _price = value.Equals("-1") ? "Not Unlockable" : value;
         }
 //        public StarWeaponStats Star { get; set; }
 //        public object Criterias { get; set; }
@@ -123,7 +117,7 @@ namespace BattleFieldTracker.DownloadModels
 
         public int CompareTo(WeaponWeaponStats other)
         {
-            return String.Compare(Name, other.Name, StringComparison.Ordinal);
+            return String.Compare(Name, other.Name, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 
@@ -132,11 +126,9 @@ namespace BattleFieldTracker.DownloadModels
     {
         public string Name { get; set; }
         public List<WeaponWeaponStats> Weapons { get; set; }
-
-
         public int CompareTo(ResultWeaponStats other)
         {
-            return String.Compare(Name, other.Name, StringComparison.Ordinal);
+            return String.Compare(Name, other.Name, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 

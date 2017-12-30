@@ -185,6 +185,7 @@
                         Grid.Column="1"
                         Height="{Binding ElementName=SearchTextBox, Path=ActualHeight}"
                         Margin="5,5,5,5"
+                        Padding="0,5,0,5"
                         VerticalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
@@ -1341,32 +1342,23 @@
                         <ScrollViewer
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
-                            CanContentScroll="True"
                             HorizontalScrollBarVisibility="Disabled"
                             VerticalScrollBarVisibility="Visible">
 
-
-
-                            <StackPanel CanVerticallyScroll="True">
-
-
-                                <Border
-                                    Margin="5,5,5,5"
-                                    Background="{x:Static SystemColors.ControlBrush}"
-                                    DockPanel.Dock="Top">
+                            <StackPanel CanVerticallyScroll="True" Orientation="Vertical">
+                                <Border Margin="5,5,5,5" Background="{StaticResource BackgroundColor}">
                                     <DockPanel>
-
-                                        <Grid DockPanel.Dock="Right">
+                                        <Grid Margin="1,1,1,1" DockPanel.Dock="Right">
                                             <TextBox
                                                 Name="FilterTextBox"
-                                                MinWidth="160"
+                                                MinWidth="200"
                                                 Padding="4,4,24,4"
                                                 VerticalAlignment="Center"
                                                 VerticalContentAlignment="Center"
                                                 DockPanel.Dock="Right"
                                                 FontSize="{StaticResource FontSizeNormal}"
                                                 Text="{Binding WeaponStatsViewModel.FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                ToolTip="Filters for weapon categories" />
+                                                ToolTip="Searches For Weapon Names And Categories" />
                                             <Button
                                                 Width="{Binding ElementName=FilterTextBox, Path=ActualHeight}"
                                                 Height="{Binding ElementName=FilterTextBox, Path=ActualHeight}"
@@ -1383,25 +1375,68 @@
                                                     FontSize="14"
                                                     Text="X" />
                                             </Button>
-                                            <ComboBox MinWidth="200" ItemsSource="{Binding WeaponStatsViewModel.Weapons}">
-                                                <ComboBox.ItemTemplate>
-                                                    <DataTemplate DataType="weapons:ResultWeaponStats">
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <TextBlock Text="{Binding Name}" />
-                                                        </StackPanel>
-                                                    </DataTemplate>
-                                                </ComboBox.ItemTemplate>
-                                            </ComboBox>
                                         </Grid>
                                         <Label
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Center"
-                                            Content="Filter"
+                                            Content="Search"
                                             DockPanel.Dock="Right"
                                             FontSize="{StaticResource FontSizeNormal}"
+                                            Foreground="{StaticResource FontColor}"
                                             Target="{Binding ElementName=FilterTextBox}" />
                                     </DockPanel>
                                 </Border>
+
+                                <Grid Margin="5,0,5,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Padding="5,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Name"
+                                        TextAlignment="Left" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Preview"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Kills"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="3"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Seconds"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="4"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Price"
+                                        TextAlignment="Center" />
+                                </Grid>
 
                                 <ItemsControl
                                     MinWidth="240"
@@ -1409,16 +1444,11 @@
                                     BorderThickness="0,0,0,0"
                                     Focusable="True"
                                     ItemsSource="{Binding WeaponStatsViewModel.Weapons}">
-                                    <!--ListBox.ItemContainerStyle>
-                                        <Style TargetType="ListBoxItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                        </Style>
-                                    </-->
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate DataType="weapons:ResultWeaponStats">
-                                            <StackPanel Margin="5,5,5,5" Orientation="Vertical">
+                                            <StackPanel Margin="5,0,5,5" Orientation="Vertical">
                                                 <TextBlock
-                                                    Margin="0,5,0,5"
+                                                    Margin="0,0,0,5"
                                                     Padding="5,0,0,0"
                                                     Background="{StaticResource BackgroundColorHeader}"
                                                     FontSize="{StaticResource FontSizeMega}"
@@ -1435,7 +1465,7 @@
                                                         <DataTemplate>
                                                             <Grid Margin="10,10,10,10">
                                                                 <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="1.5*" />
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="*" />
@@ -1498,103 +1528,153 @@
                         Header="Vehicles"
                         Visibility="{Binding VehicleStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
 
-                        <ScrollViewer>
+                        <ScrollViewer
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Visible">
 
-                            <ItemsControl
-                                MinWidth="240"
-                                Background="{StaticResource BackgroundColor}"
-                                BorderBrush="White"
-                                BorderThickness="1,1,1,1"
-                                DockPanel.Dock="Left"
-                                Focusable="True"
-                                ItemsSource="{Binding VehicleStatsViewModel.Vehicles}">
-                                <!--ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </-->
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="vehicles:ResultVehicleStats">
-                                        <StackPanel Margin="5,5,5,5" Orientation="Vertical">
-                                            <TextBlock
-                                                Margin="0,5,0,5"
-                                                Padding="5,0,0,0"
-                                                Background="{StaticResource BackgroundColorHeader}"
-                                                FontSize="{StaticResource FontSizeMega}"
-                                                Foreground="{StaticResource FontColor}"
-                                                Text="{Binding Name}" />
+                            <StackPanel CanVerticallyScroll="True" Orientation="Vertical">
 
-                                            <ItemsControl
-                                                Margin="5,5,5,5"
-                                                Background="{StaticResource BackgroundColor}"
-                                                BorderBrush="White"
-                                                BorderThickness="0"
-                                                Focusable="True"
-                                                ItemsSource="{Binding Vehicles}">
-                                                <!--ListBox.ItemContainerStyle>
-                                                <Style TargetType="ListBoxItem">
-                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                                </Style>
-                                            </-->
+                                <Grid Margin="5,0,5,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Grid Margin="10,10,10,10">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                            </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Padding="5,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Name"
+                                        TextAlignment="Left" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Preview"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Kills"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="3"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Seconds"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="4"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Destroyed"
+                                        TextAlignment="Center" />
+                                </Grid>
 
-                                                            <Label
-                                                                Grid.Column="0"
-                                                                HorizontalAlignment="Stretch"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Name}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColorTitle}" />
-                                                            <Image
-                                                                Grid.Column="1"
-                                                                MaxWidth="250"
-                                                                MaxHeight="200"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Center"
-                                                                Source="{Binding CorrectImageUrl}" />
-                                                            <Label
-                                                                Grid.Column="2"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Stats.Values.Kills}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColor}" />
-                                                            <Label
-                                                                Grid.Column="3"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Stats.Values.Seconds}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColor}" />
-                                                            <Label
-                                                                Grid.Column="4"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Stats.Values.Destroyed}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColor}" />
-                                                        </Grid>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                                <ItemsControl
+                                    MinWidth="240"
+                                    Background="{StaticResource BackgroundColor}"
+                                    BorderBrush="White"
+                                    BorderThickness="0"
+                                    DockPanel.Dock="Left"
+                                    Focusable="True"
+                                    ItemsSource="{Binding VehicleStatsViewModel.Vehicles}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate DataType="vehicles:ResultVehicleStats">
+                                            <StackPanel Margin="5,0,5,5" Orientation="Vertical">
+                                                <TextBlock
+                                                    Margin="0,0,0,5"
+                                                    Padding="5,0,0,0"
+                                                    Background="{StaticResource BackgroundColorHeader}"
+                                                    FontSize="{StaticResource FontSizeMega}"
+                                                    Foreground="{StaticResource FontColor}"
+                                                    Text="{Binding Name}" />
+
+                                                <ItemsControl
+                                                    Margin="5,5,5,5"
+                                                    Background="{StaticResource BackgroundColor}"
+                                                    BorderBrush="White"
+                                                    BorderThickness="0"
+                                                    Focusable="True"
+                                                    ItemsSource="{Binding Vehicles}">
+
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Margin="10,10,10,10">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="1.5*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <Label
+                                                                    Grid.Column="0"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Name}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColorTitle}" />
+                                                                <Image
+                                                                    Grid.Column="1"
+                                                                    MaxWidth="250"
+                                                                    MaxHeight="200"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    Source="{Binding CorrectImageUrl}" />
+                                                                <Label
+                                                                    Grid.Column="2"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Stats.Values.Kills}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColor}" />
+                                                                <Label
+                                                                    Grid.Column="3"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Stats.Values.Seconds}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColor}" />
+                                                                <Label
+                                                                    Grid.Column="4"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Stats.Values.Destroyed}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColor}" />
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+
+
 
                         </ScrollViewer>
 
@@ -1604,98 +1684,151 @@
                         Foreground="Black"
                         Header="Dogtags"
                         Visibility="{Binding DogTagStatsViewModel.DownloadFinished, Converter={StaticResource VisibilityConverter}}">
-                        <ScrollViewer>
+                        <ScrollViewer
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Visible">
 
-                            <ItemsControl
-                                MinWidth="240"
-                                Background="{StaticResource BackgroundColor}"
-                                BorderBrush="White"
-                                BorderThickness="1,1,1,1"
-                                DockPanel.Dock="Left"
-                                Focusable="True"
-                                ItemsSource="{Binding DogTagStatsViewModel.DogTags}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="dogTags:ResultDogTagStats">
-                                        <StackPanel Margin="5,5,5,5" Orientation="Vertical">
-                                            <TextBlock
-                                                Margin="0,5,0,5"
-                                                Padding="5,0,0,0"
-                                                Background="{StaticResource BackgroundColorHeader}"
-                                                FontSize="{StaticResource FontSizeMega}"
-                                                Foreground="{StaticResource FontColor}"
-                                                Text="{Binding Name}" />
+                            <StackPanel CanVerticallyScroll="True" Orientation="Vertical">
 
-                                            <ItemsControl
-                                                Margin="5,5,5,5"
-                                                Background="{StaticResource BackgroundColor}"
-                                                BorderBrush="White"
-                                                BorderThickness="0"
-                                                Focusable="True"
-                                                ItemsSource="{Binding Dogtags}">
-                                                <!--ListBox.ItemContainerStyle>
-                                                <Style TargetType="ListBoxItem">
-                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                                </Style>
-                                            </-->
+                                <Grid Margin="5,0,5,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Grid Margin="10,10,10,10">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                            </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Padding="5,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Name"
+                                        TextAlignment="Left" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Preview"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Times Taken"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="3"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Equipped"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="4"
+                                        Padding="0,2,0,2"
+                                        Background="{StaticResource BackgroundColorHeader}"
+                                        FontSize="{StaticResource FontSizeNormal}"
+                                        Foreground="{StaticResource FontColor}"
+                                        Text="Unlocked"
+                                        TextAlignment="Center" />
+                                </Grid>
 
-                                                            <Label
-                                                                Grid.Column="0"
-                                                                HorizontalAlignment="Stretch"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Name}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColorTitle}" />
-                                                            <Image
-                                                                Grid.Column="1"
-                                                                Width="100"
-                                                                Height="100"
-                                                                HorizontalAlignment="Stretch"
-                                                                VerticalAlignment="Stretch"
-                                                                Source="{Binding CorrectImageUrl}" />
-                                                            <Label
-                                                                Grid.Column="2"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding TimesTaken}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColor}" />
-                                                            <Label
-                                                                Grid.Column="3"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Equipped}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColor}" />
-                                                            <Label
-                                                                Grid.Column="4"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Stretch"
-                                                                VerticalContentAlignment="Center"
-                                                                Content="{Binding Progression.Unlocked}"
-                                                                FontSize="{StaticResource FontSizeLarge}"
-                                                                Foreground="{StaticResource FontColor}" />
-                                                        </Grid>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                                <ItemsControl
+                                    MinWidth="240"
+                                    Background="{StaticResource BackgroundColor}"
+                                    BorderBrush="White"
+                                    BorderThickness="0"
+                                    DockPanel.Dock="Left"
+                                    Focusable="True"
+                                    ItemsSource="{Binding DogTagStatsViewModel.DogTags}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate DataType="dogTags:ResultDogTagStats">
+                                            <StackPanel Margin="5,0,5,5" Orientation="Vertical">
+                                                <TextBlock
+                                                    Margin="0,0,0,5"
+                                                    Padding="5,0,0,0"
+                                                    Background="{StaticResource BackgroundColorHeader}"
+                                                    FontSize="{StaticResource FontSizeMega}"
+                                                    Foreground="{StaticResource FontColor}"
+                                                    Text="{Binding Name}" />
+
+                                                <ItemsControl
+                                                    Margin="5,5,5,5"
+                                                    Background="{StaticResource BackgroundColor}"
+                                                    BorderBrush="White"
+                                                    BorderThickness="0"
+                                                    Focusable="True"
+                                                    ItemsSource="{Binding Dogtags}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Margin="10,10,10,10">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <Label
+                                                                    Grid.Column="0"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Name}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColorTitle}" />
+                                                                <Image
+                                                                    Grid.Column="1"
+                                                                    Width="100"
+                                                                    Height="100"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Stretch"
+                                                                    Source="{Binding CorrectImageUrl}" />
+                                                                <Label
+                                                                    Grid.Column="2"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding TimesTaken}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColor}" />
+                                                                <Label
+                                                                    Grid.Column="3"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Equipped}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColor}" />
+                                                                <Label
+                                                                    Grid.Column="4"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Stretch"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Content="{Binding Progression.Unlocked}"
+                                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                                    Foreground="{StaticResource FontColor}" />
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                            </StackPanel>
 
                         </ScrollViewer>
 
@@ -1713,7 +1846,7 @@
                                 MinWidth="240"
                                 Background="{StaticResource BackgroundColor}"
                                 BorderBrush="White"
-                                BorderThickness="1,1,1,1"
+                                BorderThickness="0"
                                 Focusable="True"
                                 ItemsSource="{Binding MedalStatsViewModel.Medals}">
                                 <ItemsControl.ItemTemplate>
