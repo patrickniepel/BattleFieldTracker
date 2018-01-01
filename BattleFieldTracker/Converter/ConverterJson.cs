@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace BattleFieldTracker.Converter
 {
+    /// <summary>
+    /// Converts the given download string into json and returns the specified root object
+    /// </summary>
     public class ConverterJson
     {
         public RootObjectPlayerStats ConvertPlayerStatsToJson(string playerStats)

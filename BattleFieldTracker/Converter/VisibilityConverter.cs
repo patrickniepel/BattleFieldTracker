@@ -5,6 +5,9 @@ using System.Windows.Data;
 
 namespace BattleFieldTracker.Converter
 {
+    /// <summary>
+    /// Hides the layout if no data available, shows it after download has finished
+    /// </summary>
     internal class VisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

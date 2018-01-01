@@ -16,7 +16,7 @@ namespace BattleFieldTracker.ViewModels
         private bool _downloadFinished;
         private string _filterText;
 
-        public DelegateCommand ClearFilterCommand { [UsedImplicitly] get; set; }
+        public DelegateCommand ClearFilterCommand { [UsedImplicitly] get; [UsedImplicitly] set; }
 
         public string FilterText
         {
@@ -55,6 +55,7 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectWeaponStats root)
         {
+            // If errors occured 
             if (root == null)
             {
                 return;

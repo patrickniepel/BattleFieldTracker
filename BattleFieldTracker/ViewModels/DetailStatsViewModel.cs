@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
 
@@ -45,144 +42,167 @@ namespace BattleFieldTracker.ViewModels
 
         public bool DownloadFinished
         {
-            get => _downloadFinished;
+            [UsedImplicitly] get => _downloadFinished;
             set => Set(ref _downloadFinished, value);
         }
 
         public List<GameModeStatDetailStats> GameModeStats
         {
+            [UsedImplicitly]
             get => _gameModeStats;
             set => Set(ref _gameModeStats, value);
         }
 
         public List<KitStatDetailStats> KitStats
         {
+            [UsedImplicitly]
             get => _kitStats;
             set => Set(ref _kitStats, value);
         }
 
         public List<VehicleStatDetailStats> VehicleStats
         {
+            [UsedImplicitly]
             get => _vehicleStats;
             set => Set(ref _vehicleStats, value);
         }
 
         public double AccuracyRatio
         {
+            [UsedImplicitly]
             get => _accuracyRatio;
             set => Set(ref _accuracyRatio, value);
         }
 
         public float AvengerKills
         {
+            [UsedImplicitly]
             get => _avengerKills;
             set => Set(ref _avengerKills, value);
         }
 
         public double AwardScore
         {
+            [UsedImplicitly]
             get => _awardScore;
             set => Set(ref _awardScore, value);
         }
 
         public int DogtagsTaken
         {
+            [UsedImplicitly]
             get => _dogtagsTaken;
             set => Set(ref _dogtagsTaken, value);
         }
 
         public int FlagsCaptured
         {
+            [UsedImplicitly]
             get => _flagsCaptured;
             set => Set(ref _flagsCaptured, value);
         }
 
         public int FlagsDefended
         {
+            [UsedImplicitly]
             get => _flagsDefended;
             set => Set(ref _flagsDefended, value);
         }
 
         public int Headshots
         {
+            [UsedImplicitly]
             get => _headshots;
             set => Set(ref _headshots, value);
         }
 
         public float Heals
         {
+            [UsedImplicitly]
             get => _heals;
             set => Set(ref _heals, value);
         }
 
         public int HighestKillStreak
         {
+            [UsedImplicitly]
             get => _highestKillStreak;
             set => Set(ref _highestKillStreak, value);
         }
 
         public double Kdr
         {
+            [UsedImplicitly]
             get => _kdr;
             set => Set(ref _kdr, value);
         }
 
         public float KillAssists
         {
+            [UsedImplicitly]
             get => _killAssists;
             set => Set(ref _killAssists, value);
         }
 
         public double LongestHeadshot
         {
+            [UsedImplicitly]
             get => _longestHeadshot;
             set => Set(ref _longestHeadshot, value);
         }
 
         public float NemesisKills
         {
+            [UsedImplicitly]
             get => _nemesisKills;
             set => Set(ref _nemesisKills, value);
         }
 
         public float NemesisKillStreak
         {
+            [UsedImplicitly]
             get => _nemesisKillStreak;
             set => Set(ref _nemesisKillStreak, value);
         }
 
         public float Repairs
         {
+            [UsedImplicitly]
             get => _repairs;
             set => Set(ref _repairs, value);
         }
 
         public float Revives
         {
+            [UsedImplicitly]
             get => _revives;
             set => Set(ref _revives, value);
         }
 
         public float RoundsPlayed
         {
+            [UsedImplicitly]
             get => _roundsPlayed;
             set => Set(ref _roundsPlayed, value);
         }
 
         public float SaviorKills
         {
+            [UsedImplicitly]
             get => _saviorKills;
             set => Set(ref _saviorKills, value);
         }
 
         public double SquadScore
         {
+            [UsedImplicitly]
             get => _squadScore;
             set => Set(ref _squadScore, value);
         }
 
         public float SuppressionAssists
         {
+            [UsedImplicitly]
             get => _suppressionAssists;
             set => Set(ref _suppressionAssists, value);
         }
@@ -200,6 +220,7 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectDetailStats root)
         {
+            //If Errors occured
             if (root == null)
             {
                 return;

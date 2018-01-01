@@ -4,23 +4,11 @@ using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
 {
-    public class ProgressionWeaponStats
-    {
-//        public bool Unlocked { get; set; }
-//        public float ValueAcquired { get; set; }
-//        public float ValueNeeded { get; set; }
-    }
-
     [UsedImplicitly]
     public class ValuesWeaponStats
     {
         public float Kills { get; set; }
-//        public float Headshots { get; set; }
-//        public double Accuracy { get; set; }
         public double Seconds { get; set; }
-//        public float Hits { get; set; }
-//        public float Shots { get; set; }
-//        public float Destroyed { get; set; }
     }
 
     [UsedImplicitly]
@@ -29,55 +17,9 @@ namespace BattleFieldTracker.DownloadModels
         public ValuesWeaponStats Values { get; set; }
     }
 
-    public class InfoWeaponStats
-    {
-//        public string Ammo { get; set; }
-//        public string AmmoType { get; set; }
-//        public string RateOfFire { get; set; }
-//        public string Range { get; set; }
-//        public bool FireModeSingle { get; set; }
-//        public bool FireModeBurst { get; set; }
-//        public bool FireModeAuto { get; set; }
-//        public double StatDamage { get; set; }
-//        public double StatAccuracy { get; set; }
-//        public double StatMobility { get; set; }
-//        public float StatRange { get; set; }
-//        public double StatHandling { get; set; }
-//        public float StatReload { get; set; }
-//        public double StatControl { get; set; }
-//        public float StatFireRate { get; set; }
-//        public float StatAttackSpeed { get; set; }
-//        public bool CanBreakWood { get; set; }
-//        public bool CanCutBarbedWire { get; set; }
-//        public bool CanDamageLightVehicle { get; set; }
-//        public float NumberOfMagazines { get; set; }
-//        public List<object> DamageDropPoints { get; set; }
-    }
-
-    public class Progression2WeaponStats
-    {
-//        public bool Unlocked { get; set; }
-//        public float ValueAcquired { get; set; }
-//        public float ValueNeeded { get; set; }
-    }
-
-    public class StarWeaponStats
-    {
-//        public object Images { get; set; }
-//        public string ImageUrl { get; set; }
-//        public Progression2WeaponStats Progression { get; set; }
-//        public float TimesAquired { get; set; }
-    }
-
     public class WeaponWeaponStats : IComparable<WeaponWeaponStats>
     {
-//        public ProgressionWeaponStats Progression { get; set; }
         public StatsWeaponStats Stats { get; set; }
-//        public List<object> Accessories { get; set; }
-//        public string Category { get; set; }
-//        public string Description { get; set; }
-//        public string Guid { get; set; }
-//        public InfoWeaponStats Info { get; set; }
         public string Name { get; set; }
 
         private string _price;
@@ -86,8 +28,7 @@ namespace BattleFieldTracker.DownloadModels
             get => _price;
             set => _price = value.Equals("-1") ? "Not Unlockable" : value;
         }
-//        public StarWeaponStats Star { get; set; }
-//        public object Criterias { get; set; }
+
         public string CorrectImageUrl { get; set; }
 
         private const string BbPrefix = "https://eaassets-a.akamaihd.net/battlelog/battlebinary";
@@ -106,11 +47,9 @@ namespace BattleFieldTracker.DownloadModels
 
         private void SetCorrectImageUrl()
         {
-            var correctUrl = "";
-
             //urls begin with '[BB_Prefix]'
 
-            correctUrl = BbPrefix + _imageUrl.Substring(11);
+            string correctUrl = BbPrefix + _imageUrl.Substring(11);
 
             CorrectImageUrl = correctUrl;
         }
@@ -135,7 +74,6 @@ namespace BattleFieldTracker.DownloadModels
     [UsedImplicitly]
     public class RootObjectWeaponStats
     {
-        //public bool Successful { get; set; }
         public List<ResultWeaponStats> Result { get; [UsedImplicitly] set; }
     }
 }

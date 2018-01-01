@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
 
@@ -30,125 +31,135 @@ namespace BattleFieldTracker.ViewModels
 
         #endregion
 
-        //private List<Highlight> _highlights;
-
         #region Public Members
 
         public string DisplayName
         {
+            [UsedImplicitly]
             get => _displayName;
             set => Set(ref _displayName, value);
         }
 
         public string RankImage
         {
+            [UsedImplicitly]
             get => _rankImage;
             set => Set(ref _rankImage, value);
         }
 
         public string RankName
         {
+            [UsedImplicitly]
             get => _rankName;
             set => Set(ref _rankName, value);
         }
 
         public int Rank
         {
+            [UsedImplicitly]
             get => _rank;
             set => Set(ref _rank, value);
         }
 
         public float CurrentXp
         {
+            [UsedImplicitly]
             get => _currentXp;
             set => Set(ref _currentXp, value);
         }
 
         public float TotalXp
         {
+            [UsedImplicitly]
             get => _totalXp;
             set => Set(ref _totalXp, value);
         }
 
         public float Kills
         {
+            [UsedImplicitly]
             get => _kills;
             set => Set(ref _kills, value);
         }
 
         public float Deaths
         {
+            [UsedImplicitly]
             get => _deaths;
             set => Set(ref _deaths, value);
         }
 
         public float Wins
         {
+            [UsedImplicitly]
             get => _wins;
             set => Set(ref _wins, value);
         }
 
         public float Losses
         {
+            [UsedImplicitly]
             get => _losses;
             set => Set(ref _losses, value);
         }
 
         public int Spm
         {
+            [UsedImplicitly]
             get => _spm;
             set => Set(ref _spm, value);
         }
 
         public int Kpm
         {
+            [UsedImplicitly]
             get => _kpm;
             set => Set(ref _kpm, value);
         }
 
         public double TimePlayed
         {
+            [UsedImplicitly]
             get => _timePlayed;
             set => Set(ref _timePlayed, value);
         }
 
         public string TopClass
         {
+            [UsedImplicitly]
             get => _topClass;
             set => Set(ref _topClass, value);
         }
 
         public string TopVehicle
         {
+            [UsedImplicitly]
             get => _topVehicle;
             set => Set(ref _topVehicle, value);
         }
 
         public string TopPrimary
         {
+            [UsedImplicitly]
             get => _topPrimary;
             set => Set(ref _topPrimary, value);
         }
 
         public string TopSecondary
         {
+            [UsedImplicitly]
             get => _topSecondary;
             set => Set(ref _topSecondary, value);
         }
 
         public bool DownloadFinished
         {
+            [UsedImplicitly]
             get => _downloadFinished;
             set => Set(ref _downloadFinished, value);
         }
 
         #endregion
-
-        //        public List<Highlight> Highlights
-        //        {
-        //            get => _highlights;
-        //            set => Set(ref _highlights, value);
-        //        }
 
         public void DownloadPlayerStats(string playerName)
         {
@@ -160,6 +171,7 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectPlayerStats root)
         {
+            // If errors occured during download show message
             if (root == null)
             {
                 MessageBox.Show(Validation.SharedInstance.ErrorMessage);
@@ -191,11 +203,9 @@ namespace BattleFieldTracker.ViewModels
 
         private string GetCorrectImageUrl(string url)
         {
-            var correctUrl = "";
-
             //urls begin with '[BB_Prefix]'
 
-            correctUrl = url.Substring(11);
+            string correctUrl = url.Substring(11);
 
             return correctUrl;
         }

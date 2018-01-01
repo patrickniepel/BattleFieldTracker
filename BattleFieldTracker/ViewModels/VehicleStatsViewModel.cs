@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Commands;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
@@ -15,10 +16,11 @@ namespace BattleFieldTracker.ViewModels
         private bool _downloadFinished;
         private string _filterText;
 
-        public DelegateCommand ClearFilterCommand { get; set; }
+        public DelegateCommand ClearFilterCommand { [UsedImplicitly] get; [UsedImplicitly] set; }
 
         public ObservableCollection<ResultVehicleStats> Vehicles
         {
+            [UsedImplicitly]
             get => _vehicles;
             set => Set(ref _vehicles, value);
         }
@@ -35,6 +37,7 @@ namespace BattleFieldTracker.ViewModels
 
         public bool DownloadFinished
         {
+            [UsedImplicitly]
             get => _downloadFinished;
             set => Set(ref _downloadFinished, value);
         }
@@ -54,6 +57,7 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectVehicleStats root)
         {
+            // If errors occured
             if (root == null)
             {
                 return;

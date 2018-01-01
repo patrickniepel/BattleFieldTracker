@@ -1,10 +1,14 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Commands;
 using BattleFieldTracker.Download;
 
 namespace BattleFieldTracker.ViewModels
 {
+    /// <summary>
+    /// Container for all viewmodels that holds data context
+    /// </summary>
     public class ViewModelContainer : BaseViewModelValidation
     {
         private PlayerStatsViewModel _playerStatsViewModel;
@@ -19,36 +23,42 @@ namespace BattleFieldTracker.ViewModels
 
         public PlayerStatsViewModel PlayerStatsViewModel
         {
+            [UsedImplicitly]
             get => _playerStatsViewModel;
             set => Set(ref _playerStatsViewModel, value);
         }
 
         public WeaponStatsViewModel WeaponStatsViewModel
         {
+            [UsedImplicitly]
             get => _weaponStatsViewModel;
             set => Set(ref _weaponStatsViewModel, value);
         }
 
         public VehicleStatsViewModel VehicleStatsViewModel
         {
+            [UsedImplicitly]
             get => _vehicleStatsViewModel;
             set => Set(ref _vehicleStatsViewModel, value);
         }
         
         public DogTagStatsViewModel DogTagStatsViewModel
         {
+            [UsedImplicitly]
             get => _dogTagStatsViewModel;
             set => Set(ref _dogTagStatsViewModel, value);
         }
 
         public MedalStatsViewModel MedalStatsViewModel
         {
+            [UsedImplicitly]
             get => _medalStatsViewModel;
             set => Set(ref _medalStatsViewModel, value);
         }
 
         public DetailStatsViewModel DetailStatsViewModel
         {
+            [UsedImplicitly]
             get => _detailStatsViewModel;
             set => Set(ref _detailStatsViewModel, value);
         }
@@ -56,6 +66,7 @@ namespace BattleFieldTracker.ViewModels
         public string PlayerName
         {
             get => _playerName;
+            [UsedImplicitly]
             set
             {
                 Set(IsPlayerNameValid, ref _playerName, value);
@@ -65,11 +76,12 @@ namespace BattleFieldTracker.ViewModels
 
         public bool IsDownloading
         {
+            [UsedImplicitly]
             get => _isDownloading;
             set => Set(ref _isDownloading, value);
         }
 
-        public DelegateCommand SearchCommand { get; set; }
+        public DelegateCommand SearchCommand { get; [UsedImplicitly] set; }
 
         public ViewModelContainer()
         {

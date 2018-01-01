@@ -4,18 +4,18 @@ using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
 {
+    /// <summary>
+    /// Models for the dogtag stats
+    /// </summary>
+
     [UsedImplicitly]
     public class ProgressionDogTagStats
     {
         public bool Unlocked { get; set; }
-        public double ValueAcquired { get; set; }
-        public double ValueNeeded { get; set; }
     }
 
     public class DogtagDogTagStats : IComparable<DogtagDogTagStats>
     {
-        //public string Category { get; set; }
-        //public string Description { get; set; }
         public bool Equipped { get; set; }
         public string Name { get; set; }
         public ProgressionDogTagStats Progression { get; set; }
@@ -37,11 +37,9 @@ namespace BattleFieldTracker.DownloadModels
 
         private void SetCorrectImageUrl()
         {
-            var correctUrl = "";
-
             //urls begin with '[BB_Prefix]'
 
-            correctUrl = BbPrefix + _imageUrl.Substring(11);
+            string correctUrl = BbPrefix + _imageUrl.Substring(11);
 
             CorrectImageUrl = correctUrl;
         }
@@ -67,7 +65,6 @@ namespace BattleFieldTracker.DownloadModels
     [UsedImplicitly]
     public class RootObjectDogTagStats
     {
-        //public bool Successful { get; set; }
         public List<ResultDogTagStats> Result { get; [UsedImplicitly] set; }
     }
 }

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Commands;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
@@ -17,7 +16,7 @@ namespace BattleFieldTracker.ViewModels
         private string _filterText;
         private bool _downloadFinished;
 
-        public DelegateCommand ClearFilterCommand { get; set; }
+        public DelegateCommand ClearFilterCommand { [UsedImplicitly] get; [UsedImplicitly] set; }
 
         public string FilterText
         {
@@ -31,12 +30,14 @@ namespace BattleFieldTracker.ViewModels
 
         public ObservableCollection<ResultMedalStats> Medals
         {
+            [UsedImplicitly]
             get => _medals;
             set => Set(ref _medals, value);
         }
 
         public bool DownloadFinished
         {
+            [UsedImplicitly]
             get => _downloadFinished;
             set => Set(ref _downloadFinished, value);
         }
@@ -56,6 +57,7 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectMedalStats root)
         {
+            // If errors occured
             if (root == null)
             {
                 return;

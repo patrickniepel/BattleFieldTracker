@@ -2,6 +2,9 @@
 
 namespace BattleFieldTracker.Download
 {
+    /// <summary>
+    /// Counts the finished downloads and informs view to show the layout
+    /// </summary>
     public class DownloadCounter
     {
         public static readonly DownloadCounter SharedInstance = new DownloadCounter();
@@ -10,9 +13,14 @@ namespace BattleFieldTracker.Download
 
         private int _numberOfStatsToDownload;
 
+        /// <summary>
+        /// Decreases variable when a download has finished
+        /// </summary>
         public int NumberOfStatsToDownload
         {
             get => _numberOfStatsToDownload;
+
+            // ReSharper disable once ValueParameterNotUsed (not needed)
             set
             {
                 _numberOfStatsToDownload--;

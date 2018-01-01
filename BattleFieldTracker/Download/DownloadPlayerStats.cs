@@ -1,12 +1,12 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
-using BattleFieldTracker.Annotations;
 using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.Download
 {
+    /// <summary>
+    /// Handles the download of the player stats
+    /// </summary>
     public class DownloadPlayerStats : BaseDownload
     {
         public DownloadPlayerStats()
@@ -17,8 +17,11 @@ namespace BattleFieldTracker.Download
         public RootObjectPlayerStats GetDownloadData(string playerName)
         {
             DownloadData(playerName).Wait();
+
+            // Decrease download counter
             DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
 
+            // Check for errors
             if (Validation.SharedInstance.IsError)
             {
                 return null;
@@ -38,10 +41,11 @@ namespace BattleFieldTracker.Download
 
                 using (var response = await httpClient.GetAsync(ContentAddress + playerName).ConfigureAwait(false))
                 {
-                        Validation.SharedInstance.ValidateDownload(response);
+                    // Validate the reponse from the server
+                    Validation.SharedInstance.ValidateDownload(response);
                     
-                        string responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                        Response = responseData;
+                    string responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    Response = responseData;
                 }
             }
         }

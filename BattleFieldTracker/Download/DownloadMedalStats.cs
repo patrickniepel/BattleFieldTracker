@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.Download
 {
+    /// <summary>
+    /// Handles the download of the medal stats
+    /// </summary>
     public class DownloadMedalStats : BaseDownload
     {
         public DownloadMedalStats()
@@ -19,8 +18,11 @@ namespace BattleFieldTracker.Download
         public RootObjectMedalStats GetDownloadData(string playerName)
         {
             DownloadData(playerName).Wait();
+
+            // Decrease download counter
             DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
 
+            // Check for errors
             if (Validation.SharedInstance.IsError)
             {
                 return null;

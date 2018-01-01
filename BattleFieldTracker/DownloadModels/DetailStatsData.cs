@@ -3,6 +3,11 @@ using BattleFieldTracker.Annotations;
 
 namespace BattleFieldTracker.DownloadModels
 {
+    /// <summary>
+    /// Models for the detail stats
+    /// </summary>
+
+    [UsedImplicitly]
     public class GameModeStatDetailStats
     {
         public string Name { get; set; }
@@ -12,6 +17,7 @@ namespace BattleFieldTracker.DownloadModels
         public double WinLossRatio { get; set; }
     }
 
+    [UsedImplicitly]
     public class KitStatDetailStats
     {
         public float Kills { get; set; }
@@ -20,6 +26,7 @@ namespace BattleFieldTracker.DownloadModels
         public double SecondsAs { get; set; }
     }
 
+    [UsedImplicitly]
     public class VehicleStatDetailStats
     {
         public float KillsAs { get; set; }
@@ -57,7 +64,6 @@ namespace BattleFieldTracker.DownloadModels
 
     public class RootObjectDetailStats
     {
-        //public bool Successful { get; set; }
         public ResultDetailStats Result { get; [UsedImplicitly] set; }
     }
 }

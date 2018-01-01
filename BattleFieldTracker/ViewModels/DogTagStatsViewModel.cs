@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Commands;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
@@ -15,7 +16,7 @@ namespace BattleFieldTracker.ViewModels
         private string _filterText;
         private bool _downloadFinished;
 
-        public DelegateCommand ClearFilterCommand { get; set; }
+        public DelegateCommand ClearFilterCommand { get; [UsedImplicitly] set; }
 
         public string FilterText
         {
@@ -29,12 +30,14 @@ namespace BattleFieldTracker.ViewModels
 
         public ObservableCollection<ResultDogTagStats> DogTags
         {
+            [UsedImplicitly]
             get => _dogTags;
             set => Set(ref _dogTags, value);
         }
 
         public bool DownloadFinished
         {
+            [UsedImplicitly]
             get => _downloadFinished;
             set => Set(ref _downloadFinished, value);
         }
@@ -54,6 +57,7 @@ namespace BattleFieldTracker.ViewModels
 
         private void ApplyData(RootObjectDogTagStats root)
         {
+            // If errors occured
             if (root == null)
             {
                 return;

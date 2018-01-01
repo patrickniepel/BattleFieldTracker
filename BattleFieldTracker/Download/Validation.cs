@@ -3,6 +3,9 @@ using System.Net.Http;
 
 namespace BattleFieldTracker.Download
 {
+    /// <summary>
+    /// Validates the first response of the server
+    /// </summary>
     public class Validation
     {
         public static readonly Validation SharedInstance = new Validation();

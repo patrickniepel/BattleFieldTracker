@@ -4,6 +4,9 @@ using BattleFieldTracker.DownloadModels;
 
 namespace BattleFieldTracker.Download
 {
+    /// <summary>
+    /// Handles the download of the vehicles stats
+    /// </summary>
     public class DownloadVehicleStats : BaseDownload
     {
         public DownloadVehicleStats()
@@ -14,8 +17,11 @@ namespace BattleFieldTracker.Download
         public RootObjectVehicleStats GetDownloadData(string playerName)
         {
             DownloadData(playerName).Wait();
+
+            // Decrease download counter
             DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
 
+            // Check for errors
             if (Validation.SharedInstance.IsError)
             {
                 return null;
