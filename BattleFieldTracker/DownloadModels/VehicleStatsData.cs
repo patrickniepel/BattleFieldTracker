@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BattleFieldTracker.Annotations;
+using BattleFieldTracker.Helper;
 
 namespace BattleFieldTracker.DownloadModels
 {
@@ -23,28 +24,13 @@ namespace BattleFieldTracker.DownloadModels
     {
         public StatsVehicleStats Stats { get; set; }
         public string Name { get; set; }       
-
-        private const string BbPrefix = "https://eaassets-a.akamaihd.net/battlelog/battlebinary";
-        public string CorrectImageUrl { get; set; }
         private string _imageUrl;
+
         [UsedImplicitly]
         public string ImageUrl
         {
             get => _imageUrl;
-            set
-            {
-                _imageUrl = value;
-                SetCorrectImageUrl();
-            }
-        }
-
-        private void SetCorrectImageUrl()
-        {
-            //urls begin with '[BB_Prefix]'
-
-            string correctUrl = BbPrefix + _imageUrl.Substring(11);
-
-            CorrectImageUrl = correctUrl;
+            set => _imageUrl = new ImageUrlGenerator().SetCorrectImageUrl(value); 
         }
 
         public int CompareTo(VehicleVehicleStats other)

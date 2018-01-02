@@ -2,6 +2,7 @@
 using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
+using BattleFieldTracker.Helper;
 
 namespace BattleFieldTracker.ViewModels
 {
@@ -166,7 +167,6 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadPlayerStats();
             RootObjectPlayerStats root = download.GetDownloadData(playerName);
             ApplyData(root);
-            DownloadFinished = true;
         }
 
         private void ApplyData(RootObjectPlayerStats root)
@@ -181,7 +181,7 @@ namespace BattleFieldTracker.ViewModels
             var stats = root.Result.GameStats.Tunguska;
             
             DisplayName = root.Profile.DisplayName;
-            RankImage = root.BbPrefix + GetCorrectImageUrl(stats.Rank.ImageUrl);
+            RankImage = new ImageUrlGenerator().SetCorrectImageUrl(stats.Rank.ImageUrl);
             Rank = stats.Rank.Number;
             RankName = stats.Rank.Name;
             CurrentXp = stats.RankProgress.Current;
@@ -199,15 +199,9 @@ namespace BattleFieldTracker.ViewModels
             TopVehicle = highlights.Vehicle[0].Name;
             TopPrimary = highlights.Primary[0].Name;
             TopSecondary = highlights.Sidearm[0].Name;
-        }
 
-        private string GetCorrectImageUrl(string url)
-        {
-            //urls begin with '[BB_Prefix]'
-
-            string correctUrl = url.Substring(11);
-
-            return correctUrl;
+            // Download comleted withour errors
+            DownloadFinished = true;
         }
     }
 }

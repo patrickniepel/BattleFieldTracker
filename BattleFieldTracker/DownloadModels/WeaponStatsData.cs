@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BattleFieldTracker.Annotations;
+using BattleFieldTracker.Helper;
 
 namespace BattleFieldTracker.DownloadModels
 {
@@ -26,32 +27,15 @@ namespace BattleFieldTracker.DownloadModels
         public string Price
         {
             get => _price;
-            set => _price = value.Equals("-1") ? "Not Unlockable" : value;
+            set => _price = value.Equals("-1") ? "Locked" : value;
         }
-
-        public string CorrectImageUrl { get; set; }
-
-        private const string BbPrefix = "https://eaassets-a.akamaihd.net/battlelog/battlebinary";
-
         private string _imageUrl;
+
         [UsedImplicitly]
         public string ImageUrl
         {
             get => _imageUrl;
-            set
-            {
-                _imageUrl = value;
-                SetCorrectImageUrl();
-            }
-        }
-
-        private void SetCorrectImageUrl()
-        {
-            //urls begin with '[BB_Prefix]'
-
-            string correctUrl = BbPrefix + _imageUrl.Substring(11);
-
-            CorrectImageUrl = correctUrl;
+            set => _imageUrl = new ImageUrlGenerator().SetCorrectImageUrl(value); 
         }
 
         public int CompareTo(WeaponWeaponStats other)

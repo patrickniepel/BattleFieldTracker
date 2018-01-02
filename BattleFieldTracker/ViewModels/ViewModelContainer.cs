@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Commands;
 using BattleFieldTracker.Download;
@@ -9,8 +8,10 @@ namespace BattleFieldTracker.ViewModels
     /// <summary>
     /// Container for all viewmodels that holds data context
     /// </summary>
-    public class ViewModelContainer : BaseViewModelValidation
+    public class ViewModelContainer : BaseViewModel
     {
+        #region Private Members
+
         private PlayerStatsViewModel _playerStatsViewModel;
         private WeaponStatsViewModel _weaponStatsViewModel;
         private VehicleStatsViewModel _vehicleStatsViewModel;
@@ -20,6 +21,10 @@ namespace BattleFieldTracker.ViewModels
 
         private string _playerName;
         private bool _isDownloading;
+
+        #endregion
+
+        #region Public Members
 
         public PlayerStatsViewModel PlayerStatsViewModel
         {
@@ -41,7 +46,7 @@ namespace BattleFieldTracker.ViewModels
             get => _vehicleStatsViewModel;
             set => Set(ref _vehicleStatsViewModel, value);
         }
-        
+
         public DogTagStatsViewModel DogTagStatsViewModel
         {
             [UsedImplicitly]
@@ -67,11 +72,7 @@ namespace BattleFieldTracker.ViewModels
         {
             get => _playerName;
             [UsedImplicitly]
-            set
-            {
-                Set(IsPlayerNameValid, ref _playerName, value);
-                SearchCommand.RaiseCanExecuteChanged();
-            } 
+            set => Set(ref _playerName, value);
         }
 
         public bool IsDownloading
@@ -81,7 +82,9 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _isDownloading, value);
         }
 
-        public DelegateCommand SearchCommand { get; [UsedImplicitly] set; }
+        public DelegateCommand SearchCommand { [UsedImplicitly] get; [UsedImplicitly] set; }
+
+        #endregion
 
         public ViewModelContainer()
         {
@@ -111,12 +114,6 @@ namespace BattleFieldTracker.ViewModels
             await Task.Run(() => _vehicleStatsViewModel.DownloadVehicleStats(PlayerName));
             await Task.Run(() => _dogTagStatsViewModel.DownloadDogTagStats(PlayerName));
             await Task.Run(() => _medalStatsViewModel.DownloadMedalStats(PlayerName));
-        }
-
-        private bool IsPlayerNameValid(string playerName, [CallerMemberName] string propertyName = null)
-        {
-            string error = "Es muss ein gültiger Name eingegeben werden.";
-            return SetError(() => !string.IsNullOrWhiteSpace(playerName), propertyName, error);
         }
 
         private void HideProgressBar()

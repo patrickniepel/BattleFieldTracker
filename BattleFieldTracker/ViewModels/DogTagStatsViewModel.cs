@@ -11,10 +11,16 @@ namespace BattleFieldTracker.ViewModels
 {
     public class DogTagStatsViewModel : BaseViewModel
     {
+        #region Private Members
+
         private List<ResultDogTagStats> _allDogTags;
         private ObservableCollection<ResultDogTagStats> _dogTags;
         private string _filterText;
         private bool _downloadFinished;
+
+        #endregion
+
+        #region Public Members
 
         public DelegateCommand ClearFilterCommand { get; [UsedImplicitly] set; }
 
@@ -42,6 +48,8 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _downloadFinished, value);
         }
 
+        #endregion
+
         public DogTagStatsViewModel()
         {
             ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);
@@ -52,7 +60,6 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadDogTagStats();
             RootObjectDogTagStats root = download.GetDownloadData(playerName);
             ApplyData(root);
-            DownloadFinished = true;
         }
 
         private void ApplyData(RootObjectDogTagStats root)
@@ -66,6 +73,9 @@ namespace BattleFieldTracker.ViewModels
             List<ResultDogTagStats> dogTags = root.Result;
             _allDogTags = dogTags;
             DogTags = new ObservableCollection<ResultDogTagStats>(_allDogTags);
+
+            // Download completed without errors
+            DownloadFinished = true;
         }
 
         private void Filter()

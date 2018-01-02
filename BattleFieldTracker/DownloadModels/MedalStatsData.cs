@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BattleFieldTracker.Annotations;
+using BattleFieldTracker.Helper;
 
 namespace BattleFieldTracker.DownloadModels
 {
@@ -11,7 +12,20 @@ namespace BattleFieldTracker.DownloadModels
     [UsedImplicitly]
     public class ProgressionMedalStats
     {
-        public bool Unlocked { get; set; }
+        private bool _unlocked;
+
+        [UsedImplicitly]
+        public bool Unlocked
+        {
+            get => _unlocked;
+            set
+            {
+                _unlocked = value;
+                UnlockedString = new BooleanToStringConverter().ConvertToString(_unlocked);
+            }
+        }
+
+        public string UnlockedString { get; set; }
     }
 
     public class AwardMedalStats : IComparable<AwardMedalStats>
@@ -19,28 +33,13 @@ namespace BattleFieldTracker.DownloadModels
         public string Description { get; set; }
         public string Name { get; set; }
         public ProgressionMedalStats Progression { get; set; }
-
-        private const string BbPrefix = "https://eaassets-a.akamaihd.net/battlelog/battlebinary";
-        public string CorrectImageUrl { get; set; }
         private string _imageUrl;
+
         [UsedImplicitly]
         public string ImageUrl
         {
             get => _imageUrl;
-            set
-            {
-                _imageUrl = value;
-                SetCorrectImageUrl();
-            }
-        }
-
-        private void SetCorrectImageUrl()
-        {
-            //urls begin with '[BB_Prefix]'
-
-            string correctUrl = BbPrefix + _imageUrl.Substring(11);
-
-            CorrectImageUrl = correctUrl;
+            set => _imageUrl = new ImageUrlGenerator().SetCorrectImageUrl(value);
         }
 
         public int CompareTo(AwardMedalStats other)

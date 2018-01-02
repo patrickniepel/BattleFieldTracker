@@ -22,10 +22,14 @@ namespace BattleFieldTracker.Download
                 IsError = true;
                 ErrorMessage = "Spieler konnte nicht gefunden werden";
             }
-            if (response.StatusCode == HttpStatusCode.InternalServerError)
+            else if (response.StatusCode == HttpStatusCode.InternalServerError)
             {
                 IsError = true;
                 ErrorMessage = "Server Error";
+            }
+            else
+            {
+                IsError = false;
             }
         }
     }

@@ -11,10 +11,16 @@ namespace BattleFieldTracker.ViewModels
 {
     public class MedalStatsViewModel : BaseViewModel
     {
+        #region Private Members
+
         private List<ResultMedalStats> _allMedals;
         private ObservableCollection<ResultMedalStats> _medals;
         private string _filterText;
         private bool _downloadFinished;
+
+        #endregion
+
+        #region Public Members
 
         public DelegateCommand ClearFilterCommand { [UsedImplicitly] get; [UsedImplicitly] set; }
 
@@ -42,6 +48,8 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _downloadFinished, value);
         }
 
+        #endregion
+
         public MedalStatsViewModel()
         {
             ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);
@@ -52,7 +60,6 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadMedalStats();
             RootObjectMedalStats root = download.GetDownloadData(playerName);
             ApplyData(root);
-            DownloadFinished = true;
         }
 
         private void ApplyData(RootObjectMedalStats root)
@@ -66,6 +73,9 @@ namespace BattleFieldTracker.ViewModels
             List<ResultMedalStats> medals = root.Result;
             _allMedals = medals;
             Medals = new ObservableCollection<ResultMedalStats>(_allMedals);
+
+            // Download completed without errors
+            DownloadFinished = true;
         }
 
         private void Filter()

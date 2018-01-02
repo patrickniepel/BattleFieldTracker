@@ -11,10 +11,16 @@ namespace BattleFieldTracker.ViewModels
 {
     public class VehicleStatsViewModel : BaseViewModel
     {
+        #region Private Members
+
         private List<ResultVehicleStats> _allVehicles;
         private ObservableCollection<ResultVehicleStats> _vehicles;
         private bool _downloadFinished;
         private string _filterText;
+
+        #endregion
+
+        #region Public Members
 
         public DelegateCommand ClearFilterCommand { [UsedImplicitly] get; [UsedImplicitly] set; }
 
@@ -42,6 +48,8 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _downloadFinished, value);
         }
 
+        #endregion
+
         public VehicleStatsViewModel()
         {
             ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);
@@ -52,7 +60,6 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadVehicleStats();
             RootObjectVehicleStats root = download.GetDownloadData(playerName);
             ApplyData(root);
-            DownloadFinished = true;
         }
 
         private void ApplyData(RootObjectVehicleStats root)
@@ -66,6 +73,9 @@ namespace BattleFieldTracker.ViewModels
             List<ResultVehicleStats> vehicles = root.Result;
             _allVehicles = vehicles;
             Vehicles = new ObservableCollection<ResultVehicleStats>(_allVehicles);
+
+            // Download completed without errors
+            DownloadFinished = true;
         }
 
         private void Filter()

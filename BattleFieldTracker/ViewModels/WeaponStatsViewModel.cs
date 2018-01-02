@@ -11,16 +11,23 @@ namespace BattleFieldTracker.ViewModels
 {
     public class WeaponStatsViewModel : BaseViewModel
     {
+        #region Private Members
+
         private List<ResultWeaponStats> _allWeapons;
         private ObservableCollection<ResultWeaponStats> _weapons;
         private bool _downloadFinished;
         private string _filterText;
 
+        #endregion
+
+        #region Public Members
+
         public DelegateCommand ClearFilterCommand { [UsedImplicitly] get; [UsedImplicitly] set; }
 
         public string FilterText
         {
-            [UsedImplicitly] get => _filterText;
+            [UsedImplicitly]
+            get => _filterText;
             set
             {
                 Set(ref _filterText, value);
@@ -30,15 +37,19 @@ namespace BattleFieldTracker.ViewModels
 
         public ObservableCollection<ResultWeaponStats> Weapons
         {
-            [UsedImplicitly] get => _weapons;
+            [UsedImplicitly]
+            get => _weapons;
             set => Set(ref _weapons, value);
         }
 
         public bool DownloadFinished
         {
-            [UsedImplicitly] get => _downloadFinished;
+            [UsedImplicitly]
+            get => _downloadFinished;
             set => Set(ref _downloadFinished, value);
         }
+
+        #endregion
 
         public WeaponStatsViewModel()
         {
@@ -50,7 +61,6 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadWeaponStats();
             RootObjectWeaponStats root = download.GetDownloadData(playerName);
             ApplyData(root);
-            DownloadFinished = true;
         }
 
         private void ApplyData(RootObjectWeaponStats root)
@@ -63,6 +73,9 @@ namespace BattleFieldTracker.ViewModels
             List<ResultWeaponStats> weapons = root.Result;
             _allWeapons = weapons;
             Weapons = new ObservableCollection<ResultWeaponStats>(_allWeapons);
+
+            // Download completed without errors
+            DownloadFinished = true;
         }
 
         private void Filter()

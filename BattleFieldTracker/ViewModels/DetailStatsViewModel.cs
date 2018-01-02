@@ -215,7 +215,6 @@ namespace BattleFieldTracker.ViewModels
             var download = new DownloadDetailStats();
             RootObjectDetailStats root = download.GetDownloadData(playerName);
             ApplyData(root);
-            DownloadFinished = true;
         }
 
         private void ApplyData(RootObjectDetailStats root)
@@ -251,6 +250,9 @@ namespace BattleFieldTracker.ViewModels
             SquadScore = results.SquadScore;
             SuppressionAssists = results.SuppressionAssist;
             VehicleStats = results.VehicleStats;
+
+            // Download completed without errors
+            DownloadFinished = true;
         }
     }
 }

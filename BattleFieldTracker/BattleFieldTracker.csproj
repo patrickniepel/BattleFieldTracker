@@ -75,9 +75,10 @@
     <Compile Include="Download\DownloadDogTagStats.cs" />
     <Compile Include="Download\DownloadMedalStats.cs" />
     <Compile Include="Download\Validation.cs" />
+    <Compile Include="Helper\ImageUrlGenerator.cs" />
+    <Compile Include="Helper\BooleanToStringConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\BaseViewModelValidation.cs" />
     <Compile Include="ViewModels\DetailStatsViewModel.cs" />
     <Compile Include="ViewModels\DogTagStatsViewModel.cs" />
     <Compile Include="ViewModels\MedalStatsViewModel.cs" />

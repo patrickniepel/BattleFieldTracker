@@ -12,7 +12,6 @@ namespace BattleFieldTracker.Download
         public DownloadDogTagStats()
         {
             ContentAddress = "Progression/GetDogtags?platform=3&displayName=";
-
         }
 
         public RootObjectDogTagStats GetDownloadData(string playerName)
