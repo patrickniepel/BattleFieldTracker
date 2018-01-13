@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
@@ -192,7 +193,8 @@ namespace BattleFieldTracker.ViewModels
             Losses = stats.Losses;
             Spm = (int)stats.Spm;
             Kpm = (int)stats.Kpm;
-            TimePlayed = stats.TimePlayed / 3600; //Hours
+            TimePlayed = Math.Round(stats.TimePlayed / 3600, 1); //Hours
+            
 
             var highlights = stats.HighlightsByType;
             TopClass = highlights.Kit[0].KitId;

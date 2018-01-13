@@ -9,7 +9,13 @@ namespace BattleFieldTracker.DownloadModels
     public class ValuesWeaponStats
     {
         public float Kills { get; set; }
-        public double Seconds { get; set; }
+
+        private double _seconds;
+        public double Seconds
+        {
+            get => _seconds;
+            set => _seconds = Math.Round(value / 60); 
+        }
     }
 
     [UsedImplicitly]

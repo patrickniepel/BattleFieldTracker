@@ -395,7 +395,7 @@
                                             VerticalAlignment="Center"
                                             FontSize="{StaticResource FontSizeMega}"
                                             Foreground="{StaticResource FontColorTitle}"
-                                            Text="Time"
+                                            Text="Time (h)"
                                             TextAlignment="Center" />
                                         <TextBlock
                                             Margin="0,30,0,0"
@@ -1083,13 +1083,13 @@
                                         Text="Score"
                                         TextAlignment="Center" />
 
-                                    <!--  Seconds As  -->
+                                    <!--  Minutes As  -->
                                     <TextBlock
                                         Grid.Column="3"
                                         Background="{StaticResource BackgroundColorHeader}"
                                         FontSize="{StaticResource FontSizeNormal}"
                                         Foreground="{StaticResource FontColor}"
-                                        Text="Seconds As"
+                                        Text="Minutes As"
                                         TextAlignment="Center" />
                                 </Grid>
 
@@ -1197,7 +1197,7 @@
                                         Background="{StaticResource BackgroundColorHeader}"
                                         FontSize="{StaticResource FontSizeNormal}"
                                         Foreground="{StaticResource FontColor}"
-                                        Text="Time spent"
+                                        Text="Time spent (min)"
                                         TextAlignment="Center" />
                                 </Grid>
 
@@ -1482,14 +1482,14 @@
                                         Text="Kills"
                                         TextAlignment="Center" />
 
-                                    <!--  Seconds  -->
+                                    <!--  Minutes  -->
                                     <TextBlock
                                         Grid.Column="3"
                                         Padding="0,2,0,2"
                                         Background="{StaticResource BackgroundColorHeader}"
                                         FontSize="{StaticResource FontSizeNormal}"
                                         Foreground="{StaticResource FontColor}"
-                                        Text="Seconds"
+                                        Text="Minutes"
                                         TextAlignment="Center" />
 
                                     <!--  Price  -->
@@ -1699,14 +1699,14 @@
                                         Text="Kills"
                                         TextAlignment="Center" />
 
-                                    <!--  Seconds  -->
+                                    <!--  Minutes  -->
                                     <TextBlock
                                         Grid.Column="3"
                                         Padding="0,2,0,2"
                                         Background="{StaticResource BackgroundColorHeader}"
                                         FontSize="{StaticResource FontSizeNormal}"
                                         Foreground="{StaticResource FontColor}"
-                                        Text="Seconds"
+                                        Text="Minutes"
                                         TextAlignment="Center" />
 
                                     <!--  Destroyed  -->

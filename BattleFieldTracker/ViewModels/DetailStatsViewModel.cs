@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
@@ -227,7 +228,7 @@ namespace BattleFieldTracker.ViewModels
 
             ResultDetailStats results = root.Result;
 
-            AccuracyRatio = results.AccuracyRatio;
+            AccuracyRatio = Math.Round(results.AccuracyRatio, 2);
             AvengerKills = results.AvengerKills;
             AwardScore = results.AwardScore;
             DogtagsTaken = results.DogtagsTaken;
