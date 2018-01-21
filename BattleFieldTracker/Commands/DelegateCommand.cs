@@ -44,13 +44,5 @@ namespace BattleFieldTracker.Commands
         {
             _execute(parameter);
         }
-
-        /// <summary>
-        ///     Checks again if command can be executed
-        /// </summary>
-        public void RaiseCanExecuteChanged()
-        {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-        }
     }
 }

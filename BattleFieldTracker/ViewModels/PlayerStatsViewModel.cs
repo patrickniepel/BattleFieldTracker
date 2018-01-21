@@ -202,7 +202,7 @@ namespace BattleFieldTracker.ViewModels
             TopPrimary = highlights.Primary[0].Name;
             TopSecondary = highlights.Sidearm[0].Name;
 
-            // Download comleted withour errors
+            // Download completed withour errors
             DownloadFinished = true;
         }
     }

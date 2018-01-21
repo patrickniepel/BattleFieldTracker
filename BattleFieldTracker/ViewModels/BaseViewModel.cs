@@ -18,7 +18,7 @@ namespace BattleFieldTracker.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected virtual void Set<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
+        protected void Set<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
         {
             if ((object) field == (object) value)
                 return;

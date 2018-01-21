@@ -1,13 +1,11 @@
-﻿using System.Windows;
-using BattleFieldTracker.ViewModels;
-using MahApps.Metro.Controls;
+﻿using BattleFieldTracker.ViewModels;
 
 namespace BattleFieldTracker
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow
     {
 
         public MainWindow()

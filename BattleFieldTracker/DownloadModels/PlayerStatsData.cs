@@ -93,6 +93,5 @@ namespace BattleFieldTracker.DownloadModels
     {
         public Result Result { get; [UsedImplicitly] set; }
         public Profile Profile { get; [UsedImplicitly] set; }
-        public string BbPrefix { get; [UsedImplicitly] set; }
     }
 }
