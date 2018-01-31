@@ -15,12 +15,9 @@ namespace BattleFieldTracker.Download
 
         }
 
-        public RootObjectMedalStats GetDownloadData(string playerName)
+        public async Task<RootObjectMedalStats> GetDownloadData(string playerName)
         {
-            DownloadData(playerName).Wait();
-
-            // Decrease download counter
-            DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
+            await DownloadData(playerName);
 
             // Check for errors
             if (Validation.SharedInstance.IsError)

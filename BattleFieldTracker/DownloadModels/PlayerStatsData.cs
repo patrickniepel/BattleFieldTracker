@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BattleFieldTracker.Annotations;
+using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.DownloadModels
 {

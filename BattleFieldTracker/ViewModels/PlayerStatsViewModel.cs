@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
-using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
 using BattleFieldTracker.Helper;
+using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.ViewModels
 {
@@ -163,10 +164,10 @@ namespace BattleFieldTracker.ViewModels
 
         #endregion
 
-        public void DownloadPlayerStats(string playerName)
+        public async Task DownloadPlayerStats(string playerName)
         {
             var download = new DownloadPlayerStats();
-            RootObjectPlayerStats root = download.GetDownloadData(playerName);
+            RootObjectPlayerStats root = await download.GetDownloadData(playerName);
             ApplyData(root);
         }
 

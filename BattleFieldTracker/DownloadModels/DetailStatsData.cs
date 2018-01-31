@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleFieldTracker.Annotations;
+using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.DownloadModels
 {
@@ -68,7 +68,7 @@ namespace BattleFieldTracker.DownloadModels
         public List<GameModeStatDetailStats> GameModeStats { get; [UsedImplicitly] set; }
         public int HeadShots { get; [UsedImplicitly] set; }
         public float Heals { get; [UsedImplicitly] set; }
-        public int HighestKillStreak { get; [UsedImplicitly] set; }
+        public int HighestKillStreak { get; set; }
         public double Kdr { get; [UsedImplicitly] set; }
         public float KillAssists { get; [UsedImplicitly] set; }
         public List<KitStatDetailStats> KitStats { get; [UsedImplicitly] set; }

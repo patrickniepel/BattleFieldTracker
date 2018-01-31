@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using BattleFieldTracker.Annotations;
+using System.Threading.Tasks;
 using BattleFieldTracker.Commands;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
+using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.ViewModels
 {
@@ -56,10 +57,10 @@ namespace BattleFieldTracker.ViewModels
             ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);   
         }
 
-        public void DownloadWeaponStats(string playerName)
+        public async Task DownloadWeaponStats(string playerName)
         {
             var download = new DownloadWeaponStats();
-            RootObjectWeaponStats root = download.GetDownloadData(playerName);
+            RootObjectWeaponStats root = await download.GetDownloadData(playerName);
             ApplyData(root);
         }
 

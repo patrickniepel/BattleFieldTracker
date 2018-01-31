@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Commands;
-using BattleFieldTracker.Download;
+using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.ViewModels
 {
@@ -96,8 +95,6 @@ namespace BattleFieldTracker.ViewModels
             DetailStatsViewModel = new DetailStatsViewModel();
             
             SearchCommand = new DelegateCommand(SearchCommandExecute);
-
-            DownloadCounter.SharedInstance.DownloadFinished += HideProgressBar;
         }
 
         private void SearchCommandExecute(object obj)
@@ -108,16 +105,13 @@ namespace BattleFieldTracker.ViewModels
 
         private async void StartDownload()
         {
-            await Task.Run(() => _playerStatsViewModel.DownloadPlayerStats(PlayerName));
-            await Task.Run(() => _detailStatsViewModel.DownloadDetailStats(PlayerName));
-            await Task.Run(() => _weaponStatsViewModel.DownloadWeaponStats(PlayerName));
-            await Task.Run(() => _vehicleStatsViewModel.DownloadVehicleStats(PlayerName));
-            await Task.Run(() => _dogTagStatsViewModel.DownloadDogTagStats(PlayerName));
-            await Task.Run(() => _medalStatsViewModel.DownloadMedalStats(PlayerName));
-        }
-
-        private void HideProgressBar()
-        {
+            IsDownloading = true;
+            await _playerStatsViewModel.DownloadPlayerStats(PlayerName);
+            await _detailStatsViewModel.DownloadDetailStats(PlayerName);
+            await _weaponStatsViewModel.DownloadWeaponStats(PlayerName);
+            await _vehicleStatsViewModel.DownloadVehicleStats(PlayerName);
+            await _dogTagStatsViewModel.DownloadDogTagStats(PlayerName);
+            await _medalStatsViewModel.DownloadMedalStats(PlayerName);
             IsDownloading = false;
         }
     }

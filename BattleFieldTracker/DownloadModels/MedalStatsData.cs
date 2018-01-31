@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleFieldTracker.Annotations;
 using BattleFieldTracker.Helper;
+using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.DownloadModels
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using BattleFieldTracker.Annotations;
+using BattleFieldTracker.Properties;
 
 
 namespace BattleFieldTracker.ViewModels

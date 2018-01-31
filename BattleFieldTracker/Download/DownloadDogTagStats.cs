@@ -14,12 +14,9 @@ namespace BattleFieldTracker.Download
             ContentAddress = "Progression/GetDogtags?platform=3&displayName=";
         }
 
-        public RootObjectDogTagStats GetDownloadData(string playerName)
+        public async Task<RootObjectDogTagStats> GetDownloadData(string playerName)
         {
-            DownloadData(playerName).Wait();
-
-            // Decrease download counter
-            DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
+            await DownloadData(playerName);
 
             // check for errors
             if (Validation.SharedInstance.IsError)

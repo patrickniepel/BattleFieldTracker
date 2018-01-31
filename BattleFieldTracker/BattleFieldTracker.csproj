@@ -70,7 +70,6 @@
     <Compile Include="DownloadModels\DetailStatsData.cs" />
     <Compile Include="DownloadModels\DogTatStatsData.cs" />
     <Compile Include="DownloadModels\MedalStatsData.cs" />
-    <Compile Include="Download\DownloadCounter.cs" />
     <Compile Include="Download\DownloadDetailStats.cs" />
     <Compile Include="Download\DownloadDogTagStats.cs" />
     <Compile Include="Download\DownloadMedalStats.cs" />

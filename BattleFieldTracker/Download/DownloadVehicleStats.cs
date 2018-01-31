@@ -14,12 +14,9 @@ namespace BattleFieldTracker.Download
             ContentAddress = "Progression/GetVehicles?platform=3&displayName=";
         }
 
-        public RootObjectVehicleStats GetDownloadData(string playerName)
+        public async Task<RootObjectVehicleStats> GetDownloadData(string playerName)
         {
-            DownloadData(playerName).Wait();
-
-            // Decrease download counter
-            DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
+            await DownloadData(playerName);
 
             // Check for errors
             if (Validation.SharedInstance.IsError)

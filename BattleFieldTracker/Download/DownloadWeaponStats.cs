@@ -14,12 +14,9 @@ namespace BattleFieldTracker.Download
             ContentAddress = "Progression/GetWeapons?platform=3&displayName=";
         }
 
-        public RootObjectWeaponStats GetDownloadData(string playerName)
+        public async Task<RootObjectWeaponStats> GetDownloadData(string playerName)
         {
-            DownloadData(playerName).Wait();
-
-            // Decrease download counter
-            DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
+            await DownloadData(playerName);
 
             // Check for errors
             if (Validation.SharedInstance.IsError)

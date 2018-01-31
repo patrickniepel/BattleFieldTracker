@@ -14,12 +14,9 @@ namespace BattleFieldTracker.Download
             ContentAddress = "Stats/DetailedStats?platform=3&displayName=";
         }
 
-        public RootObjectDetailStats GetDownloadData(string playerName)
+        public async Task<RootObjectDetailStats> GetDownloadData(string playerName)
         {
-            DownloadData(playerName).Wait();
-
-            // Decrease download counter
-            DownloadCounter.SharedInstance.NumberOfStatsToDownload--;
+            await DownloadData(playerName);
 
             // check for errors
             if (Validation.SharedInstance.IsError)
