@@ -9,12 +9,19 @@ namespace BattleFieldTracker.DownloadModels
     public class ValuesWeaponStats
     {
         public float Kills { get; set; }
+        public string TimeSpentString { get; set; }
 
         private double _seconds;
+
+        [UsedImplicitly]
         public double Seconds
         {
             get => _seconds;
-            set => _seconds = Math.Round(value / 60); 
+            set
+            {
+                _seconds = value;
+                TimeSpentString = new TimeSpentCalculator().GetTimeSpentString(_seconds);
+            }
         }
     }
 

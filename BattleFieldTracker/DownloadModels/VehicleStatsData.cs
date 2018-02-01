@@ -10,11 +10,16 @@ namespace BattleFieldTracker.DownloadModels
     public class ValuesVehicleStats
     {
         private double _seconds;
+        public string TimeSpentString { get; set; }
 
         public double Seconds
         {
             get => _seconds;
-            set => _seconds = Math.Round(value / 60);
+            set
+            {
+                _seconds = value;
+                TimeSpentString = new TimeSpentCalculator().GetTimeSpentString(_seconds);
+            }
         }
         public float Kills { get; set; }
         public float Destroyed { get; set; }

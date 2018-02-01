@@ -75,6 +75,7 @@
     <Compile Include="Download\DownloadMedalStats.cs" />
     <Compile Include="Helper\ImageUrlGenerator.cs" />
     <Compile Include="Helper\BooleanToStringConverter.cs" />
+    <Compile Include="Helper\TimeSpentCalculator.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DetailStatsViewModel.cs" />

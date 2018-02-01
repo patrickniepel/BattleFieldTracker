@@ -14,37 +14,27 @@ namespace BattleFieldTracker.DownloadModels
     {
         private bool _unlocked;
 
-        [UsedImplicitly]
         public bool Unlocked
         {
             get => _unlocked;
             set
             {
                 _unlocked = value;
-                UnlockedString = new BooleanToStringConverter().ConvertToString(_unlocked);
+                RowOpacity = _unlocked ? 1 : 0.5;
             }
         }
-        public string UnlockedString { get; set; }
+
+        public double RowOpacity { get; set; }
     }
 
     public class DogtagDogTagStats : IComparable<DogtagDogTagStats>
     {
-        private bool _equipped;
-        [UsedImplicitly]
-        public bool Equipped
-        {
-            get => _equipped;
-            set
-            {
-                _equipped = value;
-                EquippedString = new BooleanToStringConverter().ConvertToString(_equipped);
-            }
-        }
-        public string EquippedString { get; set; }
+        public bool Equipped { get; set; }
         public string Name { get; set; }
         public ProgressionDogTagStats Progression { get; set; }
         public int TimesTaken { get; set; }
         private string _imageUrl;
+        public string Description { get; set; }
 
         [UsedImplicitly]
         public string ImageUrl

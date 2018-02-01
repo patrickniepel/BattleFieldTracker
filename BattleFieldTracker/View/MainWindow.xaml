@@ -90,18 +90,16 @@
                         Foreground="{StaticResource FontColorTitle}"
                         OpacityMask="White" />
 
-                    <Label
+                    <TextBlock
                         Grid.Column="1"
                         Padding="0,0,20,0"
-                        HorizontalAlignment="Stretch"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        HorizontalContentAlignment="Right"
-                        BorderBrush="Black"
-                        Content="{Binding PlayerStatsViewModel.CurrentXp}"
                         FontFamily="Calibri"
-                        FontSize="{StaticResource FontSizeUltra}"
+                        FontSize="{StaticResource FontSizeMega}"
                         FontWeight="Bold"
-                        Foreground="{StaticResource FontColor}" />
+                        Foreground="{StaticResource FontColor}"
+                        Text="{Binding PlayerStatsViewModel.CurrentXp, StringFormat=\{0:N0\}}" />
                 </Grid>
 
                 <!--  Total Experience Points  -->
@@ -121,18 +119,16 @@
                         FontSize="{StaticResource FontSizeMega}"
                         FontWeight="Bold"
                         Foreground="{StaticResource FontColorTitle}" />
-                    <Label
+                    <TextBlock
                         Grid.Column="1"
                         Padding="0,0,20,0"
-                        HorizontalAlignment="Stretch"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        HorizontalContentAlignment="Right"
-                        BorderBrush="{StaticResource FontColor}"
-                        Content="{Binding PlayerStatsViewModel.TotalXp}"
                         FontFamily="Calibri"
-                        FontSize="{StaticResource FontSizeUltra}"
+                        FontSize="{StaticResource FontSizeMega}"
                         FontWeight="Bold"
-                        Foreground="{StaticResource FontColor}" />
+                        Foreground="{StaticResource FontColor}"
+                        Text="{Binding PlayerStatsViewModel.TotalXp, StringFormat=\{0:N0\}}" />
                 </Grid>
             </Grid>
         </Grid>
@@ -164,7 +160,12 @@
                         FontSize="{StaticResource FontSizeMega}"
                         Foreground="{StaticResource FontColor}"
                         SelectionBrush="{StaticResource FontColor}"
-                        Text="{Binding PlayerName, Mode=TwoWay}" />
+                        Text="{Binding PlayerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
 
                     <Button
                         Grid.Column="1"
@@ -198,7 +199,7 @@
                 <!--  Tabs  -->
                 <TabControl
                     Grid.Row="2"
-                    Margin="0,10,0,0"
+                    Margin="0,10,5,5"
                     Background="{StaticResource BackgroundColor}"
                     FontFamily="Calibri"
                     FontSize="20"

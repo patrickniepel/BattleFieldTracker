@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BattleFieldTracker.Helper;
 using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.DownloadModels
@@ -31,13 +32,19 @@ namespace BattleFieldTracker.DownloadModels
         public float Kills { get; set; }
         public string Name { get; set; }
         public double Score { get; set; }
+        public string TimeSpentString { get; set; }
 
         private double _secondsAs;
 
+        [UsedImplicitly]
         public double SecondsAs
         {
             get => _secondsAs;
-            set => _secondsAs = Math.Round(value / 60);
+            set
+            {
+                _secondsAs = value;
+                TimeSpentString = new TimeSpentCalculator().GetTimeSpentString(_secondsAs);
+            }
         }
     }
 
@@ -46,13 +53,18 @@ namespace BattleFieldTracker.DownloadModels
     {
         public float KillsAs { get; set; }
         public string Name { get; set; }
-
+        public string TimeSpentString { get; set; }
         private double _timeSpent;
 
+        [UsedImplicitly]
         public double TimeSpent
         {
             get => _timeSpent;
-            set => _timeSpent = Math.Round(value / 60);
+            set
+            {
+                _timeSpent = value;
+                TimeSpentString = new TimeSpentCalculator().GetTimeSpentString(_timeSpent);
+            }
         }
         public float VehiclesDestroyed { get; set; }
     }

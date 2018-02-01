@@ -23,7 +23,7 @@ namespace BattleFieldTracker.ViewModels
         private float _losses;
         private int _spm;
         private int _kpm;
-        private double _timePlayed;
+        private string _timePlayed;
         private string _topPrimary;
         private string _topSecondary;
         private string _topVehicle;
@@ -119,7 +119,7 @@ namespace BattleFieldTracker.ViewModels
             set => Set(ref _kpm, value);
         }
 
-        public double TimePlayed
+        public string TimePlayed
         {
             [UsedImplicitly]
             get => _timePlayed;
@@ -192,7 +192,7 @@ namespace BattleFieldTracker.ViewModels
             Losses = stats.Losses;
             Spm = (int)stats.Spm;
             Kpm = (int)stats.Kpm;
-            TimePlayed = Math.Round(stats.TimePlayed / 3600, 1); //Hours
+            TimePlayed = new TimeSpentCalculator().GetTimeSpentString(stats.TimePlayed);
             
 
             var highlights = stats.HighlightsByType;

@@ -105,7 +105,7 @@
                     Background="{StaticResource BackgroundColorHeader}"
                     FontSize="{StaticResource FontSizeNormal}"
                     Foreground="{StaticResource FontColor}"
-                    Text="Minutes"
+                    Text="Time Spent"
                     TextAlignment="Center" />
 
                 <!--  Destroyed  -->
@@ -181,34 +181,31 @@
                                                 Source="{Binding ImageUrl}" />
 
                                             <!--  Kills  -->
-                                            <Label
+                                            <TextBlock
                                                 Grid.Column="2"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Stretch"
-                                                VerticalContentAlignment="Center"
-                                                Content="{Binding Stats.Values.Kills}"
+                                                VerticalAlignment="Center"
                                                 FontSize="{StaticResource FontSizeLarge}"
-                                                Foreground="{StaticResource FontColor}" />
+                                                Foreground="{StaticResource FontColor}"
+                                                Text="{Binding Stats.Values.Kills, StringFormat=\{0:N0\}}" />
 
                                             <!--  Seconds  -->
-                                            <Label
+                                            <TextBlock
                                                 Grid.Column="3"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Stretch"
-                                                VerticalContentAlignment="Center"
-                                                Content="{Binding Stats.Values.Seconds}"
+                                                VerticalAlignment="Center"
                                                 FontSize="{StaticResource FontSizeLarge}"
-                                                Foreground="{StaticResource FontColor}" />
+                                                Foreground="{StaticResource FontColor}"
+                                                Text="{Binding Stats.Values.TimeSpentString}" />
 
                                             <!--  Destroyed  -->
-                                            <Label
+                                            <TextBlock
                                                 Grid.Column="4"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Stretch"
-                                                VerticalContentAlignment="Center"
-                                                Content="{Binding Stats.Values.Destroyed}"
+                                                VerticalAlignment="Center"
                                                 FontSize="{StaticResource FontSizeLarge}"
-                                                Foreground="{StaticResource FontColor}" />
+                                                Foreground="{StaticResource FontColor}"
+                                                Text="{Binding Stats.Values.Destroyed, StringFormat=\{0:N0\}}" />
                                         </Grid>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>

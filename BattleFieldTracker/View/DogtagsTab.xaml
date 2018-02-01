@@ -151,7 +151,7 @@
                                 ItemsSource="{Binding Dogtags}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid Margin="10,10,10,10">
+                                        <Grid Margin="10,10,10,10" Opacity="{Binding Progression.RowOpacity}">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
@@ -160,15 +160,33 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
 
-                                            <!--  Name  -->
-                                            <Label
+                                            <Grid
                                                 Grid.Column="0"
                                                 HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Stretch"
-                                                VerticalContentAlignment="Center"
-                                                Content="{Binding Name}"
-                                                FontSize="{StaticResource FontSizeLarge}"
-                                                Foreground="{StaticResource FontColorTitle}" />
+                                                VerticalAlignment="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+
+                                                <!--  Name  -->
+                                                <TextBlock
+                                                    Grid.Row="0"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                    Foreground="{StaticResource FontColorTitle}"
+                                                    Text="{Binding Name}" />
+
+                                                <!--  Description  -->
+                                                <TextBlock
+                                                    Grid.Row="1"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="{StaticResource FontSizeNormal}"
+                                                    Foreground="{StaticResource FontColor}"
+                                                    Text="{Binding Description}" />
+                                            </Grid>
 
                                             <!--  Preview  -->
                                             <Image
@@ -180,34 +198,29 @@
                                                 Source="{Binding ImageUrl}" />
 
                                             <!--  Times Taken  -->
-                                            <Label
+                                            <TextBlock
                                                 Grid.Column="2"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Stretch"
-                                                VerticalContentAlignment="Center"
-                                                Content="{Binding TimesTaken}"
+                                                VerticalAlignment="Center"
                                                 FontSize="{StaticResource FontSizeLarge}"
-                                                Foreground="{StaticResource FontColor}" />
+                                                Foreground="{StaticResource FontColor}"
+                                                Text="{Binding TimesTaken, StringFormat=\{0:N0\}}" />
 
-                                            <!--  Equipped  -->
-                                            <Label
+                                            <!--  Equipped?  -->
+                                            <CheckBox
                                                 Grid.Column="3"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Stretch"
-                                                VerticalContentAlignment="Center"
-                                                Content="{Binding EquippedString}"
-                                                FontSize="{StaticResource FontSizeLarge}"
-                                                Foreground="{StaticResource FontColor}" />
+                                                VerticalAlignment="Center"
+                                                IsChecked="{Binding Equipped}"
+                                                IsEnabled="False" />
 
-                                            <!--  Unlocked  -->
-                                            <Label
+                                            <!--  Unlocked medal?  -->
+                                            <CheckBox
                                                 Grid.Column="4"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Stretch"
-                                                VerticalContentAlignment="Center"
-                                                Content="{Binding Progression.UnlockedString}"
-                                                FontSize="{StaticResource FontSizeLarge}"
-                                                Foreground="{StaticResource FontColor}" />
+                                                VerticalAlignment="Center"
+                                                IsChecked="{Binding Progression.Unlocked}"
+                                                IsEnabled="False" />
                                         </Grid>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>

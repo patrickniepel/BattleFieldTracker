@@ -9,23 +9,32 @@ namespace BattleFieldTracker.DownloadModels
     /// Models for the medal stats
     /// </summary>
 
-    [UsedImplicitly]
+    public class StagesProgressionMedalStats
+    {
+        public bool Unlocked { get; set; }
+    }
+
+    public class StagesMedalStats
+    {
+        public string Description { get; set; }
+        public StagesProgressionMedalStats Progression { get; set; }
+    }
+
     public class ProgressionMedalStats
     {
         private bool _unlocked;
 
-        [UsedImplicitly]
         public bool Unlocked
         {
             get => _unlocked;
             set
             {
                 _unlocked = value;
-                UnlockedString = new BooleanToStringConverter().ConvertToString(_unlocked);
+                RowOpacity = _unlocked ? 1 : 0.5;
             }
         }
 
-        public string UnlockedString { get; set; }
+        public double RowOpacity { get; set; }
     }
 
     public class AwardMedalStats : IComparable<AwardMedalStats>
@@ -33,6 +42,7 @@ namespace BattleFieldTracker.DownloadModels
         public string Description { get; set; }
         public string Name { get; set; }
         public ProgressionMedalStats Progression { get; set; }
+        public List<StagesMedalStats> Stages { get; set; }
         private string _imageUrl;
 
         [UsedImplicitly]

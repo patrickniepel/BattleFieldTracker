@@ -42,15 +42,15 @@
                     CornerRadius="10 10 10 10">
                     <StackPanel>
                         <TextBlock
-                            FontSize="{StaticResource FontSizeLarge}"
+                            FontSize="{StaticResource FontSizeMega}"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Accuracy Ratio"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
-                            FontSize="{StaticResource FontSizeMega}"
+                            FontSize="{StaticResource FontSizeUltra}"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.AccuracyRatio}"
+                            Text="{Binding DetailStatsViewModel.AccuracyRatio, StringFormat=\{0:N2\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -66,15 +66,15 @@
                     CornerRadius="10 10 10 10">
                     <StackPanel>
                         <TextBlock
-                            FontSize="{StaticResource FontSizeLarge}"
+                            FontSize="{StaticResource FontSizeMega}"
                             Foreground="{StaticResource FontColorTitle}"
-                            Text="Avenger Kills"
+                            Text="KDR"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
-                            FontSize="{StaticResource FontSizeMega}"
+                            FontSize="{StaticResource FontSizeUltra}"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.AvengerKills}"
+                            Text="{Binding DetailStatsViewModel.Kdr, StringFormat=\{0:N2\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -90,15 +90,15 @@
                     CornerRadius="10 10 10 10">
                     <StackPanel>
                         <TextBlock
-                            FontSize="{StaticResource FontSizeLarge}"
+                            FontSize="{StaticResource FontSizeMega}"
                             Foreground="{StaticResource FontColorTitle}"
-                            Text="Award Score"
+                            Text="Flags Captured"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
-                            FontSize="{StaticResource FontSizeMega}"
+                            FontSize="{StaticResource FontSizeUltra}"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.AwardScore}"
+                            Text="{Binding DetailStatsViewModel.FlagsCaptured, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -114,15 +114,15 @@
                     CornerRadius="10 10 10 10">
                     <StackPanel>
                         <TextBlock
-                            FontSize="{StaticResource FontSizeLarge}"
+                            FontSize="{StaticResource FontSizeMega}"
                             Foreground="{StaticResource FontColorTitle}"
-                            Text="Dogtags Taken"
+                            Text="Highest Killstreak"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
-                            FontSize="{StaticResource FontSizeMega}"
+                            FontSize="{StaticResource FontSizeUltra}"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.DogtagsTaken}"
+                            Text="{Binding DetailStatsViewModel.HighestKillStreak, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -138,15 +138,15 @@
                     CornerRadius="10 10 10 10">
                     <StackPanel>
                         <TextBlock
-                            FontSize="{StaticResource FontSizeLarge}"
+                            FontSize="{StaticResource FontSizeMega}"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Headshots"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
-                            FontSize="{StaticResource FontSizeMega}"
+                            FontSize="{StaticResource FontSizeUltra}"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.Headshots}"
+                            Text="{Binding DetailStatsViewModel.Headshots, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -164,14 +164,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
-                            Text="Flags Captured"
+                            Text="Award Score"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.FlagsCaptured}"
+                            Text="{Binding DetailStatsViewModel.AwardScore, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -188,14 +190,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Flags Defended"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.FlagsDefended}"
+                            Text="{Binding DetailStatsViewModel.FlagsDefended, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -212,14 +216,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Heals"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.Heals}"
+                            Text="{Binding DetailStatsViewModel.Heals, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -236,14 +242,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
-                            Text="Highest Killstreak"
+                            Text="Dogtags Taken"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.HighestKillStreak}"
+                            Text="{Binding DetailStatsViewModel.DogtagsTaken, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -260,14 +268,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
-                            Text="KDR"
+                            Text="Avenger Kills"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.Kdr}"
+                            Text="{Binding DetailStatsViewModel.AvengerKills, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -285,14 +295,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Kill Assists"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.KillAssists}"
+                            Text="{Binding DetailStatsViewModel.KillAssists, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -309,14 +321,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Longest Headshot"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.LongestHeadshot}"
+                            Text="{Binding DetailStatsViewModel.LongestHeadshot, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -333,14 +347,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Nemesis Kills"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.NemesisKills}"
+                            Text="{Binding DetailStatsViewModel.NemesisKills, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -357,14 +373,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Nemesis Killstreak"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.NemesisKillStreak}"
+                            Text="{Binding DetailStatsViewModel.NemesisKillStreak, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -381,14 +399,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Repairs"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.Repairs}"
+                            Text="{Binding DetailStatsViewModel.Repairs, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -406,14 +426,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Revives"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.Revives}"
+                            Text="{Binding DetailStatsViewModel.Revives, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -430,14 +452,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Rounds Played"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.RoundsPlayed}"
+                            Text="{Binding DetailStatsViewModel.RoundsPlayed, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -454,14 +478,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Savior Kills"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.SaviorKills}"
+                            Text="{Binding DetailStatsViewModel.SaviorKills, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -478,14 +504,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Squad Score"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.SquadScore}"
+                            Text="{Binding DetailStatsViewModel.SquadScore, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -502,14 +530,16 @@
                     <StackPanel>
                         <TextBlock
                             FontSize="{StaticResource FontSizeLarge}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColorTitle}"
                             Text="Suppression Assists"
                             TextAlignment="Center" />
                         <TextBlock
                             Margin="0,10,0,0"
                             FontSize="{StaticResource FontSizeMega}"
+                            FontWeight="Normal"
                             Foreground="{StaticResource FontColor}"
-                            Text="{Binding DetailStatsViewModel.SuppressionAssists}"
+                            Text="{Binding DetailStatsViewModel.SuppressionAssists, StringFormat=\{0:N0\}}"
                             TextAlignment="Center" />
                     </StackPanel>
                 </Border>
@@ -568,7 +598,7 @@
                     Background="{StaticResource BackgroundColorHeader}"
                     FontSize="{StaticResource FontSizeNormal}"
                     Foreground="{StaticResource FontColor}"
-                    Text="Minutes As"
+                    Text="Time Spent"
                     TextAlignment="Center" />
             </Grid>
 
@@ -604,21 +634,21 @@
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding Kills}" />
+                                Text="{Binding Kills, StringFormat=\{0:N0\}}" />
                             <TextBlock
                                 Grid.Column="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding Score}" />
+                                Text="{Binding Score, StringFormat=\{0:N0\}}" />
                             <TextBlock
                                 Grid.Column="3"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding SecondsAs}" />
+                                Text="{Binding TimeSpentString}" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -676,7 +706,7 @@
                     Background="{StaticResource BackgroundColorHeader}"
                     FontSize="{StaticResource FontSizeNormal}"
                     Foreground="{StaticResource FontColor}"
-                    Text="Time spent (min)"
+                    Text="Time Spent"
                     TextAlignment="Center" />
             </Grid>
 
@@ -712,21 +742,21 @@
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding KillsAs}" />
+                                Text="{Binding KillsAs, StringFormat=\{0:N0\}}" />
                             <TextBlock
                                 Grid.Column="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding VehiclesDestroyed}" />
+                                Text="{Binding VehiclesDestroyed, StringFormat=\{0:N0\}}" />
                             <TextBlock
                                 Grid.Column="3"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding TimeSpent}" />
+                                Text="{Binding TimeSpentString}" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -830,28 +860,28 @@
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding Score}" />
+                                Text="{Binding Score, StringFormat=\{0:N0\}}" />
                             <TextBlock
                                 Grid.Column="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding Wins}" />
+                                Text="{Binding Wins, StringFormat=\{0:N0\}}" />
                             <TextBlock
                                 Grid.Column="3"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding Losses}" />
+                                Text="{Binding Losses, StringFormat=\{0:N0\}}" />
                             <TextBlock
                                 Grid.Column="4"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource FontColor}"
-                                Text="{Binding WinLossRatio}" />
+                                Text="{Binding WinLossRatio, StringFormat=\{0:N\}}" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
