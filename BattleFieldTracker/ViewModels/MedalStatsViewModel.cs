@@ -60,17 +60,18 @@ namespace BattleFieldTracker.ViewModels
         {
             var download = new DownloadMedalStats();
             RootObjectMedalStats root = await download.GetDownloadData(playerName);
-            ApplyData(root);
-        }
 
-        private void ApplyData(RootObjectMedalStats root)
-        {
-            // If errors occured
+            //If Errors occured
             if (root == null)
             {
                 return;
             }
 
+            ApplyData(root);
+        }
+
+        private void ApplyData(RootObjectMedalStats root)
+        {
             List<ResultMedalStats> medals = root.Result;
             _allMedals = medals;
             Medals = new ObservableCollection<ResultMedalStats>(_allMedals);

@@ -61,16 +61,18 @@ namespace BattleFieldTracker.ViewModels
         {
             var download = new DownloadWeaponStats();
             RootObjectWeaponStats root = await download.GetDownloadData(playerName);
+
+            //If Errors occured
+            if (root == null)
+            {
+                return;
+            }
+
             ApplyData(root);
         }
 
         private void ApplyData(RootObjectWeaponStats root)
         {
-            // If errors occured 
-            if (root == null)
-            {
-                return;
-            }
             List<ResultWeaponStats> weapons = root.Result;
             _allWeapons = weapons;
             Weapons = new ObservableCollection<ResultWeaponStats>(_allWeapons);

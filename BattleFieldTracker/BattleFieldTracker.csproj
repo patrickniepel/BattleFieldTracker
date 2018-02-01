@@ -73,7 +73,6 @@
     <Compile Include="Download\DownloadDetailStats.cs" />
     <Compile Include="Download\DownloadDogTagStats.cs" />
     <Compile Include="Download\DownloadMedalStats.cs" />
-    <Compile Include="Download\Validation.cs" />
     <Compile Include="Helper\ImageUrlGenerator.cs" />
     <Compile Include="Helper\BooleanToStringConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -85,7 +84,31 @@
     <Compile Include="ViewModels\VehicleStatsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelContainer.cs" />
     <Compile Include="ViewModels\WeaponStatsViewModel.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="View\DogtagsTab.xaml.cs">
+      <DependentUpon>DogtagsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedalsTab.xaml.cs">
+      <DependentUpon>MedalsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VehiclesTab.xaml.cs">
+      <DependentUpon>VehiclesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WeaponsTab.xaml.cs">
+      <DependentUpon>WeaponsTab.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\DetailsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DogtagsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GeneralTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -101,10 +124,28 @@
     <Compile Include="Download\DownloadVehicleStats.cs" />
     <Compile Include="Download\DownloadWeaponStats.cs" />
     <Compile Include="Converter\ConverterJson.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\DetailsTab.xaml.cs">
+      <DependentUpon>DetailsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GeneralTab.xaml.cs">
+      <DependentUpon>GeneralTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MedalsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VehiclesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WeaponsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -136,5 +177,6 @@
   <ItemGroup>
     <Resource Include="Images\bf12.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

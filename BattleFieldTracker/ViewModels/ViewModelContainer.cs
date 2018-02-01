@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BattleFieldTracker.Commands;
+﻿using BattleFieldTracker.Commands;
 using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.ViewModels
@@ -105,8 +104,15 @@ namespace BattleFieldTracker.ViewModels
 
         private async void StartDownload()
         {
-            IsDownloading = true;
-            await _playerStatsViewModel.DownloadPlayerStats(PlayerName);
+            bool isConnectedToServer = await _playerStatsViewModel.DownloadPlayerStats(PlayerName);
+
+            //Some errors happened -> stop download
+            if (!isConnectedToServer)
+            {
+                IsDownloading = false;
+                return;
+            }
+
             await _detailStatsViewModel.DownloadDetailStats(PlayerName);
             await _weaponStatsViewModel.DownloadWeaponStats(PlayerName);
             await _vehicleStatsViewModel.DownloadVehicleStats(PlayerName);

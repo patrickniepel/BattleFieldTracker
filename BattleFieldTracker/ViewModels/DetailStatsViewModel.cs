@@ -216,17 +216,18 @@ namespace BattleFieldTracker.ViewModels
         {
             var download = new DownloadDetailStats();
             RootObjectDetailStats root = await download.GetDownloadData(playerName);
-            ApplyData(root);
-        }
 
-        private void ApplyData(RootObjectDetailStats root)
-        {
             //If Errors occured
             if (root == null)
             {
                 return;
             }
 
+            ApplyData(root);
+        }
+
+        private void ApplyData(RootObjectDetailStats root)
+        {
             ResultDetailStats results = root.Result;
 
             AccuracyRatio = Math.Round(results.AccuracyRatio, 2);

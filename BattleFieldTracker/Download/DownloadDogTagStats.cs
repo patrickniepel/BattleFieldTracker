@@ -18,12 +18,6 @@ namespace BattleFieldTracker.Download
         {
             await DownloadData(playerName);
 
-            // check for errors
-            if (Validation.SharedInstance.IsError)
-            {
-                return null;
-            }
-
             var root = Converter.ConvertDogTagStatsToJson(Response);
 
             return root;

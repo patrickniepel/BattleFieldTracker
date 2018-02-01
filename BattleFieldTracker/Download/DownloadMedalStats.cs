@@ -19,12 +19,6 @@ namespace BattleFieldTracker.Download
         {
             await DownloadData(playerName);
 
-            // Check for errors
-            if (Validation.SharedInstance.IsError)
-            {
-                return null;
-            }
-
             var root = Converter.ConvertMedalStatsToJson(Response);
 
             return root;

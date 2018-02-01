@@ -16,17 +16,25 @@ namespace BattleFieldTracker.Download
 
         public async Task<RootObjectPlayerStats> GetDownloadData(string playerName)
         {
-            await DownloadData(playerName);
-
-            // Check for errors
-            if (Validation.SharedInstance.IsError)
+            //Check for Errors
+            try
             {
+                await DownloadData(playerName);
+                if (!CheckForErrors())
+                {
+                    return null;
+                }
+
+                var root = Converter.ConvertPlayerStatsToJson(Response);
+
+                return root;
+            }
+            // Failed Network Connection
+            catch (HttpRequestException)
+            {
+                ShowErrorMessage("Überprüfe deine Internet-Verbindung");
                 return null;
             }
-            
-            var root = Converter.ConvertPlayerStatsToJson(Response);
-
-            return root;
         }
 
         private async Task DownloadData(string playerName)
@@ -38,10 +46,8 @@ namespace BattleFieldTracker.Download
 
                 using (var response = await httpClient.GetAsync(ContentAddress + playerName).ConfigureAwait(false))
                 {
-                    // Validate the reponse from the server
-                    Validation.SharedInstance.ValidateDownload(response);
-                    
                     string responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    StatusCode = response.StatusCode;
                     Response = responseData;
                 }
             }

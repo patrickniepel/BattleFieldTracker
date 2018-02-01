@@ -60,17 +60,18 @@ namespace BattleFieldTracker.ViewModels
         {
             var download = new DownloadVehicleStats();
             RootObjectVehicleStats root = await download.GetDownloadData(playerName);
-            ApplyData(root);
-        }
 
-        private void ApplyData(RootObjectVehicleStats root)
-        {
-            // If errors occured
+            //If Errors occured
             if (root == null)
             {
                 return;
             }
 
+            ApplyData(root);
+        }
+
+        private void ApplyData(RootObjectVehicleStats root)
+        {
             List<ResultVehicleStats> vehicles = root.Result;
             _allVehicles = vehicles;
             Vehicles = new ObservableCollection<ResultVehicleStats>(_allVehicles);

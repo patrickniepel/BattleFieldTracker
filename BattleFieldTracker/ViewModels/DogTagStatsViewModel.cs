@@ -60,17 +60,18 @@ namespace BattleFieldTracker.ViewModels
         {
             var download = new DownloadDogTagStats();
             RootObjectDogTagStats root = await download.GetDownloadData(playerName);
-            ApplyData(root);
-        }
 
-        private void ApplyData(RootObjectDogTagStats root)
-        {
-            // If errors occured
+            //If Errors occured
             if (root == null)
             {
                 return;
             }
 
+            ApplyData(root);
+        }
+
+        private void ApplyData(RootObjectDogTagStats root)
+        {
             List<ResultDogTagStats> dogTags = root.Result;
             _allDogTags = dogTags;
             DogTags = new ObservableCollection<ResultDogTagStats>(_allDogTags);

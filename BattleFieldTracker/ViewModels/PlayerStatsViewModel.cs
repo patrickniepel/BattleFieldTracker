@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Windows;
 using BattleFieldTracker.Download;
 using BattleFieldTracker.DownloadModels;
 using BattleFieldTracker.Helper;
@@ -164,22 +163,21 @@ namespace BattleFieldTracker.ViewModels
 
         #endregion
 
-        public async Task DownloadPlayerStats(string playerName)
+        public async Task<bool> DownloadPlayerStats(string playerName)
         {
             var download = new DownloadPlayerStats();
             RootObjectPlayerStats root = await download.GetDownloadData(playerName);
+
+            if (root == null)
+            {
+                return false;
+            }
             ApplyData(root);
+            return true;
         }
 
         private void ApplyData(RootObjectPlayerStats root)
         {
-            // If errors occured during download show message
-            if (root == null)
-            {
-                MessageBox.Show(Validation.SharedInstance.ErrorMessage);
-                return;
-            }
-
             var stats = root.Result.GameStats.Tunguska;
             
             DisplayName = root.Profile.DisplayName;
