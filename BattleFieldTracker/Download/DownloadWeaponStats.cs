@@ -27,8 +27,7 @@ namespace BattleFieldTracker.Download
         {
             using (var httpClient = new HttpClient { BaseAddress = BaseAddress })
             {
-
-                httpClient.DefaultRequestHeaders.TryAddWithoutValidation(HeaderName, HeaderContent);
+                httpClient.DefaultRequestHeaders.Add(HeaderName, HeaderContent);
 
                 using (var response = await httpClient.GetAsync(ContentAddress + playerName + "&game=tunguska").ConfigureAwait(false))
                 {
