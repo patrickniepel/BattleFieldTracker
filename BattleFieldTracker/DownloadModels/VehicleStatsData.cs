@@ -5,6 +5,9 @@ using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.DownloadModels
 {
+    /// <summary>
+    /// (View)Models for the vehicle stats (Json representation). Will be filled with data when the download gets converted into json
+    /// </summary>
 
     [UsedImplicitly]
     public class ValuesVehicleStats

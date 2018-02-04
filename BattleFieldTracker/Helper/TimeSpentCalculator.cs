@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BattleFieldTracker.Helper
 {
+    /// <summary>
+    /// Calculates the time spent with certain weapons, vehicles or the game itself
+    /// </summary>
     public class TimeSpentCalculator
     {
+        /// <summary>
+        /// Takes the seconds an transforms them into the correct time representation
+        /// </summary>
+        /// <param name="seconds">Time spent as seconds</param>
+        /// <returns>Time string</returns>
         public string GetTimeSpentString(double seconds)
         {
             seconds = Math.Round(seconds, 0);

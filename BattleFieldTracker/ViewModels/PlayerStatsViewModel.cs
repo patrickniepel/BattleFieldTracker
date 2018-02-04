@@ -163,6 +163,11 @@ namespace BattleFieldTracker.ViewModels
 
         #endregion
 
+        /// <summary>
+        /// Starts the download
+        /// </summary>
+        /// <param name="playerName">Name of the user</param>
+        /// <returns>True if no errors occured</returns>
         public async Task<bool> DownloadPlayerStats(string playerName)
         {
             var download = new DownloadPlayerStats();
@@ -172,11 +177,15 @@ namespace BattleFieldTracker.ViewModels
             {
                 return false;
             }
-            ApplyData(root);
+            AssignData(root);
             return true;
         }
 
-        private void ApplyData(RootObjectPlayerStats root)
+        /// <summary>
+        /// Assings all the downloaded data to the variables
+        /// </summary>
+        /// <param name="root">data as json</param>
+        private void AssignData(RootObjectPlayerStats root)
         {
             var stats = root.Result.GameStats.Tunguska;
             
@@ -201,7 +210,7 @@ namespace BattleFieldTracker.ViewModels
             TopPrimary = highlights.Primary[0].Name;
             TopSecondary = highlights.Sidearm[0].Name;
 
-            // Download completed withour errors
+            // Download completed withour errors, player stats tab can be displayed
             DownloadFinished = true;
         }
     }

@@ -56,6 +56,11 @@ namespace BattleFieldTracker.ViewModels
             ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);
         }
 
+        /// <summary>
+        /// Starts the download
+        /// </summary>
+        /// <param name="playerName">Name of the user</param>
+        /// <returns></returns>
         public async Task DownloadDogTagStats(string playerName)
         {
             var download = new DownloadDogTagStats();
@@ -67,19 +72,26 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
 
-            ApplyData(root);
+            AssignData(root);
         }
 
-        private void ApplyData(RootObjectDogTagStats root)
+        /// <summary>
+        /// Assings all the downloaded data to the variables
+        /// </summary>
+        /// <param name="root">data as json</param>
+        private void AssignData(RootObjectDogTagStats root)
         {
             List<ResultDogTagStats> dogTags = root.Result;
             _allDogTags = dogTags;
             DogTags = new ObservableCollection<ResultDogTagStats>(_allDogTags);
 
-            // Download completed without errors
+            // Download completed without errors, dogtags tab can be displayed
             DownloadFinished = true;
         }
 
+        /// <summary>
+        /// Filters the data accordingly to the users search query
+        /// </summary>
         private void Filter()
         {
             DogTags = string.IsNullOrWhiteSpace(FilterText)
@@ -88,6 +100,10 @@ namespace BattleFieldTracker.ViewModels
                                                                                        r.Dogtags.Any(d => d.Name?.IndexOf(FilterText, StringComparison.CurrentCultureIgnoreCase) >= 0)));
         }
 
+        /// <summary>
+        /// Clears the filter textbox
+        /// </summary>
+        /// <param name="obj"></param>
         private void ClearFilterCommandExecute(object obj)
         {
             FilterText = "";

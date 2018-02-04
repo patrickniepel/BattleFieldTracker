@@ -4,7 +4,7 @@ using BattleFieldTracker.Properties;
 namespace BattleFieldTracker.DownloadModels
 {
     /// <summary>
-    /// Models for the player stats
+    /// (View)Models for the player stats (Json representation). Will be filled with data when the download gets converted into json
     /// </summary>
 
     [UsedImplicitly]

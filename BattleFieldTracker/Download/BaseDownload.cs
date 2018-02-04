@@ -7,6 +7,9 @@ using BattleFieldTracker.Converter;
 
 namespace BattleFieldTracker.Download
 {
+    /// <summary>
+    /// Abstract Download class as base for every download
+    /// </summary>
     public abstract class BaseDownload
     {
         protected readonly Uri BaseAddress = new Uri("https://battlefieldtracker.com/bf1/api/");
@@ -22,9 +25,17 @@ namespace BattleFieldTracker.Download
         /// Download response
         /// </summary>
         protected string Response { get; set; }
+
+        /// <summary>
+        /// Status code of the given download
+        /// </summary>
         protected HttpStatusCode StatusCode { private get; set; }
         protected readonly ConverterJson Converter = new ConverterJson();
 
+        /// <summary>
+        /// Checks if there were errors while downloading and displays a message accordingly
+        /// </summary>
+        /// <returns>Download has no errors</returns>
         protected bool CheckForErrors()
         {
             switch (StatusCode)
@@ -43,6 +54,10 @@ namespace BattleFieldTracker.Download
             return false;
         }
 
+        /// <summary>
+        /// Shows the given Message to the user
+        /// </summary>
+        /// <param name="message">The message that will be displayed</param>
         protected void ShowErrorMessage(string message)
         {
             MessageBox.Show(message);

@@ -211,7 +211,11 @@ namespace BattleFieldTracker.ViewModels
 
         #endregion
 
-
+        /// <summary>
+        /// Starts the download
+        /// </summary>
+        /// <param name="playerName">Name of the user</param>
+        /// <returns></returns>
         public async Task DownloadDetailStats(string playerName)
         {
             var download = new DownloadDetailStats();
@@ -223,10 +227,14 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
 
-            ApplyData(root);
+            AssignData(root);
         }
 
-        private void ApplyData(RootObjectDetailStats root)
+        /// <summary>
+        /// Assings all the downloaded data to the variables
+        /// </summary>
+        /// <param name="root">data as json</param>
+        private void AssignData(RootObjectDetailStats root)
         {
             ResultDetailStats results = root.Result;
 
@@ -254,7 +262,7 @@ namespace BattleFieldTracker.ViewModels
             SuppressionAssists = results.SuppressionAssist;
             VehicleStats = results.VehicleStats;
 
-            // Download completed without errors
+            // Download completed without errors, detail tab can be displayed
             DownloadFinished = true;
         }
     }

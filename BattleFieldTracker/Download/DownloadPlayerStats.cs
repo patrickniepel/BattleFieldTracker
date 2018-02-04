@@ -14,6 +14,11 @@ namespace BattleFieldTracker.Download
             ContentAddress = "Stats/CareerForOwnedGames?platform=3&displayName=";
         }
 
+        /// <summary>
+        /// Starts the download and checks for errors 
+        /// </summary>
+        /// <param name="playerName">Name of the user</param>
+        /// <returns></returns>
         public async Task<RootObjectPlayerStats> GetDownloadData(string playerName)
         {
             //Check for Errors
@@ -37,6 +42,11 @@ namespace BattleFieldTracker.Download
             }
         }
 
+        /// <summary>
+        /// Connects to api server, tries to get the data and the status code
+        /// </summary>
+        /// <param name="playerName">Name of the user</param>
+        /// <returns></returns>
         private async Task DownloadData(string playerName)
         {
             using (var httpClient = new HttpClient { BaseAddress = BaseAddress })

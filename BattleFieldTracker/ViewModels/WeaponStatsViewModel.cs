@@ -57,6 +57,11 @@ namespace BattleFieldTracker.ViewModels
             ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);   
         }
 
+        /// <summary>
+        /// Starts the download
+        /// </summary>
+        /// <param name="playerName">Name of the user</param>
+        /// <returns></returns>
         public async Task DownloadWeaponStats(string playerName)
         {
             var download = new DownloadWeaponStats();
@@ -68,19 +73,26 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
 
-            ApplyData(root);
+            AssignData(root);
         }
 
-        private void ApplyData(RootObjectWeaponStats root)
+        /// <summary>
+        /// Assings all the downloaded data to the variables
+        /// </summary>
+        /// <param name="root">data as json</param>
+        private void AssignData(RootObjectWeaponStats root)
         {
             List<ResultWeaponStats> weapons = root.Result;
             _allWeapons = weapons;
             Weapons = new ObservableCollection<ResultWeaponStats>(_allWeapons);
 
-            // Download completed without errors
+            // Download completed without errors, weapons tab can be displayed
             DownloadFinished = true;
         }
 
+        /// <summary>
+        /// Filters the data accordingly to the users search query
+        /// </summary>
         private void Filter()
         {
             Weapons = string.IsNullOrWhiteSpace(FilterText)
@@ -89,6 +101,10 @@ namespace BattleFieldTracker.ViewModels
                 r.Weapons.Any(w => w.Name?.IndexOf(FilterText, StringComparison.CurrentCultureIgnoreCase) >= 0)));        
         }
 
+        /// <summary>
+        /// Clears the filter textbox
+        /// </summary>
+        /// <param name="obj"></param>
         private void ClearFilterCommandExecute(object obj)
         {
             FilterText = "";

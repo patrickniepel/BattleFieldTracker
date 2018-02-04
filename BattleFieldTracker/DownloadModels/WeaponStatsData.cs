@@ -5,6 +5,10 @@ using BattleFieldTracker.Properties;
 
 namespace BattleFieldTracker.DownloadModels
 {
+    /// <summary>
+    /// (View)Models for the weapon stats (Json representation). Will be filled with data when the download gets converted into json
+    /// </summary>
+    /// 
     [UsedImplicitly]
     public class ValuesWeaponStats
     {

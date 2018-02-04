@@ -9,13 +9,13 @@ namespace BattleFieldTracker.Commands
         private readonly Action<object> _execute;
 
         /// <summary>
-        ///     Erzeugt ein Command.
+        ///     Creates a command
         /// </summary>
         /// <param name="execute">Action that gets executed</param>
         public DelegateCommand(Action<object> execute) : this(execute, null) { }
 
         /// <summary>
-        ///     Erzeugt ein Command.
+        ///     Creates a command
         /// </summary>
         /// <param name="execute">Action that gets executed</param>
         /// <param name="canExecute">Predicate that checks if command can be executed.</param>

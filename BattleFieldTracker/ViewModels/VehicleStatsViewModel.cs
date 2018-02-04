@@ -56,6 +56,11 @@ namespace BattleFieldTracker.ViewModels
             ClearFilterCommand = new DelegateCommand(ClearFilterCommandExecute);
         }
 
+        /// <summary>
+        /// Starts the download
+        /// </summary>
+        /// <param name="playerName">Name of the user</param>
+        /// <returns></returns>
         public async Task DownloadVehicleStats(string playerName)
         {
             var download = new DownloadVehicleStats();
@@ -67,19 +72,26 @@ namespace BattleFieldTracker.ViewModels
                 return;
             }
 
-            ApplyData(root);
+            AssignData(root);
         }
 
-        private void ApplyData(RootObjectVehicleStats root)
+        /// <summary>
+        /// Assings all the downloaded data to the variables
+        /// </summary>
+        /// <param name="root">data as json</param>
+        private void AssignData(RootObjectVehicleStats root)
         {
             List<ResultVehicleStats> vehicles = root.Result;
             _allVehicles = vehicles;
             Vehicles = new ObservableCollection<ResultVehicleStats>(_allVehicles);
 
-            // Download completed without errors
+            // Download completed without errors, vehicles tab can be displayed
             DownloadFinished = true;
         }
 
+        /// <summary>
+        /// Filters the data accordingly to the users search query
+        /// </summary>
         private void Filter()
         {
             Vehicles = string.IsNullOrWhiteSpace(FilterText)
@@ -88,6 +100,10 @@ namespace BattleFieldTracker.ViewModels
                                                                                      r.Vehicles.Any(v => v.Name?.IndexOf(FilterText, StringComparison.CurrentCultureIgnoreCase) >= 0)));
         }
 
+        /// <summary>
+        /// Clears the filter textbox
+        /// </summary>
+        /// <param name="obj"></param>
         private void ClearFilterCommandExecute(object obj)
         {
             FilterText = "";

@@ -6,7 +6,7 @@ using BattleFieldTracker.Properties;
 namespace BattleFieldTracker.DownloadModels
 {
     /// <summary>
-    /// Models for the medal stats
+    /// (View)Models for the medal stats (Json representation). Will be filled with data when the download gets converted into json
     /// </summary>
 
     public class StagesProgressionMedalStats

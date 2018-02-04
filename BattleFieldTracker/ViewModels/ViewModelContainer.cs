@@ -96,14 +96,23 @@ namespace BattleFieldTracker.ViewModels
             SearchCommand = new DelegateCommand(SearchCommandExecute);
         }
 
+        /// <summary>
+        /// Starts the download and shows the progress bar
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private void SearchCommandExecute(object obj)
         {
             IsDownloading = true;
             StartDownload();
         }
 
+        /// <summary>
+        /// Invokes the download in every view model and hides the progressbar when finished
+        /// </summary>
         private async void StartDownload()
         {
+            // Check if access attempt succeeded
             bool isConnectedToServer = await _playerStatsViewModel.DownloadPlayerStats(PlayerName);
 
             //Some errors happened -> stop download
