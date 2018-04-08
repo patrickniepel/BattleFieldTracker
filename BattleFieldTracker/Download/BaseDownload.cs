@@ -13,8 +13,8 @@ namespace BattleFieldTracker.Download
     public abstract class BaseDownload
     {
         protected readonly Uri BaseAddress = new Uri("https://battlefieldtracker.com/bf1/api/");
-        protected readonly string HeaderName = "trn-api-key";
-        protected readonly string HeaderContent = "ca114f4c-713b-49f2-98f7-56f731309348";
+        protected readonly string HeaderName = "YOUR_NAME";
+        protected readonly string HeaderContent = "YOUR_CONTENT";
 
         /// <summary>
         /// address for player stats, weapons, vehicles ...
